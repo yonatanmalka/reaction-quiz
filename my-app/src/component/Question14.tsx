@@ -3,21 +3,26 @@
 import React, { useState } from "react";
 import { Img } from "@/utils/Img";
 
-const Question14 = ({handleClick}) => {
+interface QuestionProps {
+    handleClick: () => void;
+}
+
+const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
     const areasToImprove = [
         { title: "Communication" },
         { title: "Collaboration" },
         { title: "Time Management" },
         { title: "Time Management" },
         { title: "Time Management" },
-        { title: "Time Management" }, { title: "Time Management" },
+        { title: "Time Management" },
+        { title: "Time Management" },
         { title: "Time Management" },
         // Add more items as needed
     ];
 
-    const [selected, setSelected] = useState([]);
+    const [selected, setSelected] = useState<number[]>([]);
 
-    const handleCardClick = (index) => {
+    const handleCardClick = (index: number) => {
         const newSelected = [...selected];
         const selectedIndex = newSelected.indexOf(index);
 
@@ -42,7 +47,7 @@ const Question14 = ({handleClick}) => {
                     {areasToImprove.map((area, index) => (
                         <div
                             key={index}
-                            className={`card2 ${selected.includes(index) ? 'selected' : ''}`}
+                            className={`card2 ${selected.includes(index) ? "selected" : ""}`}
                             onClick={() => handleCardClick(index)}
                         >
                             <h1 className="text-[#343434] font-semibold text-[22px]">
@@ -58,7 +63,9 @@ const Question14 = ({handleClick}) => {
                 </div>
             </div>
             <div className="w-full px-[40px] ">
-                <button onClick={handleClick} className="ButtonContainer">Next</button>
+                <button onClick={handleClick} className="ButtonContainer">
+                    Next
+                </button>
             </div>
         </div>
     );

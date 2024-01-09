@@ -3,8 +3,10 @@ import React, {useState} from "react";
 import Image from "next/image";
 import Background from "../../public/images/QuestionsBack.jpg";
 import {Img} from "@/utils/Img";
-
-const Question8 = ({handleNextStep}) => {
+interface QuestionProps {
+    handleNextStep: () => void;
+}
+const Question8:React.FC<QuestionProps> = ({handleNextStep}) => {
     const images = [
         "/images/1star.png",
         "/images/2star.png",

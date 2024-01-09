@@ -41,7 +41,7 @@ const Question3:React.FC<QuestionProps> = ({ handleNextStep }) => {
 
     return(
         <div>
-            <h1 className="text-[24px] md:text-[28px] text-[#000] text-center font-semibold mt-[20px] px-[20px]">What is your team's work style?</h1>
+            <h1 className="text-[24px] md:text-[28px] text-[#000] text-center font-semibold mt-[20px] px-[20px]">What is your teams work style?</h1>
             <div className="grid grid-cols-2 gap-x-[16px] gap-y-[12px] md:gap-x-[22px] md:gap-y-[19px] mt-[20px]">
                 {list.map((item,index) => (
                     <button

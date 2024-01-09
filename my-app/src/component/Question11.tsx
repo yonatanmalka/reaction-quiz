@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import { Img } from "@/utils/Img";
-
-const Question11 = ({handleNextStep}) => {
+interface QuestionProps {
+    handleNextStep: () => void;
+}
+const Question11:React.FC<QuestionProps> = ({handleNextStep}) => {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const handleCardClick = (card: string | React.SetStateAction<null>) => {
