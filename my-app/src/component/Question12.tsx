@@ -4,7 +4,7 @@ import Image from "next/image";
 import Background from "../../public/images/QuestionsBack.jpg";
 import {Img} from "@/utils/Img";
 
-const Question12 = () => {
+const Question12 = ({handleNextStep}) => {
     const images = [
         "/images/1star.png",
         "/images/2star.png",
@@ -18,6 +18,7 @@ const Question12 = () => {
     const handleCardClick = (index: number | React.SetStateAction<null>) => {
         // @ts-ignore
         setSelectedCard(index);
+        handleNextStep();
     };
 
     return (

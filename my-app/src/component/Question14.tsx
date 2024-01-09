@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Img } from "@/utils/Img";
 
-const Question14 = () => {
+const Question14 = ({handleClick}) => {
     const areasToImprove = [
         { title: "Communication" },
         { title: "Collaboration" },
@@ -58,7 +58,7 @@ const Question14 = () => {
                 </div>
             </div>
             <div className="w-full px-[40px] ">
-                <button className="ButtonContainer">Next</button>
+                <button onClick={handleClick} className="ButtonContainer">Next</button>
             </div>
         </div>
     );

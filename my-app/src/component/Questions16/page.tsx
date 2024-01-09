@@ -1,0 +1,61 @@
+import React from "react";
+import {BarChart} from "@/component/chats";
+import Image from "next/image";
+import Fire from "../../../images/fire.svg";
+const months= ['{Section1}', '{Section2}', '{Section3}']
+
+const freq1 = {
+    label: 'Before',
+    data: ['73','70','20'],
+    backgroundColor: '#979797',
+}
+
+const freq2 = {
+    label: 'After',
+    data: ['141','141','100'],
+    backgroundColor: '#7BBF4C',
+}
+
+interface QuestionProps {
+    handleClick: () => void;
+}
+const Questions16:React.FC<QuestionProps> = ({handleClick}) => {
+    return(
+        <div>
+            <div className="mt-[10px] flex flex-row justify-between">
+                <p className="text-[#000] font-semibold text-[10px] md:text-[14px]">Plan success prediction</p>
+
+                <span className="bg-[#5553FE] py-[1px] md:py-[3px] px-[6px] md:px-[8px] rounded-[6px] md:rounded-[8px] flex flex-row gap-[3px] md:gap-[5px] items-center">
+                    <p className="text-[#fff] text-[10px] md:text-[12px] font-medium">Result: High</p>
+                    <Image src={Fire} alt={'fire'}  className="w-[8px] h-[8px] md:w-[10px] md:h-[10px]" />
+                </span>
+            </div>
+            <p className="text-[#979797] text-[10px] md:text-[12px] font-normal mr-[60px]">There is a high chance your team will see positive impact on team dynamics and engagement</p>
+            <div className="flex flex-row gap-[20px] mt-[10px] items-center">
+                <div className="flex flex-row gap-[5px] md:gap-[8px] items-center">
+                    <div className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] rounded-[3px] bg-[#979797]" />
+                    <p className="text-[#343434] text-[10px] md:text-[14px] font-normal">Before</p>
+                </div>
+                <div className="flex flex-row gap-[8px] items-center">
+                    <div className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] rounded-[3px] bg-[#7BBF4C]" />
+                    <p className="text-[#343434] text-[10px] md:text-[14px] font-normal">After</p>
+                </div>
+            </div>
+            <div className="mt-[10px]">
+                <BarChart
+                    params={{
+                        labels: months,
+                        datasets: [freq1,freq2],
+                        chartType: 'bar',
+                    }}
+                />
+            </div>
+            <p className="text-[#979797] mt-[5px] text-[10px] md:text-[12px] font-normal text-center px-[15px]">*Based on data of companies using Reaction for 90 days, analysed by Reaction. The chart is a non-customized illustration and results may vary</p>
+            <button onClick={handleClick} className="text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]">
+                Show me plan
+            </button>
+        </div>
+    )
+}
+
+export default Questions16;

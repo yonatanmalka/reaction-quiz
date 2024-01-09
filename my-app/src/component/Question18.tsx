@@ -5,7 +5,7 @@ import Image from "next/image";
 import Background from "../../public/images/QuestionsBack.jpg";
 import {Img} from "@/utils/Img";
 
-const Question18 = () => {
+const Question18 = ({handleClick}) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
 
@@ -42,7 +42,9 @@ const Question18 = () => {
                     />
                 </div>
             </div>
-
+            <button onClick={handleClick} className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]">
+                Next
+            </button>
         </div>
     );
 };

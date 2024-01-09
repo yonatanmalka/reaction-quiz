@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { Img } from "@/utils/Img";
 
-const Question11 = () => {
+const Question11 = ({handleNextStep}) => {
     const [selectedCard, setSelectedCard] = useState(null);
 
     const handleCardClick = (card: string | React.SetStateAction<null>) => {
         // @ts-ignore
         setSelectedCard(card);
+        handleNextStep();
     };
 
     return (
