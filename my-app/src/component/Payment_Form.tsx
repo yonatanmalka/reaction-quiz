@@ -1,9 +1,7 @@
 "use client"
 import React, {useState} from "react";
 import {Img} from "@/utils/Img";
-import Slider from "@/component/Slider";
 import SliderComp from "@/component/Slider";
-import Switch from "react-switch";
 import Timer from "@/component/Timer";
 
 const PaymentForm = () => {
