@@ -10,18 +10,15 @@ const Timer = () => {
                     return prevTime - 1;
                 } else {
                     clearInterval(intervalId);
-                    // Perform any action when the timer reaches 0
-                    // For example, you can display a message or trigger some other functionality.
+
                     return 0;
                 }
             });
-        }, 1000); // Update every second
+        }, 1000);
 
-        // Cleanup the interval on component unmount
         return () => clearInterval(intervalId);
-    }, []); // Empty dependency array to run the effect only once on mount
+    }, []);
 
-    // Convert remaining time to minutes and seconds
     const minutes = Math.floor(timeRemaining / 60);
     const seconds = timeRemaining % 60;
 
