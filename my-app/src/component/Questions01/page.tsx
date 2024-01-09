@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Background from "../../images/questionbackground.jpg";
+import Background from "../../../public/images/questionbackground.jpg";
 
 const Question1 = () => {
     return(

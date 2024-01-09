@@ -3,13 +3,271 @@
 @tailwind utilities;
 
 
-
-.Qustionaries{
+.Qustionaries {
     width: 693px;
-    height:1262px;
+    height: 1262px;
     position: relative;
 }
-.QustionariesBackground{
-object-fit: cover;
+
+.QustionariesBackground {
+    object-fit: cover;
     z-index: -5;
+}
+
+.texts {
+    color: #000;
+    text-align: center;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    max-width: 380px;
+    min-height: 150px;
+    line-height: 39px;
+    letter-spacing: -0.84px;
+}
+@media (max-width: 767px) {
+    .texts {
+        font-size: 24px;
+
+    }
+}
+.text {
+    color: #000;
+    text-align: center;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    max-width: 380px;
+    line-height: 39px;
+    letter-spacing: -0.84px;
+}
+@media (max-width: 767px) {
+    .text {
+        font-size: 24px;
+
+    }
+}
+.card {
+    border-radius: 8px;
+    border: 1px solid #979797;
+    background: #F5F5F5;
+    width: 60px;
+    height: 60px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+@media (max-width: 767px) {
+    .card {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+.images {
+    width: 40px;
+    height: 40px;
+}
+
+@media (max-width: 767px) {
+    .images {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.div2 {
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .div2 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.text2 {
+    color: #343434;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.42px;
+}
+
+.card.selected {
+    border-radius: 8px;
+    border: 1px solid #F9B22D;
+    background: rgba(249, 178, 45, 0.30);
+}
+
+.YesCard.selected {
+    border-radius: 8px;
+    border: 1px solid #F9B22D;
+    background: rgba(249, 178, 45, 0.30);
+}
+
+.textDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main {
+    width: 450px;
+    min-height: 690px;
+    background: #fff;
+    position: relative;
+}
+
+@media (max-width: 767px) {
+    .main {
+        max-width: 450px;
+        min-height: 630px;
+    }
+}
+
+.YesCard {
+    border-radius: 8px;
+    border: 1px solid #979797;
+    background: #F5F5F5;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 110px;
+}
+@media (max-width: 767px) {
+    .YesCard {
+        width: 100px;
+        height: 100px;
+
+    }
+}
+.marg{
+    margin-top: 0px;
+}
+.yesCardDiv {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.yesNo {
+    width: 40px;
+    height: 40px;
+}
+
+.NoText {
+    font-size: 18px;
+    margin-top: 6px;
+    font-weight: 600;
+
+}
+.card2{
+    border-radius: 15px;
+    border: 1px solid #979797;
+    background: rgba(245, 245, 245, 0.30);
+    width: 100%;
+    margin-top: 10px;
+    padding-left: 40px;
+    justify-content: start;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    height:60px;
+    position: relative;
+}
+.card2.selected {
+    border-radius: 15px;
+    border: 1px solid #F9B22D;
+    background: rgba(249, 178, 45, 0.30);
+}
+.TickImage{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.ButtonContainer{
+    border-radius: 38px;
+    background: #F9B22D;
+    width: 100%;
+    height: 45px;
+    flex-shrink: 0;
+    color: #000;
+    text-align: center;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 108.1%;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-top: 37px;
+}
+.slider-container {
+    height: 300px; /* Set a fixed height for the slider container */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.card-slider {
+    display: flex;
+    flex-direction: column;
+}
+.paymentCard{
+    border-radius: 10px;
+    width: 100%;
+    height:96px;
+    border: 1px solid #979797;
+    background: rgba(217, 217, 217, 0.00);
+}
+.paymentCard.selected {
+    border: 1px solid #F9B22D;
+    /* Add any additional styling for the selected state */
+}
+.paymentCard2 {
+    width: 100%;
+    height: 96px;
+    border: 1px solid #979797;
+    border-top: none;
+    border-bottom-left-radius: 10px; /* Radius for the bottom-left corner */
+    border-bottom-right-radius: 10px; /* Radius for the bottom-right corner */
+    background: rgba(217, 217, 217, 0.00);
+}
+
+
+.paymentCard2.selected {
+    border: 1px solid #F9B22D;
+    /* Add any additional styling for the selected state */
+}
+
+.round{
+    fill: rgba(249, 178, 45, 0.00);
+    stroke-width: 1px;
+    stroke: #979797;
+}
+.line{
+    text-decoration: line-through; text-decoration-color: #979797
+}
+.slider{
+    border-radius: 14px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.iosCard{
+    border-radius: 15px;
+    background: #EFF1F4;
 }
