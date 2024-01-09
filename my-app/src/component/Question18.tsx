@@ -4,8 +4,10 @@ import React, {useState} from "react";
 import Image from "next/image";
 import Background from "../../public/images/QuestionsBack.jpg";
 import {Img} from "@/utils/Img";
-
-const Question18 = ({handleClick}) => {
+interface QuestionProps {
+    handleClick: () => void;
+}
+const Question18:React.FC<QuestionProps> = ({handleClick}) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
 

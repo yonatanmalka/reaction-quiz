@@ -171,7 +171,7 @@ const Payment = () => {
 
                 </div>
                 <div className="w-full ">
-                    <button className="ButtonContainer">GET MY CHALLENGE</button>
+                    <button  className="ButtonContainer">GET MY CHALLENGE</button>
                 </div>
                 <div className='text-center text-[10px] mt-[20px] text-[#979797]'>
                     By clicking <span className='text-black font-bold'>GET MY CHALLENGE, </span>I agree to pay $0.99 per
