@@ -325,3 +325,6 @@
 .rdrInputRanges {
     display: none;
 }
+.lineVertical{
+    background: linear-gradient(180deg, #F9B22D 0%, #FFF 93.5%);
+}
