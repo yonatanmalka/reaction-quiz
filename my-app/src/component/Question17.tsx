@@ -23,7 +23,7 @@ const Question17: React.FC<QuestionProps> = ({handleNextStep}) => {
                     Recommanded plan
                 </h1>
             </div>
-            <div className="w-[20px] h-[200px] md:top-[70px] top-[55px] md:left-[18px] left-[7px]  absolute z-10 lineVertical">
+            <div className="w-[20px] md:h-[200px] h-[180px] md:top-[70px] top-[55px] md:left-[18px] left-[7px]  absolute z-10 lineVertical">
             </div>
             <div className="flex  relative z-20 flex-row gap-[10px]">
                 <div
@@ -31,13 +31,13 @@ const Question17: React.FC<QuestionProps> = ({handleNextStep}) => {
                     1
                 </div>
                 <div className="flex-col flex">
-                    <div className="text-[12px] text-[#979797] font-semibold">
+                    <div className="md:text-[12px] text-[10px] text-[#979797] font-semibold">
                         current date
                     </div>
-                    <div className="text-[17px] text-[#343434] font-semibold">
+                    <div className="md:text-[17px] text-[14px] text-[#343434] font-semibold">
                         Step challenge
                     </div>
-                    <div className="text-[12px] text-[#787676] font-normal">
+                    <div className="md:text-[12px] text-[10px] text-[#787676] font-normal">
                         Get your team excited with a first challenge
                     </div>
                 </div>
@@ -49,12 +49,12 @@ const Question17: React.FC<QuestionProps> = ({handleNextStep}) => {
                     2
                 </div>
                 <div className="flex-col flex">
-                    <div className="text-[12px] text-[#979797] font-semibold">
+                    <div className="md:text-[12px] text-[10px] text-[#979797] font-semibold">
                         current date
                     </div>
-                    <div className="text-[17px] text-[#343434] font-semibold">
+                    <div className="md:text-[17px] text-[14px] text-[#343434] font-semibold">
                         Event                    </div>
-                    <div className="text-[12px] text-[#787676] font-normal">
+                    <div className="md:text-[12px] text-[10px] text-[#787676] font-normal">
                         Create team event to connect people together
                     </div>
                 </div>
@@ -65,19 +65,19 @@ const Question17: React.FC<QuestionProps> = ({handleNextStep}) => {
                 3
             </div>
             <div className="flex-col flex">
-                <div className="text-[12px] text-[#979797] font-semibold">
+                <div className="md:text-[12px] text-[10px] text-[#979797] font-semibold">
                     current date
                 </div>
-                <div className="text-[17px] text-[#343434] font-semibold">
+                <div className="md:text-[17px] text-[14px] text-[#343434] font-semibold">
                     Ongoing
                 </div>
-                <div className="text-[12px] text-[#787676] font-normal">
+                <div className="md:text-[12px] text-[10px] text-[#787676] font-normal">
                     Unlock other app features to elevate team excitment
                 </div>
             </div>
 
            </div>
-            <div className="text-[14px] mt-[15px] text-center text-[#979797] font-normal">
+            <div className="md:text-[14px] text-[12px] mt-[15px] text-center text-[#979797] font-normal">
                 This strategy designed to maintain long-term engagement and maximize program ROI
             </div>
             <div className="mt-[]">
@@ -85,7 +85,7 @@ const Question17: React.FC<QuestionProps> = ({handleNextStep}) => {
                     Get started
                 </button>
             </div>
-            <div className="text-[14px] mt-[15px] underline text-center text-[#979797] font-normal">
+            <div className="md:text-[14px] text-[12px] md:mt-[15px] mt-[4px] underline text-center text-[#979797] font-normal">
                 Create only one-time challenge
             </div>
         </div>
