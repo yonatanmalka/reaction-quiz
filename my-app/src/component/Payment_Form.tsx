@@ -5,6 +5,7 @@ import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
 import Logo from "../../images/logo.svg";
 import {BarChart} from "@/component/chats";
+import Switch from "react-switch";
 
 const months =  ['Week1', "Week2", "Week3", "Week4"];
 
@@ -124,6 +125,24 @@ const PaymentForm = () => {
                     className="w-full h-[35px] md:h-[50px]  px-[20px] flex  flex-row justify-between items-center mt-[25px] iosCard">
                     <div className=" text-[14px] md:text-[18px] font-normal text-[#343434]">
                         Unlock 7 days free trial
+                    </div>
+                    <div>
+                        <label>
+                            <Switch
+                                onChange={handleChange}
+                                checked={checked}
+                                onColor="#F9B22D"
+                                onHandleColor="#ffff"
+                                handleDiameter={20}
+                                uncheckedIcon={false}
+                                checkedIcon={false}
+                                boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+                                activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+                                height={22}
+                                width={38}
+                                className="react-switch"
+                            />
+                        </label>
                     </div>
                 </div>
                 </div>
