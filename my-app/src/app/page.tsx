@@ -23,11 +23,13 @@ import Question14 from "@/component/Question14";
 import Question18 from "@/component/Question18";
 import Question19 from "@/component/Question19";
 import Question12 from "@/component/Question12";
+import PaymentForm from "@/component/Payment_Form";
+import Payment from "@/component/Payment";
 
 const Dailog = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const getProgressBarWidth = () => {
-        return ((currentStep - 1) / 19) * 100;
+        return ((currentStep - 1) / 21) * 100;
     };
 
     const handleNextStep = () => {
@@ -36,21 +38,23 @@ const Dailog = () => {
         }, 1000);
     };
 
+    const shouldRenderComponent = currentStep !== 1 && currentStep !== 21 && currentStep !== 22;
+
     return(
         <main className="flex justify-center items-start mt-[10px] md:mt-[0px] md:items-center w-[100vw] h-[100vh]">
-            <div className="w-[90vw] md:w-[400px] bg-white h-[445px] md:h-[525px] rounded-[24px] shadow-lg p-[15px]">
-                {currentStep !== 1 && (
+            <div className={`w-[90vw] md:w-[400px] bg-white h-[445px] md:h-[525px] rounded-[14px] shadow-lg ${(currentStep === 21 || currentStep === 22) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+                {shouldRenderComponent  && (
                     <div className="flex flex-row justify-between items-end">
                         <button onClick={() => setCurrentStep(currentStep - 1)}>
                             <Image src={Back} alt={'backButton'} width={15} height={14} />
                         </button>
                         <Image src={Logo} alt={'logo'} width={103} height={50} />
                         <div className="text-[#3C8AF0] text-[16px] font-medium">
-                            <span className="text-[#3C8AF0]">{currentStep}</span>/<span className="text-[#979797]">20</span>
+                            <span className="text-[#3C8AF0]">{currentStep}</span>/<span className="text-[#979797]">22</span>
                         </div>
                     </div>
                 )}
-                {currentStep !== 1 && (
+                {shouldRenderComponent  && (
                     <div className="mt-[13px]">
                         <div
                             className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md overflow-hidden"
@@ -83,10 +87,12 @@ const Dailog = () => {
                     {currentStep === 14 && ( <Question14  handleClick={() => setCurrentStep(15)} />)}
                     {currentStep === 15 && ( <Question15  handleNextStep={() => setCurrentStep(16)} /> )}
                     {currentStep === 16 && ( <Questions16  handleClick={() => setCurrentStep(17)} /> )}
-                    {currentStep === 17 && ( <Question18  handleClick={() => setCurrentStep(18)} /> )}
+                    {currentStep === 17 && ( <Question18 handleClick={() => setCurrentStep(20)}  />  )}
                     {currentStep === 18 && ( <Question19  handleNextStep={handleNextStep} /> )}
                     {currentStep === 19 && ( <Questions20   handleClick={() => setCurrentStep(20)} /> )}
-                    {currentStep === 20 && ( <Questions20  handleClick={() => setCurrentStep(18)} /> )}
+                    {currentStep === 20 && ( <Payment handleClick={() => setCurrentStep(21)}  />  )}
+                    {currentStep === 21 && ( <Payment handleClick={() => setCurrentStep(22)}  />  )}
+                    {currentStep === 22 && ( <PaymentForm  /> )}
                 </div>
             </div>
         </main>

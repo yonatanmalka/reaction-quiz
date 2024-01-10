@@ -59,18 +59,18 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
                     </text>
                 </svg>
             </div>
-            <p className="text-[#343434] font-normal text-[14px] text-center">Creating your challenge...</p>
-            <div className="mt-[8px]">
+            <p className="text-[#343434] font-medium text-[12px] text-center">Creating your challenge...</p>
+            <div className="mt-[15px]">
                 <p className="text-[#5553FE] font-bold text-[14px] text-center">5,000+ Companies</p>
-                <p className="text-[#343434] font-bold text-[11px] text-center">have chosen Reaction</p>
+                <p className="text-[#343434] font-bold text-[12px] text-center">have chosen Reaction</p>
             </div>
-            <div className="w-[325px] mt-[8px] shadow-md py-[20px] px-[15px] rounded-[15px]">
-                <Image src={Start} alt={'Logo'} width={100} height={44}/>
+            <div className="w-[305px] mt-[8px] box-shadow py-[20px] px-[15px] rounded-[14px]">
+                <Image src={Start} alt={'Logo'} width={100} height={44} className="ml-[-10px]"/>
                 <div className="flex flex-row justify-between items-center">
-                    <span className="text-[#000] font-semibold text-[14px] ">This platform is amazing!</span>
+                    <span className="text-[#000] font-semibold text-[12px] ">This platform is amazing!</span>
                     <span className="text-[#5B5959] font-medium text-[12px] ">David Alexander</span>
                 </div>
-                <p className="text-[#000] font-normal text-[12px] ">
+                <p className="text-[#000] font-normal text-[12px] mt-[5px]">
                     Reaction is ad Reaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is ad
                 </p>
             </div>
