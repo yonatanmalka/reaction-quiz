@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Img } from "@/utils/Img";
 import { DateRangePicker } from "react-date-range";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 
 interface QuestionProps {
     handleClick: () => void;
@@ -27,8 +27,28 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
         setSelectedDate([ranges.selection]);
     };
 
+    const handleOutsideClick = (e: MouseEvent) => {
+        const dateRangePickerContainer = document.querySelector(".rdrDateRangeWrapper");
+
+        if (
+            dateRangePickerContainer &&
+            !dateRangePickerContainer.contains(e.target as Node) &&
+            isDatePickerOpen
+        ) {
+            setIsDatePickerOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleOutsideClick);
+
+        return () => {
+            document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    }, [isDatePickerOpen]);
+
     return (
-        <div className="px-[15px] mt-[50px]">
+        <div className="px-[15px] mt-[20px] relative">
             <div className="flex justify-center items-center">
                 <h1 className="text-[25px] font-semibold text-center">
                     Let’s create a step challenge!
@@ -56,25 +76,10 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
                     <div className="text-[14px] ml-[10px] cursor-pointer">
                         {selectedDate[0].startDate.toLocaleDateString()} -{" "}
                         {selectedDate[0].endDate ? selectedDate[0].endDate.toLocaleDateString() : "Select end date"}
-
                     </div>
                 </div>
-                {isDatePickerOpen && (
-
-                        <DateRangePicker
-                            ranges={selectedDate}
-                            onChange={handleDateChange}
-                            showSelectionPreview={true}
-                            moveRangeOnFirstSelection={false}
-                            months={1}
-                            direction="horizontal"
-                            staticRanges={[]}
-                            minDate={today}
-                        />
-
-                )}
             </div>
-            <div className="mt-[]">
+            <div className="mt-[44px]">
                 <button
                     onClick={handleClick}
                     className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
@@ -82,6 +87,20 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
                     Next
                 </button>
             </div>
+            {isDatePickerOpen && (
+                <div className="absolute top-[5px] right-[15px]">
+                    <DateRangePicker
+                        ranges={selectedDate}
+                        onChange={handleDateChange}
+                        showSelectionPreview={true}
+                        moveRangeOnFirstSelection={false}
+                        months={1}
+                        direction="horizontal"
+                        staticRanges={[]}
+                        minDate={today}
+                    />
+                </div>
+            )}
         </div>
     );
 };

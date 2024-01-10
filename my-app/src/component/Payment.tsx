@@ -65,7 +65,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick}) => {
                         Your Challenge Is Ready!
                     </div>
                 </div>
-                <div className='flex flex-row px-[10px] my-[10px] md:px-[20px] justify-between items-center '>
+                <div className='flex flex-row px-[20px] my-[10px] md:px-[40px] justify-between items-center '>
                     <div className='flex-col flex items-start'>
                         <div className='flex justify-center items-center gap-[8px] flex-row'>
                             <div className='h-[34px] w-[34px] bg-[#DADADA] flex items-center justify-center rounded-full'>
@@ -98,11 +98,11 @@ const Payment:React.FC<QuestionProps> = ({handleClick}) => {
                         <Img src='/images/girl.png' alt='logo' className='w-[94px] h-[134px]'/>
                     </div>
                 </div>
-                <div className="bg-[#979797] h-[1px] mx-[20px] flex-1" />
-                <div className='text-[12px] text-[#000] px-[20px] mt-[10px] font-semibold'>
+                <div className="bg-[#979797] h-[1px] mx-[40px] flex-1" />
+                <div className='text-[12px] text-[#000] px-[40px] mt-[10px] font-semibold'>
                     Engagement prediction
                 </div>
-                <div className="my-[10px] mx-[10px]">
+                <div className="my-[10px] mx-[30px]">
                     <BarChart
                         params={{
                             labels: months,
