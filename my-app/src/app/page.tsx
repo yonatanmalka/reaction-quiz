@@ -38,7 +38,7 @@ const Dailog = () => {
 
     return(
         <main className="flex justify-center items-center w-[100vw] h-[100vh]">
-            <div className="w-[90vw] md:w-[400px] bg-white rounded-[24px] shadow-lg p-[15px]">
+            <div className="w-[90vw] h-[95vh] md:w-[420px] bg-white rounded-[24px] shadow-lg p-[15px]">
                 {currentStep !== 1 && (
                     <div className="flex flex-row justify-between items-end">
                         <button onClick={() => setCurrentStep(currentStep - 1)}>

@@ -30,7 +30,7 @@ const Question12:React.FC<QuestionProps> = ({handleNextStep}) => {
                     How well do team members know each other on a personal level?
                 </h1>
             </div>
-            <div className="flex md:px-[40px] px-[20px] justify-between">
+            <div className="flex  px-[20px] justify-between">
                 {images.map((image, index) => (
                     <div
                         key={index}

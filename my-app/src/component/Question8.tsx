@@ -30,7 +30,7 @@ const Question8:React.FC<QuestionProps> = ({handleNextStep}) => {
                     How do you perceive the overall morale of your team?
                 </h1>
             </div>
-            <div className="flex md:px-[40px] px-[20px] justify-between">
+            <div className="flex  px-[20px] justify-between">
                 {images.map((image, index) => (
                     <div
                         key={index}
