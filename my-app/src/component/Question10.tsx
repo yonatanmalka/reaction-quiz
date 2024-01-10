@@ -25,29 +25,29 @@ const Question10:React.FC<QuestionProps> = ({handleNextStep}) => {
 
     return (
         <div>
-            <div className="flex justify-center  items-center">
-                <h1 className="texts">
+            <div className="flex mt-[20px] justify-center  items-center">
+                <h1 className="text-[#000] mb-[40px] text-[20px] md:text-[26px] font-semibold text-center">
                     How often do you experience conflicts in your team?
                 </h1>
             </div>
-            <div className="flex md:px-[40px] px-[20px] justify-between">
+            <div className="grid grid-cols-5 gap-x-[20px] w-[100%]">
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className={`card ${selectedCard === index ? 'selected' : ''}`}
+                        className={`card cursor-pointer ${selectedCard === index ? 'selected' : ''}`}
                         onClick={() => handleCardClick(index)}
                     >
                         <div>
-                            <Img src={image} alt={`Image ${index + 1}`} className="images"/>
+                            <Img src={image} alt={`Image ${index + 1}`} className="md:w-[35px] w-[25px] h-[25px] md:h-[35px]"/>
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="div2">
-                <div className="text2">
+            <div className="w-[100%] flex flex-row justify-between mt-[5px]">
+                <div className="text-[#343434] font-semibold text-[10px] md:text-[14px]">
                     Very low
                 </div>
-                <div className="text2">
+                <div className="text-[#343434] font-semibold text-[10px] md:text-[14px]">
                     Very High
                 </div>
             </div>

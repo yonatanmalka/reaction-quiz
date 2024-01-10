@@ -16,12 +16,12 @@ const Question19:React.FC<QuestionProps> = ({handleNextStep}) => {
 
     return (
         <div>
-            <div className="textDiv">
-                <h1 className="text">
+            <div className="textDiv mt-[20px]">
+                <h1 className="text-[22px] md:text-[24px] text-[#000] text-center font-semibold">
                     Would you like to motivate participation with rewards?
                 </h1>
                 <div>
-                    <h1 className="text-center max-w-[350px] text-[16px] font-normal text-[#979797] mt-[15px] pb-[30px]">
+                    <h1 className="text-center w-[250px] md:w-[350px] text-[12px] md:text-[16px] font-normal text-[#979797] mt-[8px] md:mt-[15px] pb-[15px] md:pb-[30px]">
                         Rewards are gift card that can be earned by employees for their achievements and are given at no
                         additional cost </h1>
                 </div>
@@ -30,27 +30,26 @@ const Question19:React.FC<QuestionProps> = ({handleNextStep}) => {
 
             <div className="yesCardDiv">
                 <div
-                    className={`YesCard ${selectedCard === "no" ? "selected" : ""}`}
+                    className={`YesCard cursor-pointer ${selectedCard === "no" ? "selected" : ""}`}
                     onClick={() => handleCardClick("no")}
                 >
                     <div>
-                        <Img src="/images/no.png" alt="none" className="yesNo"/>
+                        <Img src="/images/no.png" alt="none" className="w-[30px] h-[30px] md:w-[40px] md:h-[40px]" />
                     </div>
-                    <div className="NoText">No</div>
+                    <div className="text-[#343434] font-semibold text-[14px] md:text-[20px] mt-[5px]">No</div>
                 </div>
                 <div
-                    className={`YesCard ${selectedCard === "yes" ? "selected" : ""}`}
+                    className={`YesCard cursor-pointer ${selectedCard === "yes" ? "selected" : ""}`}
                     onClick={() => handleCardClick("yes")}
                 >
                     <div>
-                        <Img src="/images/yes.png" alt="none" className="yesNo"/>
+                        <Img src="/images/yes.png" alt="none" className="w-[30px] h-[30px] md:w-[40px] md:h-[40px]" />
                     </div>
-                    <div className="NoText">Yes</div>
+                    <div className="text-[#343434] font-semibold text-[14px] md:text-[20px] mt-[5px]">Yes</div>
                 </div>
-
             </div>
             <div className='flex justify-center items-center'>
-                <h1 className="text-center max-w-[240px] text-[18px] font-normal text-[#979797] mt-[45px]">
+                <h1 className="text-center w-[180px] md:w-[240px] text-[12px] md:text-[18px] font-normal text-[#979797] mt-[25px] md:mt-[40px]">
                     Rewards increase engagement by average X4
                      </h1>
             </div>

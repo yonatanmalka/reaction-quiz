@@ -87,10 +87,10 @@ const Question1:React.FC<QuestionProps> = ({handleClick}) => {
                     ))}
                 </div>
             </div>
-            <button onClick={handleNextClick} className="uppercase  h-[30px] md:h-[45px] flex items-center justify-center mt-[10px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000]">
+            <button onClick={handleNextClick} className="uppercase  h-[30px] md:h-[40px] flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000]">
                 Next
             </button>
-            <div className="text-center text-[#606060] text-[10px] md:text-[12px] mt-[6px]">
+            <div className="text-center text-[#606060] text-[10px] md:text-[12px] mt-[7px]">
                 By clicking “next”, you agree with <button className="underline">Terms of Conditions,</button><button className="underline">Privacy Policy,</button> <button className="underline">Subscription Terms</button>
             </div>
         </div>

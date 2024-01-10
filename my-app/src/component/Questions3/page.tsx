@@ -46,7 +46,7 @@ const Question3:React.FC<QuestionProps> = ({ handleNextStep }) => {
                 {list.map((item,index) => (
                     <button
                         key={index}
-                        className={`rounded-[20px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selected === index ? 'border-[#F9B22D]' : 'border-[#979797]'} border-[#979797] flex flex-col  gap-[5px] py-[24px] md:py-[22px] justify-center relative items-center`}
+                        className={`rounded-[15px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selected === index ? 'border-[#F9B22D]' : 'border-[#979797]'} border-[#979797] flex flex-col  gap-[5px] py-[24px] md:py-[22px] justify-center relative items-center`}
                         onClick={() => handleCardClick(index)}
                     >
                         <Image src={item.image} alt={"image"} className="w-[20px] h-[20px] md:w-[30px] md:h-[30px]" />

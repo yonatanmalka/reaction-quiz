@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import Start from "../../../images/stars.svg";
 
@@ -6,26 +6,42 @@ interface QuestionProps {
     handleClick: () => void;
 }
 const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
-    const percent = 50;
-    const radius = 50; // Adjust the radius as needed
-    const strokeWidth = 7; // Adjust the stroke width as needed
+    const [animatedPercent, setAnimatedPercent] = useState(0);
+
+    const targetPercent = 100; // Set the target percentage
+    const animationDuration = 1000; // Set the duration of the animation in milliseconds
+    const radius = 50;
+    const strokeWidth = 7;
     const circumference = 2 * Math.PI * radius;
-    const offset = circumference - (percent / 100) * circumference;
+    const offset = circumference - (animatedPercent / 100) * circumference;
     const rotationAngle = 270;
+
+    useEffect(() => {
+        let startTimestamp: number;
+
+        const animate = (timestamp: number) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+
+            const progress = timestamp - startTimestamp;
+            const percentage = Math.min((progress / animationDuration) * 100, targetPercent);
+
+            setAnimatedPercent(percentage);
+
+            if (progress < animationDuration) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        requestAnimationFrame(animate);
+    }, [targetPercent, animationDuration]);
+
 
     return(
         <div>
             <div className="flex items-center justify-center mt-[10px]">
                 <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                     {/* Background circle */}
-                    <circle
-                        cx="60"
-                        cy="60"
-                        r={radius}
-                        fill="none"
-                        stroke="#E1E1E1" // Set the background color of the circle
-                        strokeWidth={strokeWidth}
-                    />
+                    <circle cx="60" cy="60" r={radius} fill="none" stroke="#E1E1E1" strokeWidth={strokeWidth} />
                     {/* Filled progress circle */}
                     <circle
                         cx="60"
@@ -39,7 +55,7 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
                         transform={`rotate(${rotationAngle} 60 60)`}
                     />
                     <text x="50%" y="50%" textAnchor="middle" dy="0.3em" fontSize="20" fill="#000" className="font-bold">
-                        {`${percent}%`}
+                        {`${Math.round(animatedPercent)}%`}
                     </text>
                 </svg>
             </div>
@@ -58,7 +74,7 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
                     Reaction is ad Reaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is ad
                 </p>
             </div>
-            <button onClick={handleClick} className="uppercase h-[35px] flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[18px] font-semibold leading-10 tracking-tight text-[#000]">
+            <button onClick={handleClick} className="uppercase h-[40px] flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] font-semibold leading-10 tracking-tight text-[#000]">
                 Next
             </button>
         </div>

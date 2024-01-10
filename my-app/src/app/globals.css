@@ -189,7 +189,7 @@
     align-content: center;
     align-items: center;
     display: flex;
-    height:60px;
+    height:55px;
     position: relative;
 }
 .card2.selected {
@@ -219,8 +219,41 @@
     margin-top: 37px;
 }
 .slider-container {
-    height: 300px; /* Set a fixed height for the slider container */
-    overflow-y: auto; /* Enable vertical scrolling */
+    height: 215px;
+    overflow-y: auto;
+
+    /* Define scrollbar styles for Mozilla Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+
+    /* Define scrollbar styles for Internet Explorer and Microsoft Edge */
+    scrollbar-face-color: #888;
+    scrollbar-shadow-color: #f1f1f1;
+    scrollbar-highlight-color: #f1f1f1;
+    scrollbar-3dlight-color: #f1f1f1;
+    scrollbar-darkshadow-color: #888;
+    scrollbar-track-color: #f1f1f1;
+}
+
+::-webkit-scrollbar {
+    width: 10px;/* Width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the thumb */
+    border-radius: 6px; /* Roundness of the thumb corners */
+    border: 3px solid #f1f1f1; /* Border between thumb and track */
+}
+
+@media  (max-width: 768px) {
+    .slider-container {
+        height: 165px;
+        overflow-y: auto;
+    }
 }
 
 .card-slider {
