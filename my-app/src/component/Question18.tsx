@@ -16,15 +16,17 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
     const [selectedDate, setSelectedDate] = useState([
         {
             startDate: today,
-            endDate: null,
+            endDate: null as Date | null,
             key: "selection",
         },
     ]);
+
+    const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+
     const handleDateChange = (ranges: any) => {
         setSelectedDate([ranges.selection]);
     };
 
-    // @ts-ignore
     return (
         <div className="px-[15px] mt-[50px]">
             <div className="flex justify-center items-center">
@@ -44,31 +46,33 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
                         className="mt-1 p-2 border bg-[#EFF3F6]  border-[#EFF3F6] rounded-md w-full"
                     />
                 </div>
-                <div className="mt-1 p-2 border bg-[#EFF3F6] h-[40px]  items-center flex flex-row border-[#EFF3F6] rounded-md w-full">
+                <div
+                    className="mt-1 p-2 border bg-[#EFF3F6] h-[40px]  items-center flex flex-row border-[#EFF3F6] rounded-md w-full"
+                    onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
+                >
                     <div>
                         <Img src="/images/clock1.png" alt="none" className="w-[20px] h-[20px]" />
                     </div>
-                    <div
-                        className="text-[14px] ml-[10px] cursor-pointer"
-                        onClick={() => {
-                            // Open the date picker when this div is clicked
-                            // You can customize the appearance and behavior of the date picker further
-                        }}
-                    >
-                        {selectedDate[0].startDate.toDateString()} -{" "}
-                        {selectedDate[0].endDate ? selectedDate[0].endDate.toDateString() : "Select end date"}
+                    <div className="text-[14px] ml-[10px] cursor-pointer">
+                        {selectedDate[0].startDate.toLocaleDateString()} -{" "}
+                        {selectedDate[0].endDate ? selectedDate[0].endDate.toLocaleDateString() : "Select end date"}
+
                     </div>
                 </div>
-                <DateRangePicker
-                    ranges={selectedDate}
-                    onChange={handleDateChange}
-                    showSelectionPreview={true}
-                    moveRangeOnFirstSelection={false}
-                    months={1}
-                    direction="horizontal"
-                    staticRanges={[]}
-                    minDate={today}
-                />
+                {isDatePickerOpen && (
+
+                        <DateRangePicker
+                            ranges={selectedDate}
+                            onChange={handleDateChange}
+                            showSelectionPreview={true}
+                            moveRangeOnFirstSelection={false}
+                            months={1}
+                            direction="horizontal"
+                            staticRanges={[]}
+                            minDate={today}
+                        />
+
+                )}
             </div>
             <div className="mt-[]">
                 <button
