@@ -231,7 +231,9 @@ const Payment:React.FC<QuestionProps> = ({handleClick}) => {
                 </div>
                 <div className='flex flex-col  gap-[10px] px-[20px] justify-start items-start'>
                     {list.map((item,index) => (
-                    <div className='flex flex-row justify-start items-center'>
+                    <div
+                        key={index}
+                        className='flex flex-row justify-start items-center'>
                         <div>
                             <Img src='/images/Ok.png' alt='logo'
                                  className='w-[30px] h-[30px] '/>

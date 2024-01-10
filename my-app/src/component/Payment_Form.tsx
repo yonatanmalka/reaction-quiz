@@ -142,9 +142,12 @@ const PaymentForm = () => {
                 <div className='md:text-[24px]  text-center font-semibold text-[23px] mt-[15px] pb-[10px]'>
                     What you get
                 </div>
-                <div className='flex flex-col  gap-[10px] px-[20px] justify-start items-start'>
+                <div className='flex  flex-col  gap-[10px] px-[20px] justify-start items-start'>
                     {list.map((item,index) => (
-                        <div className='flex flex-row justify-start items-center'>
+
+                        <div
+                            key={index}
+                            className='flex flex-row justify-start items-center'>
                             <div>
                                 <Img src='/images/Ok.png' alt='logo'
                                      className='w-[30px] h-[30px] '/>

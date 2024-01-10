@@ -4,6 +4,7 @@ import { Img } from "@/utils/Img";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { Range } from "react-date-range";
 
 interface QuestionProps {
     handleClick: () => void;
@@ -90,9 +91,9 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
             {isDatePickerOpen && (
                 <div className="absolute top-[5px] right-[15px]">
                     <DateRangePicker
-                        ranges={selectedDate}
+                        ranges={selectedDate as Range[]}
                         onChange={handleDateChange}
-                        showSelectionPreview={true}
+                        // showSelectionPreview={true}
                         moveRangeOnFirstSelection={false}
                         months={1}
                         direction="horizontal"

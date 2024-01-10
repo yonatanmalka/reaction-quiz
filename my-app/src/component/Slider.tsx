@@ -49,9 +49,9 @@ const Slider = () => {
                     modules={[Pagination]}
                     className="mySwiper"
                 >
-            {cardData.map((card) => (
-                <SwiperSlide>
-                <div key={card.id} className="w-full border-2 rounded-[12px] p-[20px]  h-[200px] mt-[25px]">
+            {cardData.map((card,index) => (
+                <SwiperSlide key={index}>
+                <div  className="w-full border-2 rounded-[12px] p-[20px]  h-[200px] mt-[25px]">
                     <div className="flex flex-row gap-[15px] justify-start items-center">
                         <div>
                             <Img src={card.imageSrc} alt="logo" className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] " />
