@@ -85,9 +85,12 @@ const Question17: React.FC<QuestionProps> = ({handleNextStep}) => {
                     Get started
                 </button>
             </div>
-            <div className="md:text-[14px] text-[12px] md:mt-[15px] mt-[4px] underline text-center text-[#979797] font-normal">
-                Create only one-time challenge
+            <div className="flex justify-center items-center">
+                <button className="md:text-[14px] text-[12px] md:mt-[15px] mt-[4px] underline text-center text-[#979797] font-normal">
+                    Create only one-time challenge
+                </button>
             </div>
+
         </div>
     );
 };

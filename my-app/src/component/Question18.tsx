@@ -60,8 +60,7 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
                     </div>
                 </div>
                 {isDatePickerOpen && (
-
-                        <DateRangePicker
+                    <DateRangePicker
                             ranges={selectedDate}
                             onChange={handleDateChange}
                             showSelectionPreview={true}
