@@ -271,3 +271,6 @@
     border-radius: 15px;
     background: #EFF1F4;
 }
+.rdrInputRanges {
+    display: none;
+}
