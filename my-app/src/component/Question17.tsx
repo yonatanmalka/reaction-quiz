@@ -78,7 +78,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                     Get started
                 </button>
             </div>
-            <div className=" text-[12px] md:mt-[15px] mt-[15px] underline text-center text-[#979797] font-normal">
+            <div  onClick={handleClick} className=" text-[12px] md:mt-[15px] mt-[15px] underline text-center text-[#979797] font-normal">
                 Create only one-time challenge
             </div>
         </div>
