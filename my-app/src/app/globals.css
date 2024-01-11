@@ -219,7 +219,7 @@
     margin-top: 37px;
 }
 .slider-container {
-    height: 215px;
+    height: 285px;
     overflow-y: auto;
 
     /* Define scrollbar styles for Mozilla Firefox */
@@ -251,7 +251,7 @@
 
 @media  (max-width: 768px) {
     .slider-container {
-        height: 165px;
+        height: 265px;
         overflow-y: auto;
     }
 }

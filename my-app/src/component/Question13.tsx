@@ -18,7 +18,7 @@ const Question13:React.FC<QuestionProps> = ({handleNextStep}) => {
     return (
         <div>
             <div className="textDiv mt-[30px]">
-                <h1 className="text-[#000] mb-[40px] text-[22px] md:text-[24px] font-semibold text-center">
+                <h1 className="text-[#000] mb-[40px] text-[22px] md:text-[26px] font-semibold text-center">
                     “Team members feel comfortable expressing their thoughts and ideas openly”
                 </h1>
             </div>

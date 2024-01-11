@@ -1,26 +1,20 @@
 "use client"
 
-import React, { useState } from "react";
-import { Img } from "@/utils/Img";
+import React, {useState} from "react";
+import {Img} from "@/utils/Img";
 
 interface QuestionProps {
     handleClick: () => void;
 }
 
-const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
+const Question14: React.FC<QuestionProps> = ({handleClick, selected, setSelected}) => {
     const areasToImprove = [
-        { title: "Communication" },
-        { title: "Collaboration" },
-        { title: "Time Management" },
-        { title: "Time Management" },
-        { title: "Time Management" },
-        { title: "Time Management" },
-        { title: "Time Management" },
-        { title: "Time Management" },
-        // Add more items as needed
+        {title: "Communication"},
+        {title: "Collaboration"},
+        {title: "Time Management"}, {title: "Time Management"},
+        {title: "Time Management"},
     ];
 
-    const [selected, setSelected] = useState<number[]>([]);
 
     const handleCardClick = (index: number) => {
         const newSelected = [...selected];
@@ -38,7 +32,7 @@ const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
     return (
         <div className="textDiv mt-[30px]">
             <div className="textDiv">
-                <h1 className="text-[#000] mb-[10px] text-[22px] md:text-[24px] font-semibold text-center">
+                <h1 className="text-[#000] mb-[10px] text-[22px] md:text-[26px] font-semibold text-center">
                     Select up to three areas where you believe the team could improve the most
                 </h1>
             </div>
@@ -55,7 +49,8 @@ const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
                             </h1>
                             {selected.includes(index) && (
                                 <div className="absolute top-[5px] right-[5px]">
-                                    <Img src="/images/Ok.png" alt="none" className="w-[15px] h-[15px] md:w-[20px] md:h-[20px]" />
+                                    <Img src="/images/Ok.png" alt="none"
+                                         className="w-[15px] h-[15px] md:w-[20px] md:h-[20px]"/>
                                 </div>
                             )}
                         </div>
@@ -63,7 +58,8 @@ const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
                 </div>
             </div>
             <div className="w-[100%]">
-                <button onClick={handleClick} className="uppercase  h-[35px] md:h-[45px] flex items-center justify-center mt-[30px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000]">
+                <button onClick={handleClick}
+                        className="uppercase  h-[40px] flex items-center justify-center mt-[30px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000]">
                     Next
                 </button>
             </div>

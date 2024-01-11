@@ -24,13 +24,13 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                     1
                 </div>
                 <div className="flex-col flex">
-                    <div className="md:text-[10px] text-[8px] text-[#979797] font-semibold">
+                    <div className=" text-[12px] text-[#979797] font-semibold">
                         current date
                     </div>
-                    <div className="md:text-[15px] text-[12px] text-[#343434] font-semibold">
+                    <div className="text-[14px]  text-[#343434] font-semibold">
                         Step challenge
                     </div>
-                    <div className="md:text-[10px] text-[8px] text-[#787676] font-normal">
+                    <div className="text-[12px]  text-[#787676] font-normal">
                         Get your team excited with a first challenge
                     </div>
                 </div>
@@ -42,12 +42,12 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                     2
                 </div>
                 <div className="flex-col flex">
-                    <div className="md:text-[10px] text-[8px] text-[#979797] font-semibold">
+                    <div className=" text-[12px] text-[#979797] font-semibold">
                         current date
                     </div>
-                    <div className="md:text-[15px] text-[12px] text-[#343434] font-semibold">
+                    <div className="text-[14px] text-[#343434] font-semibold">
                         Event                    </div>
-                    <div className="md:text-[10px] text-[8px] text-[#787676] font-normal">
+                    <div className="text-[12px] text-[#787676] font-normal">
                         Create team event to connect people together
                     </div>
                 </div>
@@ -58,19 +58,19 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                 3
             </div>
             <div className="flex-col flex">
-                <div className="md:text-[10px] text-[8px] text-[#979797] font-semibold">
+                <div className=" text-[12px] text-[#979797] font-semibold">
                     current date
                 </div>
-                <div className="md:text-[15px] text-[12px] text-[#343434] font-semibold">
+                <div className="text-[14px]  text-[#343434] font-semibold">
                     Ongoing
                 </div>
-                <div className="md:text-[10px] text-[8px] text-[#787676] font-normal">
+                <div className=" text-[12px] text-[#787676] font-normal">
                     Unlock other app features to elevate team excitment
                 </div>
             </div>
 
            </div>
-            <div className="md:text-[14px] text-[12px] mt-[25px] text-center text-[#979797] font-normal">
+            <div className="text-[14px]  mt-[25px] text-center text-[#979797] font-normal">
                 This strategy designed to maintain long-term engagement and maximize program ROI
             </div>
             <div>
@@ -78,7 +78,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                     Get started
                 </button>
             </div>
-            <div className="md:text-[12px] text-[10px] md:mt-[15px] mt-[10px] underline text-center text-[#979797] font-normal">
+            <div className=" text-[12px] md:mt-[15px] mt-[15px] underline text-center text-[#979797] font-normal">
                 Create only one-time challenge
             </div>
         </div>

@@ -80,7 +80,7 @@ const Question1:React.FC<QuestionProps> = ({handleClick}) => {
                             <h1 className="text-[#343434] text-[14px] font-semibold">{item.name}</h1>
                             {selected === index && (
                                 <div className="TickImage">
-                                    <Image src={Ok} alt={'Tick'} width={15} height={15} />
+                                    <Image src={Ok} alt={'Tick'} width={20} height={20} />
                                 </div>
                             )}
                         </button>
@@ -88,10 +88,10 @@ const Question1:React.FC<QuestionProps> = ({handleClick}) => {
                 </div>
             </div>
             <div className="">
-            <button onClick={handleNextClick} className="uppercase  h-[40px] md:h-[30px] flex items-center justify-center mt-[22px] md:mt-[10px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] font-semibold leading-10 tracking-tight text-[#000]">
+            <button onClick={handleNextClick} className="uppercase  h-[40px] flex items-center justify-center mt-[22px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] font-semibold leading-10 tracking-tight text-[#000]">
                 Next
             </button>
-            <div className="text-center text-[#606060] text-[12px] md:text-[10px]  mt-[7px]">
+            <div className="text-center text-[#606060] text-[12px]   mt-[17px]">
                 By clicking “next”, you agree with <button className="underline">Terms of Conditions,</button><button className="underline">Privacy Policy,</button> <button className="underline">Subscription Terms</button>
             </div>
             </div>

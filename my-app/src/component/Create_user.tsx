@@ -17,7 +17,7 @@ const User:React.FC<QuestionProps> = ({handleClick}) => {
     return (
         <div>
             <div className="flex justify-center mt-[30px] items-center">
-                <h1 className="text-[#000] mb-[10px] text-[22px] font-semibold text-center">
+                <h1 className="text-[#000] mb-[10px] md:text-[26px] text-[22px] font-semibold text-center">
                     Enter your details to get access to the admin dashboard
                 </h1>
             </div>
@@ -61,7 +61,7 @@ const User:React.FC<QuestionProps> = ({handleClick}) => {
             />
             <button
                 onClick={handleClick}
-                className="uppercase  text-[#000] mt-[44px] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
+                className="uppercase  text-[#000] mt-[144px] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
             >
                 Next
             </button>

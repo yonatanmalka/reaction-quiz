@@ -41,7 +41,7 @@ const Question3:React.FC<QuestionProps> = ({ handleNextStep }) => {
 
     return(
         <div>
-            <h1 className="text-[24px] md:text-[26px] text-[#000] text-center font-semibold mt-[30px] px-[20px]">What is your teams work style?</h1>
+            <h1 className="text-[22px] md:text-[26px] text-[#000] text-center font-semibold mt-[30px] px-[20px]">What is your teams work style?</h1>
             <div className="grid grid-cols-2 gap-x-[16px] gap-y-[12px] md:gap-x-[22px] md:gap-y-[19px] mt-[30px]">
                 {list.map((item,index) => (
                     <button
@@ -50,7 +50,7 @@ const Question3:React.FC<QuestionProps> = ({ handleNextStep }) => {
                         onClick={() => handleCardClick(index)}
                     >
                         <Image src={item.image} alt={"image"} className="w-[30px] h-[30px] md:w-[30px] md:h-[30px]" />
-                        <h1 className="text-[#343434] text-[18px] mt-[4px] md:text-[20px] font-semibold">{item.name}</h1>
+                        <h1 className="text-[#343434] text-[14px] mt-[4px] md:text-[14px] font-semibold">{item.name}</h1>
                         {selected === index && (
                             <div className="TickImage">
                                 <Image src={Ok} alt={'Tick'} width={20} height={20} />

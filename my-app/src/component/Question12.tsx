@@ -24,7 +24,7 @@ const Question12:React.FC<QuestionProps> = ({handleNextStep}) => {
     return (
         <div>
             <div className="flex mt-[30px] justify-center  items-center">
-                <h1 className="text-[#000] mb-[40px] text-[24px] md:text-[24px] font-semibold text-center">
+                <h1 className="text-[#000] mb-[40px] text-[22px] md:text-[26px] font-semibold text-center">
                     How well do team members know each other on a personal level?
                 </h1>
             </div>
@@ -42,10 +42,10 @@ const Question12:React.FC<QuestionProps> = ({handleNextStep}) => {
                 ))}
             </div>
             <div className="w-[100%] flex flex-row justify-between mt-[5px]">
-                <div className="text-[#343434] font-semibold text-[10px] md:text-[14px]">
+                <div className="text-[#343434] font-semibold text-[12px] md:text-[14px]">
                     Very limited
                 </div>
-                <div className="text-[#343434] font-semibold text-[10px] md:text-[14px]">
+                <div className="text-[#343434] font-semibold text-[12px] md:text-[14px]">
                     Very well
                 </div>
             </div>

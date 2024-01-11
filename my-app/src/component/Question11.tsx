@@ -17,7 +17,7 @@ const Question11:React.FC<QuestionProps> = ({handleNextStep}) => {
     return (
         <div>
             <div className="textDiv mt-[30px]">
-                <h1 className="text-[#000] mb-[40px] text-[24px] md:text-[26px] font-semibold text-center">
+                <h1 className="text-[#000] mb-[40px] text-[22px] md:text-[26px] font-semibold text-center">
                     Do team members often experience high levels of stress at work?
                 </h1>
             </div>

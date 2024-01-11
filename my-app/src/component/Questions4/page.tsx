@@ -41,7 +41,7 @@ const Question4:React.FC<QuestionProps> = ({handleNextStep}) => {
 
     return(
         <div>
-            <h1 className="text-[24px] md:text-[28px] text-[#000] text-center font-semibold mt-[30px] md:mt-[20px]">What is your team’s work schedule like?</h1>
+            <h1 className="text-[22px] md:text-[26px] text-[#000] text-center font-semibold mt-[30px] md:mt-[20px]">What is your team’s work schedule like?</h1>
             <div className="flex flex-col gap-[10px] mt-[30px] md:mt-[20px]">
                 {list.map((item,index) => (
                     <button
@@ -50,7 +50,7 @@ const Question4:React.FC<QuestionProps> = ({handleNextStep}) => {
                     >
                         <div className="flex flex-row gap-[14px] md:gap-[20px] items-center">
                             <Image src={item.image} alt={'Logo'} className="w-[23px] md:w-[28px] h-[23px] md:h-[28px]" />
-                            <h1 className="text-[#343434] text-[15px] md:text-[18px] font-semibold">{item.name}</h1>
+                            <h1 className="text-[#343434] text-[18px] md:text-[20px] font-semibold">{item.name}</h1>
                         </div>
                         {selected === index && (
                             <Image src={Ok} alt={'Tick'} width={20} height={20} />

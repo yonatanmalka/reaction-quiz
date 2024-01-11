@@ -61,8 +61,8 @@ const Questions7: React.FC<QuestionProps> = ({ handleClick }) => {
                     </text>
                 </svg>
             </div>
-            <div className="text-[10px] md:text-[13px] text-[#343434] font-bold mt-[-10px]">Analysing your team’s profile...</div>
-            <button onClick={handleClick} className="text-[#5553FE] text-[14px] md:text-[20px] font-semibold">
+            <div className="text-[14px] text-[#343434] font-bold mt-[-10px]">Analysing your team’s profile...</div>
+            <button onClick={handleClick} className="text-[#5553FE] text-[18px] md:text-[20px] font-semibold">
                 Adapting next stage assessment
             </button>
         </div>

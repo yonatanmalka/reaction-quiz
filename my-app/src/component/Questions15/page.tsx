@@ -23,7 +23,7 @@ const Questions15: React.FC<QuestionProps> = ({ handleNextStep }) => {
 
     return (
         <div className="flex mt-[40px] flex-col gap-[20px] justify-center items-center">
-            <div className="text-[11px] md:text-[13px] text-[#343434] font-bold mt-[-10px]">
+            <div className="text-[14px] text-[#343434] font-bold mt-[-10px]">
                 Analysing team’s engagement score...
             </div>
             <div className="w-[100%] mt-[10px]">

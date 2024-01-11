@@ -51,7 +51,7 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
     return (
         <div className="mt-[30px] relative">
             <div className="flex justify-center items-center">
-                <h1 className="text-[23px] font-semibold text-center">
+                <h1 className="md:text-[26px] text-[22px] font-semibold text-center">
                     Let’s create a step challenge!
                 </h1>
             </div>
@@ -80,7 +80,7 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
                     </div>
                 </div>
             </div>
-            <div className="mt-[44px]">
+            <div className="mt-[154px]">
                 <button
                     onClick={handleClick}
                     className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
