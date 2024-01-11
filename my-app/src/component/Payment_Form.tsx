@@ -61,7 +61,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
     // @ts-ignore
     return (
         <div className="w-[100%]">
-            <div className="fixed">
+            <div className="fixed md:w-[400px] w-[425px]">
                 <Timer/>
             </div>
             <div className="">
