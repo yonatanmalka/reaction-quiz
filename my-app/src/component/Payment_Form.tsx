@@ -56,7 +56,7 @@ const PaymentForm = () => {
 
     // @ts-ignore
     return (
-        <div className="w-[100%] paymentslider">
+        <div className="w-[100%]">
             <Timer/>
             <div className="">
 
