@@ -72,10 +72,10 @@ const Dailog = () => {
     const ProgressComponent = currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
     return(
-        <main className="flex justify-center items-center">
-            <div className={`w-[375px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+        <main className="flex justify-center bg-[#F5F5F5] items-center">
+            <div className={`md:w-[405px] w-[425px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
                 {shouldRenderComponent  && (
-                    <div className={`flex w-[100%] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7) ? 'justify-center' : 'justify-between'} items-end `}>
+                    <div className={`flex w-[100%] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7) ? 'justify-between' : 'justify-center'} items-end `}>
                         {(currentStep !== 15 && currentStep !== 7) && (
                         <button onClick={() => setCurrentStep(currentStep - 1)}>
                             <Image src={Back} alt={'backButton'} width={15} height={14} />
