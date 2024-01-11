@@ -44,6 +44,7 @@ const Question19:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
             <div className="yesCardDiv mt-[15px] md:mt-[0px]">
                 {list.map((item,index) => (
                 <div
+                    key={index}
                     className={`YesCard cursor-pointer ${selectedCard === index ? "selected" : ""}`}
                     onClick={() => handleCardClick(index)}
                 >

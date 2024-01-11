@@ -43,7 +43,7 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
 
     return(
         <div>
-            <div className="flex items-center justify-center mt-[10px]">
+            <div className="flex items-center justify-center mt-[40px]">
                 <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                     {/* Background circle */}
                     <circle cx="60" cy="60" r={radius} fill="none" stroke="#E1E1E1" strokeWidth={strokeWidth} />
