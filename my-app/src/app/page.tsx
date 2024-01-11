@@ -29,6 +29,7 @@ import Question17 from "@/component/Question17";
 import Create_user from "@/component/Create_user";
 import Element1 from "../../images/element1.svg";
 import Element2 from "../../images/element2.svg";
+import DownLoad_App from "@/component/DownLoad_App";
 
 const Dailog = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
@@ -119,7 +120,9 @@ const Dailog = () => {
                     {currentStep === 20 && ( <Questions20   handleClick={() => setCurrentStep(21)} /> )}
                     {currentStep === 21 && ( <Create_user   handleClick={() => setCurrentStep(22)} /> )}
                     {currentStep === 22 && ( <Payment handleClick={() => setCurrentStep(23)}  />  )}
-                    {currentStep === 23 && ( <PaymentForm  /> )}
+                    {currentStep === 23 && ( <PaymentForm handleClick={() => setCurrentStep(24)}  /> )}
+                    {currentStep === 24 && ( <DownLoad_App  /> )}
+
                 </div>
                 {currentStep !== 22 && currentStep !== 23 && (
                 <div className="z-1">
