@@ -75,7 +75,7 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
                         type="text"
                         id="firstName"
                         name="firstName"
-                        placeholder="Challenge title (optional)"
+                        placeholder="Challenge title"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         className="mt-1 p-2 border bg-[#EFF3F6]  border-[#EFF3F6] rounded-md w-full"
