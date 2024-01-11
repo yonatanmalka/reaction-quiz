@@ -33,7 +33,7 @@ const Question14: React.FC<QuestionProps> = ({handleClick}) => {
     return (
         <div className="textDiv mt-[30px]">
             <div className="textDiv">
-                <h1 className="text-[#000] mb-[10px] text-[22px] md:text-[26px] font-semibold text-center">
+                <h1 className="text-[#000] mb-[10px] hy text-[22px] md:text-[26px] font-semibold text-center">
                     Select up to three areas where you believe the team could improve the most
                 </h1>
             </div>
