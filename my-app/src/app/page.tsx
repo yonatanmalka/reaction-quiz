@@ -27,9 +27,11 @@ import PaymentForm from "@/component/Payment_Form";
 import Payment from "@/component/Payment";
 import Question17 from "@/component/Question17";
 import Create_user from "@/component/Create_user";
+import Element1 from "../../images/element1.svg";
+import Element2 from "../../images/element2.svg";
 
 const Dailog = () => {
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState<number>(1);
     const getProgressBarWidth = () => {
         return ((currentStep - 1) / 21) * 100;
     };
@@ -43,10 +45,10 @@ const Dailog = () => {
     const shouldRenderComponent = currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
     return(
-        <main className="flex justify-center items-start mt-[10px] md:mt-[0px] md:items-center w-[100vw] h-[100vh]">
-            <div className={`w-[90vw] md:w-[400px] bg-white h-[445px] md:h-[525px] rounded-[14px] shadow-lg ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+        <main className="flex justify-center items-center w-[100vw] h-[100vh]">
+            <div className={`w-[375px] z-[20] relative bg-white h-[100vh] ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
                 {shouldRenderComponent  && (
-                    <div className="flex flex-row justify-between items-end">
+                    <div className="flex w-[100%] z-20 relative flex-row justify-between items-end">
                         <button onClick={() => setCurrentStep(currentStep - 1)}>
                             <Image src={Back} alt={'backButton'} width={15} height={14} />
                         </button>
@@ -57,7 +59,7 @@ const Dailog = () => {
                     </div>
                 )}
                 {shouldRenderComponent  && (
-                    <div className="mt-[13px]">
+                    <div className="mt-[13px] w-[100%] z-20 relative">
                         <div
                             className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md overflow-hidden"
                             style={{ borderRadius: '3px' }}
@@ -72,7 +74,7 @@ const Dailog = () => {
                         </div>
                     </div>
                 )}
-                <div className="w-[100%]">
+                <div className="w-[100%] z-20 relative h-[100%]" >
                     {currentStep === 1 && ( <Question1 handleClick={() => setCurrentStep(2)}/> )}
                     {currentStep === 2 && ( <Question2 handleNextStep={handleNextStep} /> )}
                     {currentStep === 3 && ( <Question3 handleNextStep={handleNextStep} /> )}
@@ -97,6 +99,21 @@ const Dailog = () => {
                     {currentStep === 22 && ( <Payment handleClick={() => setCurrentStep(23)}  />  )}
                     {currentStep === 23 && ( <PaymentForm  /> )}
                 </div>
+                {currentStep !== 22 && currentStep !== 23 && (
+                <div className="z-1">
+                    <Image src={Element1} alt={'element1'} className="absolute top-[-120px] left-[-100px]" />
+                </div>
+                )}
+                {currentStep === 1 && (
+                    <div className="z-1">
+                        <Image src={Element2} alt={'element1'} className="absolute top-[-100px] h-[400px] right-[-130px]" />
+                    </div>
+                )}
+                {(currentStep !== 1 && currentStep !== 23 && currentStep !== 22 ) && (
+                    <div className="z-1">
+                        <Image src={Element2} alt={'element1'} className="absolute bottom-[-100px] h-[400px] right-[-130px]" />
+                    </div>
+                )}
             </div>
         </main>
     )

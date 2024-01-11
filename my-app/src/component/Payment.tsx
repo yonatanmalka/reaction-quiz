@@ -55,7 +55,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick}) => {
     return (
         <div className="w-[100%] paymentslider">
             <Timer/>
-            <div className="">
+            <div>
 
                 <div className="flex flex-col justify-center  items-center mt-[5px]">
                     <div>
