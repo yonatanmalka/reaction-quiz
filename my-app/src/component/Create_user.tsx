@@ -11,17 +11,23 @@ const User:React.FC<QuestionProps> = ({handleClick,setData}) => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
 
+    const isValidEmail = (email:string) => {
+        // Regular expression for basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
     const handleNextClick = () => {
-        if (firstName && lastName && email ) {
+        if (firstName && lastName && isValidEmail(email)) {
             const data = {
                 first_Name: firstName,
                 last_Name: lastName,
-                email: email
+                email: email,
             };
             setData(data);
             handleClick();
         } else {
-            console.log("Please fill in the challenge title and select a date range.");
+            alert("Please enter a valid email and fill in all details.");
         }
     };
 
