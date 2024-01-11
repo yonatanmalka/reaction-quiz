@@ -61,7 +61,7 @@ const Dailog = () => {
                 {shouldRenderComponent  && (
                     <div className="mt-[13px] w-[100%] z-20 relative">
                         <div
-                            className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md overflow-hidden"
+                            className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md hy overflow-hidden"
                             style={{ borderRadius: '3px' }}
                         >
                             <div
