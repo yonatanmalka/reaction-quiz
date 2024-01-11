@@ -7,13 +7,14 @@ interface QuestionProps {
     handleClick: () => void;
 }
 
-const Question14: React.FC<QuestionProps> = ({handleClick, selected, setSelected}) => {
+const Question14: React.FC<QuestionProps> = ({handleClick}) => {
     const areasToImprove = [
         {title: "Communication"},
         {title: "Collaboration"},
         {title: "Time Management"}, {title: "Time Management"},
         {title: "Time Management"},
     ];
+    const [selected, setSelected] = useState<number[]>([]);
 
 
     const handleCardClick = (index: number) => {
