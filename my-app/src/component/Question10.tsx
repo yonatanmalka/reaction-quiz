@@ -23,20 +23,20 @@ const Question10:React.FC<QuestionProps> = ({handleNextStep}) => {
 
     return (
         <div>
-            <div className="flex mt-[20px] justify-center  items-center">
-                <h1 className="text-[#000] mb-[40px] text-[20px] md:text-[26px] font-semibold text-center">
+            <div className="flex mt-[30px] justify-center  items-center">
+                <h1 className="text-[#000] mb-[40px] text-[20px] md:text-[24px] font-semibold text-center">
                     How often do you experience conflicts in your team?
                 </h1>
             </div>
-            <div className="grid grid-cols-5 gap-x-[20px] w-[100%]">
+            <div className="grid grid-cols-5 gap-x-[5px] md:gap-x-[10px] w-[100%]">
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className={`card cursor-pointer ${selectedCard === index ? 'selected' : ''}`}
+                        className={`rounded-[10px] py-[15px] relative ${selectedCard === index ? 'bg-opacity-30' : ''} ${selectedCard === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selectedCard === index ? 'border-[#F9B22D]' : 'border-[#979797]'} border-[#979797] flex flex-row w-[100%] justify-center items-center`}
                         onClick={() => handleCardClick(index)}
                     >
                         <div>
-                            <Img src={image} alt={`Image ${index + 1}`} className="md:w-[35px] w-[25px] h-[25px] md:h-[35px]"/>
+                            <Img src={image} alt={`Image ${index + 1}`} className="w-[30px] h-[30px]"/>
                         </div>
                     </div>
                 ))}

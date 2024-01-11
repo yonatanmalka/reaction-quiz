@@ -45,8 +45,8 @@ const Dailog = () => {
     const shouldRenderComponent = currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
     return(
-        <main className="flex justify-center items-center w-[100vw] h-[100vh]">
-            <div className={`w-[375px] z-[20] relative bg-white h-[100vh] ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+        <main className="flex justify-center items-center">
+            <div className={`w-[375px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
                 {shouldRenderComponent  && (
                     <div className="flex w-[100%] z-20 relative flex-row justify-between items-end">
                         <button onClick={() => setCurrentStep(currentStep - 1)}>
@@ -74,7 +74,7 @@ const Dailog = () => {
                         </div>
                     </div>
                 )}
-                <div className="w-[100%] z-20 relative h-[100%]" >
+                <div className="w-[100%] z-20  relative" >
                     {currentStep === 1 && ( <Question1 handleClick={() => setCurrentStep(2)}/> )}
                     {currentStep === 2 && ( <Question2 handleNextStep={handleNextStep} /> )}
                     {currentStep === 3 && ( <Question3 handleNextStep={handleNextStep} /> )}

@@ -28,14 +28,18 @@ const Questions7: React.FC<QuestionProps> = ({ handleClick }) => {
 
             if (progress < animationDuration) {
                 requestAnimationFrame(animate);
+            } else if (percentage === targetPercent) {
+                // Call handleClick when the animation reaches 100%
+                handleClick();
             }
         };
 
         requestAnimationFrame(animate);
-    }, [targetPercent, animationDuration]);
+    }, [targetPercent, animationDuration, handleClick]);
+
 
     return (
-        <div className="flex w-[100%] h-[100%] mt-[60px] md:mt-[80px] flex-col gap-[20px] justify-center items-center">
+        <div className="flex  mt-[50px]  flex-col gap-[20px] justify-center items-center">
             <div>
                 <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
                     {/* Background circle */}

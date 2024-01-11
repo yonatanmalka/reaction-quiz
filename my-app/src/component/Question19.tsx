@@ -16,8 +16,8 @@ const Question19:React.FC<QuestionProps> = ({handleNextStep}) => {
 
     return (
         <div>
-            <div className="textDiv mt-[20px]">
-                <h1 className="text-[22px] md:text-[24px] text-[#000] text-center font-semibold">
+            <div className="flex flex-col justify-center w-[100%] items-center  mt-[30px]">
+                <h1 className="text-[24px] md:text-[24px] text-[#000] text-center font-semibold">
                     Would you like to motivate participation with rewards?
                 </h1>
                 <div>
@@ -28,24 +28,24 @@ const Question19:React.FC<QuestionProps> = ({handleNextStep}) => {
             </div>
 
 
-            <div className="yesCardDiv">
+            <div className="yesCardDiv mt-[15px] md:mt-[0px]">
                 <div
                     className={`YesCard cursor-pointer ${selectedCard === "no" ? "selected" : ""}`}
                     onClick={() => handleCardClick("no")}
                 >
                     <div>
-                        <Img src="/images/no.png" alt="none" className="w-[30px] h-[30px] md:w-[40px] md:h-[40px]" />
+                        <Img src="/images/no.png" alt="none" className="w-[35px] h-[35px] md:w-[40px] md:h-[40px]" />
                     </div>
-                    <div className="text-[#343434] font-semibold text-[14px] md:text-[20px] mt-[5px]">No</div>
+                    <div className="text-[#343434] font-semibold text-[16px] md:text-[20px] mt-[5px]">No</div>
                 </div>
                 <div
                     className={`YesCard cursor-pointer ${selectedCard === "yes" ? "selected" : ""}`}
                     onClick={() => handleCardClick("yes")}
                 >
                     <div>
-                        <Img src="/images/yes.png" alt="none" className="w-[30px] h-[30px] md:w-[40px] md:h-[40px]" />
+                        <Img src="/images/yes.png" alt="none" className="w-[35px] h-[35px] md:w-[40px] md:h-[40px]" />
                     </div>
-                    <div className="text-[#343434] font-semibold text-[14px] md:text-[20px] mt-[5px]">Yes</div>
+                    <div className="text-[#343434] font-semibold text-[16px] md:text-[20px] mt-[5px]">Yes</div>
                 </div>
             </div>
             <div className='flex justify-center items-center'>

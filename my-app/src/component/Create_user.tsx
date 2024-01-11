@@ -16,12 +16,12 @@ const User:React.FC<QuestionProps> = ({handleClick}) => {
 
     return (
         <div>
-            <div className="flex justify-center mt-[20px] items-center">
-                <h1 className="text-[#000] mb-[10px] text-[20px] md:text-[24px] font-semibold text-center">
+            <div className="flex justify-center mt-[30px] items-center">
+                <h1 className="text-[#000] mb-[10px] text-[22px] font-semibold text-center">
                     Enter your details to get access to the admin dashboard
                 </h1>
             </div>
-            <div className="w-full flex  gap-[10px] mt-[10px] flex-row ">
+            <div className="w-full flex  gap-[10px] mt-[20px] flex-row ">
                 <div className='w-[50%]'>
                     <input
                         type="text"
@@ -61,7 +61,7 @@ const User:React.FC<QuestionProps> = ({handleClick}) => {
             />
             <button
                 onClick={handleClick}
-                className="uppercase  text-[#000] mt-[44px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
+                className="uppercase  text-[#000] mt-[44px] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
             >
                 Next
             </button>

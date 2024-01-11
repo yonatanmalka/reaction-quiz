@@ -49,13 +49,13 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
     }, [isDatePickerOpen]);
 
     return (
-        <div className="px-[15px] mt-[20px] relative">
+        <div className="mt-[30px] relative">
             <div className="flex justify-center items-center">
-                <h1 className="text-[25px] font-semibold text-center">
+                <h1 className="text-[23px] font-semibold text-center">
                     Let’s create a step challenge!
                 </h1>
             </div>
-            <div className="w-full flex gap-[10px] mt-[20px] flex-col">
+            <div className="w-full flex gap-[10px] mt-[30px] flex-col">
                 <div className="w-[100%]">
                     <input
                         type="text"

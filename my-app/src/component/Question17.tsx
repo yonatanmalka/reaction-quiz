@@ -10,7 +10,7 @@ interface QuestionProps {
 const Question17: React.FC<QuestionProps> = ({handleClick}) => {
 
     return (
-        <div className="md:pl-[10px] mt-[20px] relative  px-0">
+        <div className="md:pl-[10px] mt-[30px] relative  px-0">
             <div className="textDiv ">
                 <h1 className="text-[#000] mb-[10px] md:mb-[20px] text-[22px] md:text-[26px] font-semibold text-center">
                     Recommanded plan
@@ -70,15 +70,15 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
             </div>
 
            </div>
-            <div className="md:text-[14px] text-[12px] mt-[15px] text-center text-[#979797] font-normal">
+            <div className="md:text-[14px] text-[12px] mt-[25px] text-center text-[#979797] font-normal">
                 This strategy designed to maintain long-term engagement and maximize program ROI
             </div>
             <div>
-                <button onClick={handleClick} className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[10px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[12px]">
+                <button onClick={handleClick} className="uppercase text-[#000] mt-[24px] md:mt-[20px] py-[8px] md:py-[10px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[12px]">
                     Get started
                 </button>
             </div>
-            <div className="md:text-[12px] text-[10px] md:mt-[15px] mt-[4px] underline text-center text-[#979797] font-normal">
+            <div className="md:text-[12px] text-[10px] md:mt-[15px] mt-[10px] underline text-center text-[#979797] font-normal">
                 Create only one-time challenge
             </div>
         </div>

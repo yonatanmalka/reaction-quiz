@@ -53,7 +53,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick}) => {
     const isYearlySelected = selectedOption === "yearly";
 
     return (
-        <div className="w-[100%] paymentslider">
+        <div className="w-[100%] h-[100%]">
             <Timer/>
             <div>
 

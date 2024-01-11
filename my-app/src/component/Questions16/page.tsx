@@ -2,7 +2,7 @@ import React from "react";
 import {BarChart} from "@/component/chats";
 import Image from "next/image";
 import Fire from "../../../images/fire.svg";
-const months= ['{Section1}', '{Section2}', '{Section3}']
+const months= ['{Week1}', '{Week2}', '{Week3}']
 
 const freq1 = {
     label: 'Before',
@@ -22,7 +22,7 @@ interface QuestionProps {
 const Questions16:React.FC<QuestionProps> = ({handleClick}) => {
     return(
         <div>
-            <div className="mt-[10px] flex flex-row justify-between">
+            <div className="mt-[30px] flex flex-row justify-between">
                 <p className="text-[#000] font-semibold text-[10px] md:text-[14px]">Plan success prediction</p>
 
                 <span className="bg-[#5553FE] py-[1px] md:py-[3px] px-[6px] md:px-[8px] rounded-[6px] md:rounded-[8px] flex flex-row gap-[3px] md:gap-[5px] items-center">
@@ -50,7 +50,7 @@ const Questions16:React.FC<QuestionProps> = ({handleClick}) => {
                     }}
                 />
             </div>
-            <p className="text-[#979797] mt-[5px] text-[10px] md:text-[12px] font-normal text-center px-[15px]">*Based on data of companies using Reaction for 90 days, analysed by Reaction. The chart is a non-customized illustration and results may vary</p>
+            <p className="text-[#979797] mt-[20px] text-[10px] md:text-[12px] font-normal text-center px-[15px]">*Based on data of companies using Reaction for 90 days, analysed by Reaction. The chart is a non-customized illustration and results may vary</p>
             <button onClick={handleClick} className="text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]">
                 Show me plan
             </button>
