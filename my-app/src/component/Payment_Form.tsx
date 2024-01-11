@@ -58,7 +58,9 @@ const PaymentForm:React.FC<any> = (setData) => {
     // @ts-ignore
     return (
         <div className="w-[100%]">
-            <Timer/>
+            <div className="fixed">
+                <Timer/>
+            </div>
             <div className="">
 
 

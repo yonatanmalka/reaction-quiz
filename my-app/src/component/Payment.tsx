@@ -44,7 +44,7 @@ interface QuestionProps {
     setData:any;
 }
 const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
-    const [selectedOption, setSelectedOption] = useState("monthly");
+    const [selectedOption, setSelectedOption] = useState("yearly");
 
     const handleOptionSelect = (option: React.SetStateAction<string>) => {
         setSelectedOption(option);
@@ -56,7 +56,9 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
 
     return (
         <div className="w-[100%] h-[100%]">
+            <div className="fixed">
             <Timer/>
+            </div>
             <div>
 
                 <div className="flex flex-col justify-center  items-center mt-[5px]">
