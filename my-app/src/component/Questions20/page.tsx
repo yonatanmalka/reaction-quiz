@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import Start from "../../../images/stars.svg";
+import Slider from "@/component/Slider";
+import SliderComp from "@/component/SliderNew";
 
 interface QuestionProps {
     handleClick: () => void;
@@ -9,7 +11,7 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
     const [animatedPercent, setAnimatedPercent] = useState(0);
 
     const targetPercent = 100; // Set the target percentage
-    const animationDuration = 1000; // Set the duration of the animation in milliseconds
+    const animationDuration = 4000; // Set the duration of the animation in milliseconds
     const radius = 50;
     const strokeWidth = 7;
     const circumference = 2 * Math.PI * radius;
@@ -67,19 +69,11 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
                 <p className="text-[#5553FE] font-bold text-[14px] text-center">5,000+ Companies</p>
                 <p className="text-[#343434] font-bold text-[12px] text-center">have chosen Reaction</p>
             </div>
-            <div className="w-[305px] mt-[10px] box-shadow py-[20px] px-[15px] rounded-[14px]">
-                <Image src={Start} alt={'Logo'} width={100} height={44} className="ml-[-10px]"/>
-                <div className="flex flex-row justify-between items-center">
-                    <span className="text-[#000] font-semibold text-[12px] ">This platform is amazing!</span>
-                    <span className="text-[#5B5959] font-medium text-[12px] ">David Alexander</span>
-                </div>
-                <p className="text-[#000] font-normal text-[12px] mt-[5px]">
-                    Reaction is ad Reaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is ad
-                </p>
-            </div>
-            <button onClick={handleClick} className="uppercase h-[40px] flex items-center justify-center mt-[32px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] font-semibold leading-10 tracking-tight text-[#000]">
-                Next
-            </button>
+            <SliderComp/>
+
+            {/*<button onClick={handleClick} className="uppercase h-[40px] flex items-center justify-center mt-[32px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] font-semibold leading-10 tracking-tight text-[#000]">*/}
+            {/*    Next*/}
+            {/*</button>*/}
         </div>
     )
 }
