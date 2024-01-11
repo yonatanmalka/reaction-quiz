@@ -13,16 +13,18 @@ const list = [
 ]
 
 interface QuestionProps {
-    handleNextStep: () => void;
+    handleNextStep: () => void
+    setData:any;
 }
 
-const Question4:React.FC<QuestionProps> = ({handleNextStep}) => {
+const Question4:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
 
     const [selected, setSelected] = useState(null);
 
-    const handleCardClick = (index: number | React.SetStateAction<null>) => {
+    const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelected(index);
+        setData(list[index].name)
         handleNextStep();
     };
 

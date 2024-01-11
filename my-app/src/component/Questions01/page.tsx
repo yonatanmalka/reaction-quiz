@@ -2,7 +2,6 @@
 
 import React, {useState} from "react";
 import Image from "next/image";
-import Background from "../../../images/questionbackground.jpg";
 import Logo from "../../../images/logo.svg";
 import Pic1 from "../../../images/goals1.svg";
 import Pic2 from "../../../images/goals2.svg";
@@ -31,22 +30,21 @@ const data = [
 
 interface QuestionProps {
     handleClick: () => void;
+    setData: any;
 }
 
-const Question1:React.FC<QuestionProps> = ({handleClick}) => {
-    const [selected, setSelected] = useState(null);
+const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
+    const [selected, setSelected] = useState<number | null>(null);
 
-    const handleCardClick = (index: number | React.SetStateAction<null>) => {
-        // @ts-ignore
+    const handleCardClick = (index: number) => {
         setSelected(index);
+        setData(data[index].name);
     };
 
     const handleNextClick = () => {
         if (selected !== null) {
             handleClick();
         } else {
-            // Handle the case when no card is selected
-            // You can add additional logic or provide feedback to the user
             console.log("No card selected");
         }
     };

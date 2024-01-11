@@ -32,8 +32,27 @@ import Element2 from "../../images/element2.svg";
 
 const Dailog = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
-    const [selected, setSelected] = useState<number[]>([]);
-    console.log(selected)
+
+    const defaultStates = {
+        goal: null,
+        company: null,
+        work_style: null,
+        work_schedule: null,
+        organization: null,
+        team_size: null,
+        moral: null,
+        actively_participate: null,
+        team_experince: null,
+        team_knowledge: null,
+        team_comfort: null,
+        improve_team: [],
+        create_step_challenge: [],
+        participation_reward: null,
+        admin_detail: [],
+    };
+
+    const [states, setStates] = useState<any>(defaultStates);
+    console.log(states);
     const getProgressBarWidth = () => {
         return ((currentStep - 1) / 21) * 100;
     };
@@ -46,27 +65,25 @@ const Dailog = () => {
 
     const shouldRenderComponent = currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
-    return (
+    return(
         <main className="flex justify-center items-center">
-            <div
-                className={`w-[425px] md:w-[400px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
-                {shouldRenderComponent && (
+            <div className={`w-[375px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+                {shouldRenderComponent  && (
                     <div className="flex w-[100%] z-20 relative flex-row justify-between items-end">
                         <button onClick={() => setCurrentStep(currentStep - 1)}>
-                            <Image src={Back} alt={'backButton'} width={15} height={14}/>
+                            <Image src={Back} alt={'backButton'} width={15} height={14} />
                         </button>
-                        <Image src={Logo} alt={'logo'} width={103} height={50}/>
+                        <Image src={Logo} alt={'logo'} width={103} height={50} />
                         <div className="text-[#3C8AF0] text-[16px] font-medium">
-                            <span className="text-[#3C8AF0]">{currentStep}</span>/<span
-                            className="text-[#979797]">22</span>
+                            <span className="text-[#3C8AF0]">{currentStep}</span>/<span className="text-[#979797]">22</span>
                         </div>
                     </div>
                 )}
-                {shouldRenderComponent && (
+                {shouldRenderComponent  && (
                     <div className="mt-[13px] w-[100%] z-20 relative">
                         <div
-                            className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md hy overflow-hidden"
-                            style={{borderRadius: '3px'}}
+                            className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md overflow-hidden"
+                            style={{ borderRadius: '3px' }}
                         >
                             <div
                                 className="bg-[#2C98F0] h-full transition-all"
@@ -78,46 +95,44 @@ const Dailog = () => {
                         </div>
                     </div>
                 )}
-                <div className="w-[100%] z-20  relative">
-                    {currentStep === 1 && (<Question1 handleClick={() => setCurrentStep(2)}/>)}
-                    {currentStep === 2 && (<Question2 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 3 && (<Question3 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 4 && (<Question4 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 5 && (<Question5 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 6 && (<Question6 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 7 && (<Question7 handleClick={() => setCurrentStep(8)}/>)}
-                    {currentStep === 8 && (<Question8 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 9 && (<Question9 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 10 && (<Question10 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 11 && (<Question11 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 12 && (<Question12 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 13 && (<Question13 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 14 && (<Question14 selected={selected}  setSelected={setSelected} handleClick={() => setCurrentStep(15)}/>)}
-                    {currentStep === 15 && (<Question15 handleNextStep={() => setCurrentStep(16)}/>)}
-                    {currentStep === 16 && (<Questions16 handleClick={() => setCurrentStep(17)}/>)}
-                    {currentStep === 17 && (<Question17 handleClick={() => setCurrentStep(18)}/>)}
-                    {currentStep === 18 && (<Question18 handleClick={() => setCurrentStep(19)}/>)}
-                    {currentStep === 19 && (<Question19 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 20 && (<Questions20 handleClick={() => setCurrentStep(21)}/>)}
-                    {currentStep === 21 && (<Create_user handleClick={() => setCurrentStep(22)}/>)}
-                    {currentStep === 22 && (<Payment handleClick={() => setCurrentStep(23)}/>)}
-                    {currentStep === 23 && (<PaymentForm/>)}
+                <div className="w-[100%] z-20  relative" >
+                    {currentStep === 1 && ( <Question1 setData={(goal: string) => setStates({ ...states, goal })}  handleClick={() => setCurrentStep(2)}/> )}
+                    {currentStep === 2 && ( <Question2 setData={(company: string) => setStates({ ...states, company })} handleNextStep={handleNextStep} /> )}
+                    {currentStep === 3 && ( <Question3 setData={(work_style: string) => setStates({ ...states, work_style })} handleNextStep={handleNextStep} /> )}
+                    {currentStep === 4 && ( <Question4 setData={(work_schedule: string) => setStates({ ...states, work_schedule })} handleNextStep={handleNextStep}  /> )}
+                    {currentStep === 5 && ( <Question5 setData={(organization: string) => setStates({ ...states, organization })} handleNextStep={handleNextStep} /> )}
+                    {currentStep === 6 && ( <Question6 handleNextStep={handleNextStep} /> )}
+                    {currentStep === 7 && ( <Question7 handleClick={() => setCurrentStep(8)}  /> )}
+                    {currentStep === 8 && ( <Question8 handleNextStep={handleNextStep}  /> )}
+                    {currentStep === 9 && ( <Question9 handleNextStep={handleNextStep}  />  )}
+                    {currentStep === 10 && ( <Question10 handleNextStep={handleNextStep}  /> )}
+                    {currentStep === 11 && ( <Question11 handleNextStep={handleNextStep} />)}
+                    {currentStep === 12 && ( <Question12 handleNextStep={handleNextStep} /> )}
+                    {currentStep === 13 && ( <Question13  handleNextStep={handleNextStep} /> )}
+                    {currentStep === 14 && ( <Question14  handleClick={() => setCurrentStep(15)} />)}
+                    {currentStep === 15 && ( <Question15  handleNextStep={() => setCurrentStep(16)} /> )}
+                    {currentStep === 16 && ( <Questions16  handleClick={() => setCurrentStep(17)} /> )}
+                    {currentStep === 17 && ( <Question17 handleClick={() => setCurrentStep(18)}  />  )}
+                    {currentStep === 18 && ( <Question18  handleClick={() => setCurrentStep(19)} /> )}
+                    {currentStep === 19 && ( <Question19   handleNextStep={handleNextStep} /> )}
+                    {currentStep === 20 && ( <Questions20   handleClick={() => setCurrentStep(21)} /> )}
+                    {currentStep === 21 && ( <Create_user   handleClick={() => setCurrentStep(22)} /> )}
+                    {currentStep === 22 && ( <Payment handleClick={() => setCurrentStep(23)}  />  )}
+                    {currentStep === 23 && ( <PaymentForm  /> )}
                 </div>
                 {currentStep !== 22 && currentStep !== 23 && (
-                    <div className="z-1">
-                        <Image src={Element1} alt={'element1'} className="absolute top-[-120px] left-[-100px]"/>
-                    </div>
+                <div className="z-1">
+                    <Image src={Element1} alt={'element1'} className="absolute top-[-120px] left-[-100px]" />
+                </div>
                 )}
                 {currentStep === 1 && (
                     <div className="z-1">
-                        <Image src={Element2} alt={'element1'}
-                               className="absolute top-[-100px] h-[400px] right-[-130px]"/>
+                        <Image src={Element2} alt={'element1'} className="absolute top-[-100px] h-[400px] right-[-130px]" />
                     </div>
                 )}
-                {(currentStep !== 1 && currentStep !== 23 && currentStep !== 22) && (
+                {(currentStep !== 1 && currentStep !== 23 && currentStep !== 22 ) && (
                     <div className="z-1">
-                        <Image src={Element2} alt={'element1'}
-                               className="absolute bottom-[-100px] h-[400px] right-[-130px]"/>
+                        <Image src={Element2} alt={'element1'} className="absolute bottom-[-100px] h-[400px] right-[-130px]" />
                     </div>
                 )}
             </div>
