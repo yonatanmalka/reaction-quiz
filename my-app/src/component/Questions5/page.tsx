@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import Image from "next/image";
 import Ok from "../../../images/Ok.svg";
+import {Img} from "@/utils/Img";
 
 const list = [
     {

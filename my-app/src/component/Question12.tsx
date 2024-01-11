@@ -8,11 +8,11 @@ interface QuestionProps {
 }
 const Question12:React.FC<QuestionProps> = ({handleNextStep}) => {
     const images = [
-        "/images/1star.png",
-        "/images/2star.png",
-        "/images/3star.png",
-        "/images/4star.png",
-        "/images/5star.png",
+        "/images/111star.png",
+        "/images/222star.png",
+        "/images/333star.png",
+        "/images/444star.png",
+        "/images/555star.png",
     ];
 
     const [selectedCard, setSelectedCard] = useState(null);
@@ -45,10 +45,10 @@ const Question12:React.FC<QuestionProps> = ({handleNextStep}) => {
             </div>
             <div className="w-[100%] flex flex-row justify-between mt-[5px]">
                 <div className="text-[#343434] font-semibold text-[10px] md:text-[14px]">
-                    Very low
+                    Very limited
                 </div>
                 <div className="text-[#343434] font-semibold text-[10px] md:text-[14px]">
-                    Very High
+                    Very well
                 </div>
             </div>
         </div>

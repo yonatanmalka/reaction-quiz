@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import Image from "next/image"
 import Clock from "../../../images/clock.svg";
+import Owl from "../../../images/Owl.png"
 import Pencil from "../../../images/Pencil.svg";
 import ManPilot from "../../../images/ManPilot.svg";
 import Ok from "../../../images/Ok.svg";
@@ -12,7 +13,7 @@ const list = [
         name : "9 to 5",
     },
     {
-        image: Clock,
+        image: Owl,
         name : "Night shifts",
     },
     {
