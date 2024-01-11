@@ -40,12 +40,13 @@ const list = [
 ]
 
 
-const PaymentForm = () => {
+const PaymentForm:React.FC<any> = (setData) => {
     const [selectedOption, setSelectedOption] = useState("monthly");
     const [checked, setChecked] = useState(false);
 
-    const handleChange = (checked: boolean | ((prevState: boolean) => boolean)) => {
+    const handleChange = (checked: boolean) => {
         setChecked(checked);
+        setData(checked);
     };
     const handleOptionSelect = (option: React.SetStateAction<string>) => {
         setSelectedOption(option);

@@ -2,7 +2,6 @@ import React from "react";
 import {BarChart} from "@/component/chats";
 import Image from "next/image";
 import Fire from "../../../images/fire.svg";
-const months= ['{Week1}', '{Week2}', '{Week3}']
 
 const freq1 = {
     label: 'Before',
@@ -16,10 +15,17 @@ const freq2 = {
     backgroundColor: '#7BBF4C',
 }
 
+
 interface QuestionProps {
     handleClick: () => void;
+    states:{
+        improve_team:string[];
+    };
 }
-const Questions16:React.FC<QuestionProps> = ({handleClick}) => {
+
+const Questions16:React.FC<QuestionProps> = ({handleClick,states}) => {
+
+    const months= states.improve_team;
     return(
         <div>
             <div className="mt-[30px] flex flex-row justify-between">

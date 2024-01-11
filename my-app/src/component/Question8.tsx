@@ -1,25 +1,40 @@
 "use client"
 import React, {useState} from "react";
-import Image from "next/image";
-import Background from "../../public/images/QuestionsBack.jpg";
 import {Img} from "@/utils/Img";
 interface QuestionProps {
     handleNextStep: () => void;
+    setData:any;
 }
-const Question8:React.FC<QuestionProps> = ({handleNextStep}) => {
+const Question8:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
     const images = [
-        "/images/1star.png",
-        "/images/2star.png",
-        "/images/3star.png",
-        "/images/4star.png",
-        "/images/5star.png",
+        {
+            image:'/images/1star.png',
+            name:'1 Star'
+        },
+        {
+            image:'/images/2star.png',
+            name:'2 Star'
+        },
+        {
+            image:'/images/3star.png',
+            name:'3 Star'
+        },
+        {
+            image:'/images/4star.png',
+            name:'4 Star'
+        },
+        {
+            image:'/images/5star.png',
+            name:'5 Star'
+        }
     ];
 
     const [selectedCard, setSelectedCard] = useState(null);
 
-    const handleCardClick = (index: number | React.SetStateAction<null>) => {
+    const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelectedCard(index);
+        setData(images[index].name)
         handleNextStep();
     };
 
@@ -38,7 +53,7 @@ const Question8:React.FC<QuestionProps> = ({handleNextStep}) => {
                         onClick={() => handleCardClick(index)}
                     >
                         <div>
-                            <Img src={image} alt={`Image ${index + 1}`} className="w-[30px] h-[30px]"/>
+                            <Img src={image.image} alt={`Image ${index + 1}`} className="w-[30px] h-[30px]"/>
                         </div>
                     </div>
                 ))}

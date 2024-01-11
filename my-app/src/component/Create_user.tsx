@@ -1,18 +1,30 @@
 "use client"
 
 import React, {useState} from "react";
-import Image from "next/image";
-import Background from "../../public/images/QuestionsBack.jpg";
-import {Img} from "@/utils/Img";
-
 interface QuestionProps {
     handleClick: () => void;
+    setData:any;
 }
 
-const User:React.FC<QuestionProps> = ({handleClick}) => {
+const User:React.FC<QuestionProps> = ({handleClick,setData}) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+
+    const handleNextClick = () => {
+        if (firstName && lastName && email ) {
+            const data = {
+                first_Name: firstName,
+                last_Name: lastName,
+                email: email
+            };
+            setData(data);
+            handleClick();
+        } else {
+            console.log("Please fill in the challenge title and select a date range.");
+        }
+    };
+
 
     return (
         <div>
@@ -60,7 +72,7 @@ const User:React.FC<QuestionProps> = ({handleClick}) => {
                 className="mt-[10px] p-2 border  bg-[#EFF3F6]  border-[#EFF3F6] rounded-md w-full"
             />
             <button
-                onClick={handleClick}
+                onClick={handleNextClick}
                 className="uppercase  text-[#000] mt-[144px] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
             >
                 Next

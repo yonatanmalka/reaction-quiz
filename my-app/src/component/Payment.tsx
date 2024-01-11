@@ -41,12 +41,14 @@ const list = [
 
 interface QuestionProps {
     handleClick: () => void;
+    setData:any;
 }
-const Payment:React.FC<QuestionProps> = ({handleClick}) => {
+const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
     const [selectedOption, setSelectedOption] = useState("monthly");
 
     const handleOptionSelect = (option: React.SetStateAction<string>) => {
         setSelectedOption(option);
+        setData(option);
     };
 
     const isMonthlySelected = selectedOption === "monthly";

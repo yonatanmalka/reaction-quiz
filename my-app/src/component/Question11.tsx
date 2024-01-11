@@ -4,13 +4,27 @@ import React, { useState } from "react";
 import { Img } from "@/utils/Img";
 interface QuestionProps {
     handleNextStep: () => void;
+    setData:any;
 }
-const Question11:React.FC<QuestionProps> = ({handleNextStep}) => {
+
+const list = [
+    {
+        images:'/images/no.png',
+        name:'No'
+    },
+    {
+        images:'/images/yes.png',
+        name:'Yes'
+    }
+]
+
+const Question11:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
     const [selectedCard, setSelectedCard] = useState(null);
 
-    const handleCardClick = (card: string | React.SetStateAction<null>) => {
+    const handleCardClick = (index:number) => {
         // @ts-ignore
-        setSelectedCard(card);
+        setSelectedCard(index);
+        setData(list[index].name)
         handleNextStep();
     };
 
@@ -22,24 +36,18 @@ const Question11:React.FC<QuestionProps> = ({handleNextStep}) => {
                 </h1>
             </div>
             <div className="yesCardDiv">
+                {list.map((item,index) => (
                 <div
-                    className={`YesCard cursor-pointer ${selectedCard === "no" ? "selected" : ""}`}
-                    onClick={() => handleCardClick("no")}
+                    key={index}
+                    className={`YesCard cursor-pointer ${selectedCard === index ? "selected" : ""}`}
+                    onClick={() => handleCardClick(index)}
                 >
                     <div>
-                        <Img src="/images/no.png" alt="none" className="w-[35px] h-[35px] md:w-[40px] md:h-[40px]" />
+                        <Img src={item.images} alt="none" className="w-[35px] h-[35px] md:w-[40px] md:h-[40px]" />
                     </div>
-                    <div className="text-[#343434] font-semibold text-[16px] md:text-[20px] mt-[5px]">No</div>
+                    <div className="text-[#343434] font-semibold text-[16px] md:text-[20px] mt-[5px]">{item.name}</div>
                 </div>
-                <div
-                    className={`YesCard cursor-pointer ${selectedCard === "yes" ? "selected" : ""}`}
-                    onClick={() => handleCardClick("yes")}
-                >
-                    <div>
-                        <Img src="/images/yes.png" alt="none" className="w-[35px] h-[35px] md:w-[40px] md:h-[40px]" />
-                    </div>
-                    <div className="text-[#343434] font-semibold text-[16px] md:text-[20px] mt-[5px]">Yes</div>
-                </div>
+                ))}
             </div>
         </div>
     );

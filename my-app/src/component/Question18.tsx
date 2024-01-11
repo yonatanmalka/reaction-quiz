@@ -8,9 +8,10 @@ import { Range } from "react-date-range";
 
 interface QuestionProps {
     handleClick: () => void;
+    setData:any;
 }
 
-const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
+const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
     const [firstName, setFirstName] = useState("");
     const today = new Date();
 
@@ -48,6 +49,19 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
         };
     }, [isDatePickerOpen]);
 
+    const handleNextClick = () => {
+        if (firstName && selectedDate[0].startDate) {
+            const data = {
+                Challenge_title: firstName,
+                selectedDate: selectedDate,
+            };
+            setData(data);
+            handleClick();
+        } else {
+            console.log("Please fill in the challenge title and select a date range.");
+        }
+    };
+
     return (
         <div className="mt-[30px] relative">
             <div className="flex justify-center items-center">
@@ -82,7 +96,7 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
             </div>
             <div className="mt-[154px]">
                 <button
-                    onClick={handleClick}
+                    onClick={handleNextClick}
                     className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
                 >
                     Next

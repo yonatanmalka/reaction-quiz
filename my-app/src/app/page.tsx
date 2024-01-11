@@ -42,13 +42,16 @@ const Dailog = () => {
         team_size: null,
         moral: null,
         actively_participate: null,
-        team_experince: null,
-        team_knowledge: null,
-        team_comfort: null,
+        team_conflicts_experince: null,
+        stress_at_work: null,
+        team_members_know_each_other_on_persoal_level: null,
+        team_members_comfort: null,
         improve_team: [],
         create_step_challenge: [],
         participation_reward: null,
         admin_detail: [],
+        pricing: 'monthly',
+        free_trial: false,
     };
 
     const [states, setStates] = useState<any>(defaultStates);
@@ -101,24 +104,24 @@ const Dailog = () => {
                     {currentStep === 3 && ( <Question3 setData={(work_style: string) => setStates({ ...states, work_style })} handleNextStep={handleNextStep} /> )}
                     {currentStep === 4 && ( <Question4 setData={(work_schedule: string) => setStates({ ...states, work_schedule })} handleNextStep={handleNextStep}  /> )}
                     {currentStep === 5 && ( <Question5 setData={(organization: string) => setStates({ ...states, organization })} handleNextStep={handleNextStep} /> )}
-                    {currentStep === 6 && ( <Question6 handleNextStep={handleNextStep} /> )}
+                    {currentStep === 6 && ( <Question6 setData={(team_size: string) => setStates({ ...states, team_size })} handleNextStep={handleNextStep} /> )}
                     {currentStep === 7 && ( <Question7 handleClick={() => setCurrentStep(8)}  /> )}
-                    {currentStep === 8 && ( <Question8 handleNextStep={handleNextStep}  /> )}
-                    {currentStep === 9 && ( <Question9 handleNextStep={handleNextStep}  />  )}
-                    {currentStep === 10 && ( <Question10 handleNextStep={handleNextStep}  /> )}
-                    {currentStep === 11 && ( <Question11 handleNextStep={handleNextStep} />)}
-                    {currentStep === 12 && ( <Question12 handleNextStep={handleNextStep} /> )}
-                    {currentStep === 13 && ( <Question13  handleNextStep={handleNextStep} /> )}
-                    {currentStep === 14 && ( <Question14  handleClick={() => setCurrentStep(15)} />)}
-                    {currentStep === 15 && ( <Question15  handleNextStep={() => setCurrentStep(16)} /> )}
-                    {currentStep === 16 && ( <Questions16  handleClick={() => setCurrentStep(17)} /> )}
-                    {currentStep === 17 && ( <Question17 handleClick={() => setCurrentStep(18)}  />  )}
-                    {currentStep === 18 && ( <Question18  handleClick={() => setCurrentStep(19)} /> )}
-                    {currentStep === 19 && ( <Question19   handleNextStep={handleNextStep} /> )}
+                    {currentStep === 8 && ( <Question8 setData={(moral: string) => setStates({ ...states, moral })} handleNextStep={handleNextStep}  /> )}
+                    {currentStep === 9 && ( <Question9 setData={(actively_participate: string) => setStates({ ...states, actively_participate })} handleNextStep={handleNextStep}  />  )}
+                    {currentStep === 10 && ( <Question10 setData={(team_conflicts_experince: string) => setStates({ ...states, team_conflicts_experince })} handleNextStep={handleNextStep}  /> )}
+                    {currentStep === 11 && ( <Question11 setData={(stress_at_work: string) => setStates({ ...states, stress_at_work })} handleNextStep={handleNextStep} />)}
+                    {currentStep === 12 && ( <Question12 setData={(team_members_know_each_other_on_persoal_level: string) => setStates({ ...states, team_members_know_each_other_on_persoal_level })} handleNextStep={handleNextStep} /> )}
+                    {currentStep === 13 && ( <Question13 setData={(team_members_comfort: string) => setStates({ ...states, team_members_comfort })} handleNextStep={handleNextStep} /> )}
+                    {currentStep === 14 && ( <Question14 setData={(improve_team: any[]) => setStates({ ...states, improve_team })}  handleClick={() => setCurrentStep(15)} />)}
+                    {currentStep === 15 && ( <Question15   handleNextStep={() => setCurrentStep(16)} /> )}
+                    {currentStep === 16 && ( <Questions16 states={states} handleClick={() => setCurrentStep(17)} /> )}
+                    {currentStep === 17 && ( <Question17  handleClick={() => setCurrentStep(18)}  />  )}
+                    {currentStep === 18 && ( <Question18 setData={(create_step_challenge: string) => setStates({ ...states, create_step_challenge })} handleClick={() => setCurrentStep(19)} /> )}
+                    {currentStep === 19 && ( <Question19 setData={(participation_reward: string) => setStates({ ...states, participation_reward })}  handleNextStep={handleNextStep} /> )}
                     {currentStep === 20 && ( <Questions20   handleClick={() => setCurrentStep(21)} /> )}
-                    {currentStep === 21 && ( <Create_user   handleClick={() => setCurrentStep(22)} /> )}
-                    {currentStep === 22 && ( <Payment handleClick={() => setCurrentStep(23)}  />  )}
-                    {currentStep === 23 && ( <PaymentForm  /> )}
+                    {currentStep === 21 && ( <Create_user  setData={(admin_detail: string) => setStates({ ...states, admin_detail })}  handleClick={() => setCurrentStep(22)} /> )}
+                    {currentStep === 22 && ( <Payment setData={(pricing: string) => setStates({ ...states, pricing })} handleClick={() => setCurrentStep(23)}  />  )}
+                    {currentStep === 23 && ( <PaymentForm setData={(free_trial: boolean) => setStates({ ...states, free_trial })}  /> )}
                 </div>
                 {currentStep !== 22 && currentStep !== 23 && (
                 <div className="z-1">

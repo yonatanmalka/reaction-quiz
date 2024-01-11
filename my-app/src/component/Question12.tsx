@@ -3,21 +3,40 @@ import React, {useState} from "react";
 import {Img} from "@/utils/Img";
 interface QuestionProps {
     handleNextStep: () => void;
+    setData:any;
 }
-const Question12:React.FC<QuestionProps> = ({handleNextStep}) => {
-    const images = [
-        "/images/111star.png",
-        "/images/222star.png",
-        "/images/333star.png",
-        "/images/444star.png",
-        "/images/555star.png",
-    ];
+
+const images = [
+    {
+        image:'/images/111star.png',
+        name:'1 Star'
+    },
+    {
+        image:'/images/222star.png',
+        name:'2 Star'
+    },
+    {
+        image:'/images/333star.png',
+        name:'3 Star'
+    },
+    {
+        image:'/images/444star.png',
+        name:'4 Star'
+    },
+    {
+        image:'/images/555star.png',
+        name:'5 Star'
+    }
+];
+
+const Question12:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
 
     const [selectedCard, setSelectedCard] = useState(null);
 
-    const handleCardClick = (index: number | React.SetStateAction<null>) => {
+    const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelectedCard(index);
+        setData(images[index].name);
         handleNextStep();
     };
 
@@ -36,7 +55,7 @@ const Question12:React.FC<QuestionProps> = ({handleNextStep}) => {
                         onClick={() => handleCardClick(index)}
                     >
                         <div>
-                            <Img src={image} alt={`Image ${index + 1}`} className="w-[30px] h-[30px]"/>
+                            <Img src={image.image} alt={`Image ${index + 1}`} className="w-[30px] h-[30px]"/>
                         </div>
                     </div>
                 ))}
