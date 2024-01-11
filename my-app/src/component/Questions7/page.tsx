@@ -8,7 +8,7 @@ const Questions7: React.FC<QuestionProps> = ({ handleClick }) => {
     const [animatedPercent, setAnimatedPercent] = useState(0);
 
     const targetPercent = 100; // Set the target percentage
-    const animationDuration = 1000; // Set the duration of the animation in milliseconds
+    const animationDuration = 2000; // Set the duration of the animation in milliseconds
     const radius = 50;
     const strokeWidth = 7;
     const circumference = 2 * Math.PI * radius;

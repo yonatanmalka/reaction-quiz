@@ -13,7 +13,7 @@ const Questions15: React.FC<QuestionProps> = ({ handleNextStep }) => {
                 const nextPercent = prevPercent + 1;
                 if (nextPercent === 100) {
                     clearInterval(interval); // Stop the interval when percent reaches 100
-                    setTimeout(handleNextStep, 1000); // Call handleNextStep after 2 seconds
+                    setTimeout(handleNextStep, 2000); // Call handleNextStep after 2 seconds
                 }
                 return nextPercent;
             });
@@ -22,7 +22,7 @@ const Questions15: React.FC<QuestionProps> = ({ handleNextStep }) => {
     }, [handleNextStep]);
 
     return (
-        <div className="flex mt-[40px] flex-col gap-[20px] justify-center items-center">
+        <div className="flex mt-[60px] flex-col gap-[20px] justify-center items-center">
             <div className="text-[14px] text-[#343434] font-bold mt-[-10px]">
                 Analysing team’s engagement score...
             </div>

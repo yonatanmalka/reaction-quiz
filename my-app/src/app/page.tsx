@@ -57,7 +57,7 @@ const Dailog = () => {
     const [states, setStates] = useState<any>(defaultStates);
     console.log(states);
     const getProgressBarWidth = () => {
-        return ((currentStep - 1) / 21) * 100;
+        return ((currentStep - 1) / 23) * 100;
     };
 
     const handleNextStep = () => {
@@ -66,23 +66,29 @@ const Dailog = () => {
         }, 1000);
     };
 
-    const shouldRenderComponent = currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
+    const shouldRenderComponent =  currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
+
+    const ProgressComponent = currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
     return(
         <main className="flex justify-center items-center">
             <div className={`w-[375px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
                 {shouldRenderComponent  && (
-                    <div className="flex w-[100%] z-20 relative flex-row justify-between items-end">
+                    <div className={`flex w-[100%] z-20 relative flex-row ${currentStep === 15 ? 'justify-center' : 'justify-between'} items-end `}>
+                        {currentStep !== 15 && (
                         <button onClick={() => setCurrentStep(currentStep - 1)}>
                             <Image src={Back} alt={'backButton'} width={15} height={14} />
                         </button>
+                         )}
                         <Image src={Logo} alt={'logo'} width={103} height={50} />
+                        {currentStep !== 15 && (
                         <div className="text-[#3C8AF0] text-[16px] font-medium">
                             <span className="text-[#3C8AF0]">{currentStep}</span>/<span className="text-[#979797]">22</span>
                         </div>
+                        )}
                     </div>
                 )}
-                {shouldRenderComponent  && (
+                {ProgressComponent  && (
                     <div className="mt-[13px] w-[100%] z-20 relative">
                         <div
                             className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md overflow-hidden"
