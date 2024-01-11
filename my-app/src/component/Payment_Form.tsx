@@ -39,8 +39,11 @@ const list = [
     }
 ]
 
-
-const PaymentForm:React.FC<any> = (setData) => {
+interface QuestionProps {
+    handleClick: () => void;
+    setData:any;
+}
+const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
     const [selectedOption, setSelectedOption] = useState("monthly");
     const [checked, setChecked] = useState(false);
 
@@ -148,7 +151,7 @@ const PaymentForm:React.FC<any> = (setData) => {
                 </div>
                 </div>
                 <div className="w-full mt-[10px] px-[20px] ">
-                    <button className="uppercase  h-[40px] flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000]">SUBSCRIBE NOW</button>
+                    <button onClick={handleClick} className="uppercase  h-[40px] flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000]">SUBSCRIBE NOW</button>
                 </div>
                 <div className='px-[20px] text-center text-[11px] mt-[20px] text-[#979797]'>
                     By clicking <span className='text-black font-bold'>SUBSCRIBE NOW, </span>I agree to pay $0.99 per

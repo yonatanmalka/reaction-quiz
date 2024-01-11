@@ -128,7 +128,7 @@ const Dailog = () => {
                     {currentStep === 20 && ( <Questions20   handleClick={() => setCurrentStep(21)} /> )}
                     {currentStep === 21 && ( <Create_user  setData={(admin_detail: string) => setStates({ ...states, admin_detail })}  handleClick={() => setCurrentStep(22)} /> )}
                     {currentStep === 22 && ( <Payment setData={(pricing: string) => setStates({ ...states, pricing })} handleClick={() => setCurrentStep(23)}  />  )}
-                    {currentStep === 23 && ( <PaymentForm  setData={(free_trial: boolean) => setStates({ ...states, free_trial })}  /> )}
+                    {currentStep === 23 && ( <PaymentForm handleClick={() => setCurrentStep(24)}  setData={(free_trial: boolean) => setStates({ ...states, free_trial })}  /> )}
                     {currentStep === 24 && ( <DownLoad_App  /> )}
 
                 </div>
