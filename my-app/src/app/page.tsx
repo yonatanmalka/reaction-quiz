@@ -66,9 +66,10 @@ const Dailog = () => {
     const shouldRenderComponent = currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
     return(
-        <main className="flex justify-center items-center">
-            <div className={`w-[375px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
-                {shouldRenderComponent  && (
+        <main className="flex justify-center bg-[#F5F5F5] items-center">
+            <div
+                className={`w-[425px] md:w-[400px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+                {shouldRenderComponent && (
                     <div className="flex w-[100%] z-20 relative flex-row justify-between items-end">
                         <button onClick={() => setCurrentStep(currentStep - 1)}>
                             <Image src={Back} alt={'backButton'} width={15} height={14} />
