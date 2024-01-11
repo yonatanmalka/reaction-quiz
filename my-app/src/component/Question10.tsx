@@ -1,7 +1,5 @@
 "use client"
 import React, {useState} from "react";
-import Image from "next/image";
-import Background from "../../public/images/QuestionsBack.jpg";
 import {Img} from "@/utils/Img";
 interface QuestionProps {
     handleNextStep: () => void;
