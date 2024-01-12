@@ -88,7 +88,7 @@ const User:React.FC<QuestionProps> = ({handleClick,setData}) => {
             <div>
                 <Toaster richColors position={"top-center"} closeButton={true}/>
             </div>
-            <div className="px-[20px]">
+            <div className="px-[20px] mt-[190px]">
                 <button
                     onClick={handleNextClick}
                     className="uppercase  text-[#000] mt-[144px] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"

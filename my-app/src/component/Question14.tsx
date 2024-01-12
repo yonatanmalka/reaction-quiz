@@ -11,11 +11,12 @@ interface QuestionProps {
 const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
     const areasToImprove = [
         { title: "Communication" },
-        { title: "Collaboration" },
-        { title: "Time Management" },
-        { title: "Time Management" },
-        { title: "Time Management" },
-        { title: "Time Management" },
+        { title: "Team morale" },
+        { title: "Healthy habits" },
+        { title: "Work-life balance" },
+        { title: "Employees energy " },
+        { title: "Overall wellbeing" },
+        { title: "Conflict resolution " },
 
 
 
@@ -65,13 +66,13 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
                                 selected.includes(index) ? "bg-opacity-30" : ""
                             } ${selected.includes(index) ? "bg-yellow-400" : "bg-[#F5F5F5]"} border-[1px] ${
                                 selected.includes(index) ? "border-none" : "border-none"
-                            } border-[#979797] text-center w-[100%]`}
+                            } border-[#979797]  w-[100%]`}
                             onClick={() => handleCardClick(index)}
                         >
-                            <h1 className="text-[#343434] font-semibold text-[14px] md:text-[18px]">{area.title}</h1>
+                            <h1 className="text-[#343434] ml-[8px] font-semibold text-[18px]">{area.title}</h1>
                             {selected.includes(index) && (
-                                <div className="absolute top-[5px] right-[5px]">
-                                    <Img src="/images/Ok.png" alt="none" className="w-[15px] h-[15px] md:w-[20px] md:h-[20px]" />
+                                <div className="absolute top-[20px] right-[5px]">
+                                    <Img src="/images/Ok.png" alt="none" className="w-[20px] h-[20px] md:w-[20px] md:h-[20px]" />
                                 </div>
                             )}
                         </div>

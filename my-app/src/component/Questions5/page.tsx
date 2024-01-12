@@ -7,7 +7,7 @@ import InternationalImage from "../../../images/earth.png";
 const list = [
     {
         image: NationalImage,
-        name : "Everyone in my team are on the same time zone?",
+        name : "Everyone in my team is in the same time zone?",
     },
     {
         image: InternationalImage,
@@ -33,7 +33,7 @@ const Question4:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
 
     return(
         <div>
-            <h1 className="text-[22px] md:text-[26px] text-[#000] text-center font-semibold mt-[30px]">Are your organization national or international?</h1>
+            <h1 className="text-[22px] md:text-[26px] text-[#000] text-center font-semibold mt-[30px]">Is your organization national or international?</h1>
             <div className="flex flex-col px-[20px] gap-[15px] mt-[30px]">
                 {list.map((item,index) => (
                     <button

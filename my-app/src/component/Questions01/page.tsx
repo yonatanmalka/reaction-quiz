@@ -63,7 +63,7 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
                     {data.map((item, index) => (
                         <button
                             key={index}
-                            className={`rounded-[12px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'}  ${selected === index ? 'border-none' : 'border-none'} border-[#979797] flex flex-col  gap-[3px] md:gap-[5px] py-[20px] md:py-[15px] justify-center relative items-center transition duration-300 ease-in-out hover:bg-opacity-30 hover:bg-yellow-400 hover:border-[#F9B22D]`}
+                            className={`rounded-[12px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'}  ${selected === index ? 'border-none' : 'border-none'} border-[#979797] flex flex-col  gap-[3px] md:gap-[5px] py-[25px] justify-center relative items-center transition duration-300 ease-in-out hover:bg-opacity-30 hover:bg-yellow-400 hover:border-[#F9B22D]`}
                             onClick={() => handleCardClick(index)}
                         >
                             <Image src={item.Image} alt={"image"} className="w-[35px] h-[35px]" />

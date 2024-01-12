@@ -56,7 +56,7 @@ const Question19:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
                 ))}
             </div>
             <div className='flex justify-center items-center'>
-                <h1 className="text-center w-[220px] md:w-[240px] text-[14px] md:text-[18px] font-normal text-[#979797] mt-[25px] md:mt-[40px]">
+                <h1 className="text-center w-[220px] md:w-[240px] text-[16px] md:text-[18px] font-medium text-[#343434] mt-[70px]">
                     Rewards increase engagement by average X4
                      </h1>
             </div>

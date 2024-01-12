@@ -37,11 +37,11 @@ const Question6:React.FC<QuestionProps> = ({ handleNextStep ,setData }) => {
     return(
         <div>
             <h1 className="text-[22px] md:text-[26px] text-[#000] text-center font-semibold mt-[30px]">What is your team size?</h1>
-            <div className="flex flex-col px-[20px] gap-[15px] mt-[30px]">
+            <div className="flex flex-col px-[20px] gap-[15px] pt-[20px] mt-[30px]">
                 {list.map((item,index) => (
                     <button
                         onClick={() => handleCardClick(index)}
-                        key={index} className={` emoji rounded-[10px] py-[22px] relative ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selected === index ? 'border-none' : 'border-none'} border-[#979797] flex flex-row w-[100%] justify-center items-center`}
+                        key={index} className={` pl-[15px]  emoji rounded-[10px] py-[22px] relative ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selected === index ? 'border-none' : 'border-none'} border-[#979797] flex flex-row w-[100%] justify-start items-center`}
                     >
                         <h1 className="text-[#343434] text-[18px] md:text-[20px] font-semibold">{item.name} <span className="font-normal">Team members</span></h1>
                         {selected === index && (

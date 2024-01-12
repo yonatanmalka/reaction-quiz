@@ -24,7 +24,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                 </div>
                 <div className="flex-col flex">
                     <div className=" text-[12px] text-[#979797] font-semibold">
-                        current date
+                        January
                     </div>
                     <div className="text-[14px]  text-[#343434] font-semibold">
                         Step challenge
@@ -42,7 +42,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                 </div>
                 <div className="flex-col flex">
                     <div className=" text-[12px] text-[#979797] font-semibold">
-                        current date
+                        February
                     </div>
                     <div className="text-[14px] text-[#343434] font-semibold">
                         Event                    </div>
@@ -58,7 +58,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
             </div>
             <div className="flex-col flex">
                 <div className=" text-[12px] text-[#979797] font-semibold">
-                    current date
+             March
                 </div>
                 <div className="text-[14px]  text-[#343434] font-semibold">
                     Ongoing
@@ -72,7 +72,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
             <div className="text-[14px]  mt-[25px] text-center text-[#979797] font-normal">
                 This strategy designed to maintain long-term engagement and maximize program ROI
             </div>
-            <div>
+            <div className="px-[30px]">
                 <button onClick={handleClick} className="uppercase text-[#000] mt-[24px] md:mt-[20px] py-[8px] md:py-[10px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[12px]">
                     Get started
                 </button>
