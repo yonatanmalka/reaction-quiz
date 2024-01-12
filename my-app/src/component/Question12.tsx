@@ -44,7 +44,7 @@ const Question12:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
         <div>
             <div className="flex mt-[30px] justify-center  items-center">
                 <h1 className="text-[#000] mb-[40px] text-[22px] md:text-[26px] font-semibold text-center">
-                    How well do team members know each other on a personal level?
+                    How well do team members <br/> know each other on a <br/> personal level?
                 </h1>
             </div>
             <div className="grid px-[20px] grid-cols-5 gap-x-[8px] md:gap-x-[15px] w-[100%]">

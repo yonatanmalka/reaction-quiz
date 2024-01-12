@@ -66,8 +66,9 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
                 <p className="text-[#5553FE] font-bold text-[14px] text-center">5,000+ Companies</p>
                 <p className="text-[#343434] font-bold text-[12px] text-center">have chosen Reaction</p>
             </div>
+            <div className="mt-[40px]">
             <SliderComp/>
-
+            </div>
         </div>
     )
 }

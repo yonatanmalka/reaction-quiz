@@ -42,7 +42,7 @@ const Question8:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
         <div>
             <div className="mt-[30px] flex justify-center  items-center">
                 <h1 className="text-[#000] mb-[40px] text-[22px] md:text-[26px] font-semibold text-center">
-                    How do you perceive the overall morale of your team?
+                    How do you perceive the <br/> overall morale of your team?
                 </h1>
             </div>
             <div className="grid  px-[20px] grid-cols-5 gap-x-[8px] md:gap-x-[15px] w-[100%]">

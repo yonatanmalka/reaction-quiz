@@ -6,13 +6,13 @@ import Fire from "../../../images/fire.svg";
 const freq1 = {
     label: 'Before',
     data: ['73','70','20'],
-    backgroundColor: '#979797',
+    backgroundColor: '#555',
 }
 
 const freq2 = {
     label: 'After',
     data: ['141','141','100'],
-    backgroundColor: '#7BBF4C',
+    backgroundColor: '#5ADB00',
 }
 
 
@@ -36,14 +36,14 @@ const Questions16:React.FC<QuestionProps> = ({handleClick,states}) => {
                     <Image src={Fire} alt={'fire'}  className="w-[12px] h-[12px] md:w-[12px] md:h-[12px]" />
                 </span>
             </div>
-            <p className="text-[#979797] text-[12px] font-normal mr-[60px]">There is a high chance your team will see positive impact on team dynamics and engagement</p>
+            <p className="text-[#979797] text-[12px] mt-[10px] font-normal mr-[60px]">There is a high chance your team will see positive impact on team dynamics and engagement</p>
             <div className="flex flex-row gap-[20px] mt-[10px] items-center">
                 <div className="flex flex-row gap-[5px] md:gap-[8px] items-center">
-                    <div className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] rounded-[3px] bg-[#979797]" />
+                    <div className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] rounded-[3px] bg-[#555]" />
                     <p className="text-[#343434] text-[12px] md:text-[14px] font-normal">Before</p>
                 </div>
                 <div className="flex flex-row gap-[8px] items-center">
-                    <div className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] rounded-[3px] bg-[#7BBF4C]" />
+                    <div className="w-[10px] h-[10px] md:w-[15px] md:h-[15px] rounded-[3px] bg-[#5ADB00]" />
                     <p className="text-[#343434] text-[12px] md:text-[14px] font-normal">After</p>
                 </div>
             </div>
