@@ -27,8 +27,8 @@ const Questions16:React.FC<QuestionProps> = ({handleClick,states}) => {
 
     const months= states.improve_team;
     return(
-        <div>
-            <div className="mt-[30px] flex flex-row justify-between">
+        <div className="">
+            <div className="mt-[30px]  flex flex-row justify-between">
                 <p className="text-[#000] font-semibold text-[14px]">Plan success prediction</p>
 
                 <span className="bg-[#5553FE] py-[1px] md:py-[3px] px-[6px] md:px-[8px] rounded-[6px] md:rounded-[8px] flex flex-row gap-[3px] md:gap-[5px] items-center">

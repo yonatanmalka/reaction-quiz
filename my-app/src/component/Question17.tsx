@@ -10,7 +10,7 @@ interface QuestionProps {
 const Question17: React.FC<QuestionProps> = ({handleClick}) => {
 
     return (
-        <div className="md:pl-[10px] mt-[30px] relative  px-0">
+        <div className="md:px-[10px] mt-[30px] relative  px-0">
             <div className="textDiv ">
                 <h1 className="text-[#000] mb-[10px] md:mb-[20px] text-[22px] md:text-[26px] font-semibold text-center">
                     Recommanded plan

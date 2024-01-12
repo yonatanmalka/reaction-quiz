@@ -36,16 +36,16 @@ const Question9:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
             </div>
             <div className="yesCardDiv">
                 {list.map((item,index) => (
-                <div
+                <button
                     key={index}
-                    className={`YesCard cursor-pointer ${selectedCard === "no" ? "selected" : ""}`}
+                    className={`YesCard cursor-pointer `}
                     onClick={() => handleCardClick(index)}
                 >
                     <div>
                         <Img src={item.images} alt="none" className="w-[35px] h-[35px] md:w-[40px] md:h-[40px]" />
                     </div>
                     <div className="text-[#343434] font-semibold text-[16px] md:text-[20px] mt-[5px]">{item.name}</div>
-                </div>
+                </button>
                 ))}
             </div>
         </div>

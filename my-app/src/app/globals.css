@@ -111,8 +111,19 @@
 
 .YesCard.selected {
     border-radius: 8px;
-    border: 1px solid #F9B22D;
     background: rgba(249, 178, 45, 0.30);
+}
+.YesCard:hover {
+    /* Add your hover styles here */
+    background: rgba(249, 178, 45, 0.30);
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add box shadow or any other styles you prefer */
+}
+.emoji:hover {
+    /* Add your hover styles here */
+    background: rgba(249, 178, 45, 0.30);
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add box shadow or any other styles you prefer */
 }
 
 .textDiv {
@@ -138,7 +149,6 @@
 
 .YesCard {
     border-radius: 8px;
-    border: 1px solid #979797;
     background: #F5F5F5;
     width: 120px;
     display: flex;
@@ -219,7 +229,7 @@
     margin-top: 37px;
 }
 .slider-container {
-    height: 285px;
+    max-height: 350px;
     overflow-y: auto;
 
     /* Define scrollbar styles for Mozilla Firefox */
@@ -251,7 +261,7 @@
 
 @media  (max-width: 768px) {
     .slider-container {
-        height: 265px;
+        max-height: 335px;
         overflow-y: auto;
     }
 }
