@@ -1,10 +1,10 @@
 "use client"
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
 import { Img } from "@/utils/Img";
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const Slider = () => {
     const cardData = [
@@ -46,7 +46,11 @@ const Slider = () => {
                     pagination={{
                         clickable: true,
                     }}
-                    modules={[Pagination]}
+                    autoplay={{
+                        delay: 500,
+                        disableOnInteraction: false,
+                    }}
+                    modules={[Autoplay, Pagination, Navigation]}
                     className="mySwiper"
                 >
                     {cardData.map((card,index) => (

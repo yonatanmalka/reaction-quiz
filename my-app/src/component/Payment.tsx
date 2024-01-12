@@ -42,28 +42,35 @@ const list = [
 interface QuestionProps {
     handleClick: () => void;
     setData:any;
+    states:any;
 }
-const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
+const Payment:React.FC<QuestionProps> = ({handleClick,setData,states}) => {
     const [selectedOption, setSelectedOption] = useState("yearly");
 
     const handleOptionSelect = (option: React.SetStateAction<string>) => {
         setSelectedOption(option);
         setData(option);
     };
+    const StartDate = states.create_step_challenge.selectedDate.startDate.toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
+
+    const timeDifferenceInDays = Math.floor((states.create_step_challenge.selectedDate.endDate - states.create_step_challenge.selectedDate.startDate) / (1000 * 60 * 60 * 24));
 
     const isMonthlySelected = selectedOption === "monthly";
     const isYearlySelected = selectedOption === "yearly";
 
     return (
         <div className="w-[100%] h-[100%]">
-            <div className="fixed md:w-[400px] w-[425px]">
-            <Timer/>
+            <div className="fixed z-10 md:w-[400px] w-[425px]">
+                <Timer/>
             </div>
             <div>
-
-                <div className="flex flex-col justify-center  items-center mt-[5px]">
+                <div className="flex flex-col justify-center  items-center">
                     <div>
-                        <Img src={Logo} alt='logo' className='w-[100px] h-[70px]'/>
+                        <Img src={Logo} alt='logo' className='w-[100px] h-[70px] mt-[30px]'/>
                     </div>
                     <div className='md:text-[26px] font-semibold text-[22px] mt-[10px]'>
                         Your Challenge Is Ready!
@@ -80,7 +87,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                                     Start date
                                 </div>
                                 <div className='text-[12px] font-medium text-[#343434]'>
-                                    01 July 2024
+                                    {StartDate}
                                 </div>
                             </div>
                         </div>
@@ -93,7 +100,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                                     Duration
                                 </div>
                                 <div className='text-[12px] font-medium text-[#343434]'>
-                                    31 Days
+                                    {`${timeDifferenceInDays} days`}
                                 </div>
                             </div>
                         </div>
@@ -133,7 +140,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="relative">
+                        <div className="relative z-0">
                             <Img src='/images/rectangle.png' alt='logo'
                                  className='md:w-[140px] w-[120px] h-[80px] ml-[5px] md:h-[65px]'/>
                             <div className='absolute top-0  left-[55px] mt-[5px]'>

@@ -48,9 +48,9 @@ const Dailog = () => {
         team_members_know_each_other_on_persoal_level: null,
         team_members_comfort: null,
         improve_team: [],
-        create_step_challenge: [],
+        create_step_challenge: {},
         participation_reward: null,
-        admin_detail: [],
+        admin_detail: {},
         pricing: 'monthly',
         free_trial: false,
     };
@@ -131,8 +131,8 @@ const Dailog = () => {
                     {currentStep === 19 && ( <Question19 setData={(participation_reward: string) => setStates({ ...states, participation_reward })}  handleNextStep={handleNextStep} /> )}
                     {currentStep === 20 && ( <Questions20   handleClick={() => setCurrentStep(21)} /> )}
                     {currentStep === 21 && ( <Create_user  setData={(admin_detail: string) => setStates({ ...states, admin_detail })}  handleClick={() => setCurrentStep(22)} /> )}
-                    {currentStep === 22 && ( <Payment setData={(pricing: string) => setStates({ ...states, pricing })} handleClick={() => setCurrentStep(23)}  />  )}
-                    {currentStep === 23 && ( <PaymentForm handleClick={() => setCurrentStep(24)}  setData={(free_trial: boolean) => setStates({ ...states, free_trial })}  /> )}
+                    {currentStep === 22 && ( <Payment states={states} setData={(pricing: string) => setStates({ ...states, pricing })} handleClick={() => setCurrentStep(23)}  />  )}
+                    {currentStep === 23 && ( <PaymentForm states={states} handleClick={() => setCurrentStep(24)}  setData={(free_trial: boolean) => setStates({ ...states, free_trial })}  /> )}
                     {currentStep === 24 && ( <DownLoad_App  /> )}
                 </div>
                 {currentStep !== 22 && currentStep !== 23 && (

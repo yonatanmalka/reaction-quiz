@@ -17,19 +17,23 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
 
     const today = new Date();
 
-    const [selectedDate, setSelectedDate] = useState([
+    const [selectedDate, setSelectedDate] = useState(
         {
             startDate: today,
             endDate: undefined as Date | undefined, // explicitly provide the type here
             key: "selection",
         },
-    ]);
+    );
 
 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
     const handleDateChange = (ranges: any) => {
-        setSelectedDate([ranges.selection]);
+        setSelectedDate({
+            startDate: ranges.selection.startDate,
+            endDate: ranges.selection.endDate,
+            key: "selection",
+        });
     };
 
     const handleOutsideClick = (e: MouseEvent) => {
@@ -53,7 +57,7 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
     }, [isDatePickerOpen]);
 
     const handleNextClick = () => {
-        if (firstName && selectedDate[0].startDate && selectedDate[0].endDate) {
+        if (firstName && selectedDate.startDate && selectedDate.endDate) {
             const data = {
                 Challenge_title: firstName,
                 selectedDate: selectedDate,
@@ -63,7 +67,7 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
             toast.success('Saving Your Details');
         } else if(firstName === "") {
             toast.error('Write Challenge title');
-        } else if (selectedDate[0].endDate === undefined) {
+        } else if (selectedDate.endDate === undefined) {
             toast.error('Select End Date')
         } else (
             toast.error('Fill all the details')
@@ -97,9 +101,9 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
                         <Img src="/images/clock1.png" alt="none" className="w-[20px] h-[20px]" />
                     </div>
                     <div className="text-[14px] ml-[10px] cursor-pointer">
-                        {selectedDate[0].startDate.toLocaleDateString()} -{" "}
-                        {selectedDate[0].endDate !== undefined
-                            ? selectedDate[0].endDate?.toLocaleDateString() || "Select end date"
+                        {selectedDate.startDate.toLocaleDateString()} -{" "}
+                        {selectedDate.endDate !== undefined
+                            ? selectedDate.endDate?.toLocaleDateString() || "Select end date"
                             : "Select end date"}
 
                     </div>
@@ -119,13 +123,11 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
             {isDatePickerOpen && (
                 <div className="absolute top-[5px] right-[15px]">
                     <DateRangePicker
-                        ranges={selectedDate as Range[]}
+                        ranges={[selectedDate as Range]}
                         onChange={handleDateChange}
-                        // showSelectionPreview={true}
                         moveRangeOnFirstSelection={false}
                         months={1}
                         direction="horizontal"
-                        staticRanges={[]}
                         minDate={today}
                     />
                 </div>

@@ -42,8 +42,9 @@ const list = [
 interface QuestionProps {
     handleClick: () => void;
     setData:any;
+    states:any;
 }
-const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
+const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick,states}) => {
     const [selectedOption, setSelectedOption] = useState("monthly");
     const [checked, setChecked] = useState(false);
 
@@ -54,6 +55,16 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
     const handleOptionSelect = (option: React.SetStateAction<string>) => {
         setSelectedOption(option);
     };
+
+    const StartDate = states.create_step_challenge.selectedDate.startDate.toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+    });
+
+    const timeDifferenceInDays = Math.floor((states.create_step_challenge.selectedDate.endDate - states.create_step_challenge.selectedDate.startDate) / (1000 * 60 * 60 * 24));
+
+
 
     const isMonthlySelected = selectedOption === "monthly";
     const isYearlySelected = selectedOption === "yearly";
@@ -67,9 +78,9 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
             <div className="">
 
 
-                <div className="flex flex-col justify-center  items-center mt-[5px]">
+                <div className="flex flex-col justify-center  items-center">
                     <div>
-                        <Img src={Logo} alt='logo' className='w-[100px] h-[70px]'/>
+                        <Img src={Logo} alt='logo' className='w-[100px] h-[70px] mt-[30px]'/>
                     </div>
                     <div className='md:text-[26px] font-semibold text-[22px] mt-[10px]'>
                         Your Challenge Is Ready!
@@ -86,7 +97,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
                                     Start date
                                 </div>
                                 <div className='text-[12px] font-medium text-[#343434]'>
-                                    01 July 2024
+                                    {StartDate}
                                 </div>
                             </div>
                         </div>
@@ -99,7 +110,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
                                     Duration
                                 </div>
                                 <div className='text-[12px] font-medium text-[#343434]'>
-                                    31 Days
+                                    {`${timeDifferenceInDays} days`}
                                 </div>
                             </div>
                         </div>
