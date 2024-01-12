@@ -10,31 +10,31 @@ const Slider = () => {
     const cardData = [
         {
             id: 1,
-            name: "Nora Davis",
-            role: "Manager",
-            comment: "This platform is amazing!",
+            name: "Olivia Davis",
+            role: "HR manager",
+            comment: "Amazing fit!",
             reaction:
-                "Reaction is ad Reaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is ad",
-            imageSrc: "/images/review.png",
+                "It’s the first time we have a program that fits our organisation perfectly. Our employees and managers love it!",
+            imageSrc: "/review1.png",
+        },
+        {
+            id: 2,
+            name: "Jason Nguyen",
+            role: "CFO",
+            comment: "The best investment we made",
+            reaction:
+                "The program made a significant improvement in our employees' energy and performance, and generally, it’s fun being in the company!",
+            imageSrc: "/review2.png",
         },
 
         {
-            id: 2,
-            name: "Naira Davis",
-            role: "Manager",
-            comment: "This platform is amazing!",
-            reaction:
-                "Reaction is ad Reaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is ad",
-            imageSrc: "/images/review.png",
-        },
-        {
             id: 3,
-            name: "Sania Davis",
-            role: "Manager",
-            comment: "This platform is amazing!",
+            name: "Ethan Williams",
+            role: "Team leader",
+            comment: "I love Reaction!",
             reaction:
-                "Reaction is ad Reaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is adReaction is ad",
-            imageSrc: "/images/review.png",
+                "It has brought our team closer together, and we now collaborate better",
+            imageSrc: "/review3.png",
         },
     ];
 
@@ -54,8 +54,8 @@ const Slider = () => {
                     className="mySwiper"
                 >
                     {cardData.map((card,index) => (
-                        <SwiperSlide key={index}>
-                            <div  className="w-full border-2 rounded-[12px] p-[20px]  h-[200px] mt-[25px]">
+                        <SwiperSlide style={{boxShadow:'0px 4px 4px 0px rgba(0, 0, 0, 0.55)',borderRadius:14,height:170,overflow:'hidden'}} key={index}>
+                            <div  className="w-full p-[15px]  h-[200px]">
                                 <div className="flex flex-row gap-[15px] justify-start items-center">
                                     <div>
                                         <Img src={card.imageSrc} alt="logo" className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] " />
