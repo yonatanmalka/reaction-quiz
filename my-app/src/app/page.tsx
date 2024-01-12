@@ -10,7 +10,6 @@ import Question4 from "@/component/Questions4/page";
 import Question5 from "@/component/Questions5/page";
 import Question6 from "@/component/Questions6/page";
 import Question7 from "@/component/Questions7/page";
-import Question1 from "@/component/Questions01/page";
 import Question15 from "@/component/Questions15/page";
 import Questions20 from "@/component/Questions20/page";
 import Questions16 from "@/component/Questions16/page";
@@ -30,6 +29,7 @@ import Create_user from "@/component/Create_user";
 import Element1 from "../../images/element1.svg";
 import Element2 from "../../images/element2.svg";
 import DownLoad_App from "@/component/DownLoad_App";
+import Question1 from "@/component/Questions01/page";
 
 const Dailog = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
@@ -55,6 +55,7 @@ const Dailog = () => {
         free_trial: false,
     };
 
+
     const [states, setStates] = useState<any>(defaultStates);
     console.log(states);
     const getProgressBarWidth = () => {
@@ -67,7 +68,8 @@ const Dailog = () => {
         }, 1000);
     };
 
-    const shouldRenderComponent =  currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
+
+        const shouldRenderComponent =  currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
     const ProgressComponent = currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
@@ -84,7 +86,7 @@ const Dailog = () => {
                         <Image src={Logo} alt={'logo'} width={103} height={50} />
                         {(currentStep !== 15 && currentStep !== 7) && (
                         <div className="text-[#3C8AF0] text-[16px] font-medium">
-                            <span className="text-[#3C8AF0]">{currentStep}</span>/<span className="text-[#979797]">22</span>
+                            <span className="text-[#3C8AF0]">{currentStep}</span>/<span className="text-[#979797]">24</span>
                         </div>
                         )}
                     </div>
@@ -106,7 +108,9 @@ const Dailog = () => {
                     </div>
                 )}
                 <div className="w-[100%] z-20  relative" >
-                    {currentStep === 1 && ( <Question1 setData={(goal: string) => setStates({ ...states, goal })}  handleClick={() => setCurrentStep(2)}/> )}
+                    {currentStep === 1 && (
+                            <Question1 setData={(goal: string) => setStates({ ...states, goal })}  handleClick={handleNextStep}/>
+                    )}
                     {currentStep === 2 && ( <Question2 setData={(company: string) => setStates({ ...states, company })} handleNextStep={handleNextStep} /> )}
                     {currentStep === 3 && ( <Question3 setData={(work_style: string) => setStates({ ...states, work_style })} handleNextStep={handleNextStep} /> )}
                     {currentStep === 4 && ( <Question4 setData={(work_schedule: string) => setStates({ ...states, work_schedule })} handleNextStep={handleNextStep}  /> )}
@@ -130,7 +134,6 @@ const Dailog = () => {
                     {currentStep === 22 && ( <Payment setData={(pricing: string) => setStates({ ...states, pricing })} handleClick={() => setCurrentStep(23)}  />  )}
                     {currentStep === 23 && ( <PaymentForm handleClick={() => setCurrentStep(24)}  setData={(free_trial: boolean) => setStates({ ...states, free_trial })}  /> )}
                     {currentStep === 24 && ( <DownLoad_App  /> )}
-
                 </div>
                 {currentStep !== 22 && currentStep !== 23 && (
                 <div className="z-1">

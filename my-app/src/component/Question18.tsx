@@ -5,6 +5,7 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { Range } from "react-date-range";
+import { Toaster, toast } from 'sonner';
 
 interface QuestionProps {
     handleClick: () => void;
@@ -13,15 +14,17 @@ interface QuestionProps {
 
 const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
     const [firstName, setFirstName] = useState("");
+
     const today = new Date();
 
     const [selectedDate, setSelectedDate] = useState([
         {
             startDate: today,
-            endDate: null as Date | null,
+            endDate: undefined as Date | undefined, // explicitly provide the type here
             key: "selection",
         },
     ]);
+
 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
@@ -50,16 +53,21 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
     }, [isDatePickerOpen]);
 
     const handleNextClick = () => {
-        if (firstName && selectedDate[0].startDate) {
+        if (firstName && selectedDate[0].startDate && selectedDate[0].endDate) {
             const data = {
                 Challenge_title: firstName,
                 selectedDate: selectedDate,
             };
             setData(data);
             handleClick();
-        } else {
-            console.log("Please fill in the challenge title and select a date range.");
-        }
+            toast.success('Saving Your Details');
+        } else if(firstName === "") {
+            toast.error('Write Challenge title');
+        } else if (selectedDate[0].endDate === undefined) {
+            toast.error('Select End Date')
+        } else (
+            toast.error('Fill all the details')
+        )
     };
 
     return (
@@ -90,9 +98,15 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
                     </div>
                     <div className="text-[14px] ml-[10px] cursor-pointer">
                         {selectedDate[0].startDate.toLocaleDateString()} -{" "}
-                        {selectedDate[0].endDate ? selectedDate[0].endDate.toLocaleDateString() : "Select end date"}
+                        {selectedDate[0].endDate !== undefined
+                            ? selectedDate[0].endDate?.toLocaleDateString() || "Select end date"
+                            : "Select end date"}
+
                     </div>
                 </div>
+            </div>
+            <div>
+                <Toaster richColors position={"top-center"} closeButton={true}/>
             </div>
             <div className="mt-[154px]">
                 <button

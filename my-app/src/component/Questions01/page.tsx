@@ -35,18 +35,10 @@ interface QuestionProps {
 
 const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
     const [selected, setSelected] = useState<number | null>(null);
-
     const handleCardClick = (index: number) => {
         setSelected(index);
         setData(data[index].name);
-    };
-
-    const handleNextClick = () => {
-        if (selected !== null) {
-            handleClick();
-        } else {
-            console.log("No card selected");
-        }
+        handleClick();
     };
 
     return(
@@ -86,9 +78,6 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
                 </div>
             </div>
             <div className="">
-            <button onClick={handleNextClick} className="uppercase  h-[40px] flex items-center justify-center mt-[22px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] font-semibold leading-10 tracking-tight text-[#000]">
-                Next
-            </button>
             <div className="text-center text-[#606060] text-[12px]   mt-[17px]">
                 By clicking “next”, you agree with <button className="underline">Terms of Conditions,</button><button className="underline">Privacy Policy,</button> <button className="underline">Subscription Terms</button>
             </div>
@@ -96,5 +85,4 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
         </div>
     )
 }
-
 export default Question1;

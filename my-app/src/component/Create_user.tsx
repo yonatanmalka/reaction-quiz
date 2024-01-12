@@ -1,6 +1,7 @@
 "use client"
 
 import React, {useState} from "react";
+import { Toaster, toast } from 'sonner';
 interface QuestionProps {
     handleClick: () => void;
     setData:any;
@@ -18,7 +19,15 @@ const User:React.FC<QuestionProps> = ({handleClick,setData}) => {
     };
 
     const handleNextClick = () => {
-        if (firstName && lastName && isValidEmail(email)) {
+        if (firstName === "" && lastName === "" && !isValidEmail(email)) {
+            toast.error('Fill all the Details');
+        } else if (firstName === "") {
+            toast.error('Write First Name');
+        } else if (lastName === "") {
+            toast.error('Write Last Name');
+        } else if (!isValidEmail(email)) {
+            toast.error('Write Correct Email');
+        } else {
             const data = {
                 first_Name: firstName,
                 last_Name: lastName,
@@ -26,10 +35,9 @@ const User:React.FC<QuestionProps> = ({handleClick,setData}) => {
             };
             setData(data);
             handleClick();
-        } else {
-            alert("Please enter a valid email and fill in all details.");
         }
     };
+
 
 
     return (
@@ -77,6 +85,9 @@ const User:React.FC<QuestionProps> = ({handleClick,setData}) => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="mt-[10px] p-2 border  bg-[#EFF3F6]  border-[#EFF3F6] rounded-md w-full"
             />
+            <div>
+                <Toaster richColors position={"top-center"} closeButton={true}/>
+            </div>
             <button
                 onClick={handleNextClick}
                 className="uppercase  text-[#000] mt-[144px] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
