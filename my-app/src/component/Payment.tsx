@@ -56,13 +56,13 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
 
     return (
         <div className="w-[100%] h-[100%]">
-            <div className="fixed md:w-[400px] w-[425px]">
+            <div className="fixed z-10 md:w-[400px] w-[425px]">
             <Timer/>
             </div>
             <div>
 
-                <div className="flex flex-col justify-center  items-center mt-[5px]">
-                    <div>
+                <div className="flex flex-col  justify-center  items-center ">
+                    <div className="mt-[25px]">
                         <Img src={Logo} alt='logo' className='w-[100px] h-[70px]'/>
                     </div>
                     <div className='md:text-[26px] font-semibold text-[22px] mt-[10px]'>
@@ -133,7 +133,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="relative">
+                        <div className="relative z-0">
                             <Img src='/images/rectangle.png' alt='logo'
                                  className='md:w-[140px] w-[120px] h-[80px] ml-[5px] md:h-[65px]'/>
                             <div className='absolute top-0  left-[55px] mt-[5px]'>

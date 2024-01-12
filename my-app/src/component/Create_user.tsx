@@ -47,7 +47,7 @@ const User:React.FC<QuestionProps> = ({handleClick,setData}) => {
                     Enter your details to get access to the admin dashboard
                 </h1>
             </div>
-            <div className="w-full flex  gap-[10px] mt-[20px] flex-row ">
+            <div className="w-full flex px-[20px]   gap-[10px] mt-[20px] flex-row ">
                 <div className='w-[50%]'>
                     <input
                         type="text"
@@ -73,27 +73,30 @@ const User:React.FC<QuestionProps> = ({handleClick,setData}) => {
                     />
                 </div>
             </div>
-            <div>
-
+            <div className="px-[20px]">
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Work Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="mt-[10px] p-2 border  bg-[#EFF3F6]  border-[#EFF3F6] rounded-md w-full"
+                />
             </div>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Work Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mt-[10px] p-2 border  bg-[#EFF3F6]  border-[#EFF3F6] rounded-md w-full"
-            />
+
             <div>
                 <Toaster richColors position={"top-center"} closeButton={true}/>
             </div>
-            <button
-                onClick={handleNextClick}
-                className="uppercase  text-[#000] mt-[144px] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
-            >
-                Next
-            </button>
+            <div className="px-[20px]">
+                <button
+                    onClick={handleNextClick}
+                    className="uppercase  text-[#000] mt-[144px] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
+                >
+                    Next
+                </button>
+            </div>
+
         </div>
     );
 };

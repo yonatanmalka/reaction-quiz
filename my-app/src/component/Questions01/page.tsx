@@ -58,12 +58,12 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
             <h1 className="text-[#000] text-[12px] font-medium text-center mt-[10px] md:mt-[2px]">
                 1-MINUTE
             </h1>
-            <div className="mt-[25px] md:mt-[12px]">
+            <div className="mt-[25px] px-[20px] md:mt-[12px]">
                 <div className="grid grid-cols-2 gap-x-[15px] gap-y-[12px] mt-[15px] md:mt-[8px]">
-                    {data.map((item,index) => (
+                    {data.map((item, index) => (
                         <button
                             key={index}
-                            className={`rounded-[12px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selected === index ? 'border-[#F9B22D]' : 'border-[#979797]'} border-[#979797] flex flex-col  gap-[3px] md:gap-[5px] py-[20px] md:py-[15px] justify-center relative items-center`}
+                            className={`rounded-[12px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'}  ${selected === index ? 'border-none' : 'border-none'} border-[#979797] flex flex-col  gap-[3px] md:gap-[5px] py-[20px] md:py-[15px] justify-center relative items-center transition duration-300 ease-in-out hover:bg-opacity-30 hover:bg-yellow-400 hover:border-[#F9B22D]`}
                             onClick={() => handleCardClick(index)}
                         >
                             <Image src={item.Image} alt={"image"} className="w-[35px] h-[35px]" />
@@ -77,10 +77,27 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
                     ))}
                 </div>
             </div>
-            <div className="">
-            <div className="text-center text-[#606060] text-[12px]   mt-[17px]">
-                By clicking “next”, you agree with <button className="underline">Terms of Conditions,</button><button className="underline">Privacy Policy,</button> <button className="underline">Subscription Terms</button>
-            </div>
+            <div className="px-[20px] md:mt-[20px] mt-[5px]">
+                <div className="text-center text-[#606060] text-[12px] mt-[17px]">
+                    By clicking “next”, you agree with
+                    <button className="underline">
+                        <a href="https://www.reaction-club.com/termsofuse/" target="_blank" rel="noopener noreferrer">
+                            Terms of Conditions,
+                        </a>
+                    </button>
+                    <button className="underline">
+                        <a href="https://www.reaction-club.com/privacypolicy/" target="_blank" rel="noopener noreferrer">
+                            Privacy Policy,
+                        </a>
+                    </button>
+                    <button className="underline">
+                        <a href="https://www.reaction-club.com/termsofuse/" target="_blank" rel="noopener noreferrer">
+                            Subscription Terms
+                        </a>
+                    </button>
+                </div>
+
+
             </div>
         </div>
     )

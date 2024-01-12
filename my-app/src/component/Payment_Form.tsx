@@ -67,8 +67,8 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
             <div className="">
 
 
-                <div className="flex flex-col justify-center  items-center mt-[5px]">
-                    <div>
+                <div className="flex flex-col justify-center  items-center ">
+                    <div className="mt-[25px]">
                         <Img src={Logo} alt='logo' className='w-[100px] h-[70px]'/>
                     </div>
                     <div className='md:text-[26px] font-semibold text-[22px] mt-[10px]'>

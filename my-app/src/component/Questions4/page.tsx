@@ -44,11 +44,11 @@ const Question4:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
     return(
         <div>
             <h1 className="text-[22px] md:text-[26px] text-[#000] text-center font-semibold mt-[30px] md:mt-[20px]">What is your team’s work schedule like?</h1>
-            <div className="flex flex-col gap-[10px] mt-[30px] md:mt-[20px]">
+            <div className="flex flex-col px-[20px] gap-[10px] mt-[30px] md:mt-[20px]">
                 {list.map((item,index) => (
                     <button
                         onClick={() => handleCardClick(index)}
-                        key={index} className={`rounded-[10px] px-[15px] py-[20px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selected === index ? 'border-[#F9B22D]' : 'border-[#979797]'} border-[#979797] flex flex-row w-[100%] justify-between items-center`}
+                        key={index} className={` emoji rounded-[10px] px-[15px] py-[20px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selected === index ? 'border-none' : 'border-none'} border-[#979797] flex flex-row w-[100%] justify-between items-center`}
                     >
                         <div className="flex flex-row gap-[14px] md:gap-[20px] items-center">
                             <Image src={item.image} alt={'Logo'} className="w-[23px] md:w-[28px] h-[23px] md:h-[28px]" />

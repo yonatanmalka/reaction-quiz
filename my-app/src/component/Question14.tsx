@@ -15,6 +15,10 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
         { title: "Time Management" },
         { title: "Time Management" },
         { title: "Time Management" },
+        { title: "Time Management" },
+
+
+
     ];
     const [selected, setSelected] = useState<number[]>([]);
 
@@ -53,14 +57,14 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
                 </h1>
             </div>
             <div className="slider-container mt-[10px] w-full">
-                <div className="flex flex-col gap-[10px] pr-[10px] w-[100%]">
+                <div className="flex flex-col  px-[20px] gap-[10px] pr-[10px] w-[100%]">
                     {areasToImprove.map((area, index) => (
                         <div
                             key={index}
-                            className={`rounded-[10px] px-[15px] cursor-pointer relative py-[18px] md:py-[18px] ${
+                            className={` emoji rounded-[10px] px-[15px] cursor-pointer relative py-[18px] md:py-[18px] ${
                                 selected.includes(index) ? "bg-opacity-30" : ""
                             } ${selected.includes(index) ? "bg-yellow-400" : "bg-[#F5F5F5]"} border-[1px] ${
-                                selected.includes(index) ? "border-[#F9B22D]" : "border-[#979797]"
+                                selected.includes(index) ? "border-none" : "border-none"
                             } border-[#979797] text-center w-[100%]`}
                             onClick={() => handleCardClick(index)}
                         >
@@ -74,10 +78,10 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
                     ))}
                 </div>
             </div>
-            <div className="w-[100%]">
+            <div className="w-[100%] px-[20px] pb-[40px]">
                 <button
                     onClick={handleNextClick}
-                    className="uppercase  h-[40px] flex items-center justify-center mt-[30px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000]"
+                    className="uppercase   h-[40px] flex items-center justify-center mt-[30px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000]"
                 >
                     Next
                 </button>

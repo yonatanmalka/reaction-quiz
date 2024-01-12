@@ -47,11 +47,11 @@ const Question12:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
                     How well do team members know each other on a personal level?
                 </h1>
             </div>
-            <div className="grid grid-cols-5 gap-x-[5px] md:gap-x-[10px] w-[100%]">
+            <div className="grid px-[20px] grid-cols-5 gap-x-[8px] md:gap-x-[15px] w-[100%]">
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className={`rounded-[10px] py-[15px] relative ${selectedCard === index ? 'bg-opacity-30' : ''} ${selectedCard === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selectedCard === index ? 'border-[#F9B22D]' : 'border-[#979797]'} border-[#979797] flex flex-row w-[100%] justify-center items-center`}
+                        className={` emoji rounded-[10px] py-[12px] relative ${selectedCard === index ? 'bg-opacity-30' : ''} ${selectedCard === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'} border-[1px] ${selectedCard === index ? 'border-none' : 'border-none'} border-[#979797] flex flex-row w-[100%] justify-center items-center`}
                         onClick={() => handleCardClick(index)}
                     >
                         <div>
@@ -60,7 +60,7 @@ const Question12:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
                     </div>
                 ))}
             </div>
-            <div className="w-[100%] flex flex-row justify-between mt-[5px]">
+            <div className="w-[100%] px-[20px] flex flex-row justify-between mt-[5px]">
                 <div className="text-[#343434] font-semibold text-[12px] md:text-[14px]">
                     Very limited
                 </div>
