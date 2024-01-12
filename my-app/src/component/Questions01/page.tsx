@@ -44,16 +44,16 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
     return(
         <div className="relative">
             <div className="flex mt-[40px] md:mt-[10px] justify-center">
-                <Image src={Logo} alt={'logo'} className="w-[150px] h-[47px]" />
+                <Image src={Logo} alt={'logo'} className="w-[120px] h-[55px]" />
             </div>
-            <div className="mt-[22px] md:mt-[10px] flex flex-col text-center">
-                <h1 className="text-[30px] font-medium text-center">
-                    AI-CUSTOMIZED <br/> WORKPLACE
+            <div className="mt-[22px] md:mt-[20px] flex flex-col text-center">
+                <h1 className="text-[35px] font-medium text-center">
+                    AI WORKPLACE
                 </h1>
-                <h1 className="text-[30px] font-bold text-center">STEP CHALLENGE</h1>
+                <h1 className="text-[35px] font-bold text-center">STEP CHALLENGE</h1>
             </div>
             <div className="flex justify-center">
-                <h1 className="text-[#979797] text-[14px] mt-[10px] md:mt-[5px] font-normal">FIRST, SELECT YOUR <span className="font-bold">MAIN GOAL</span></h1>
+                <h1 className="text-[#979797] text-[14px] mt-[10px] md:mt-[5px] font-normal">SELECT YOUR <span className="font-bold text-[#565454]">MAIN GOAL</span></h1>
             </div>
             <h1 className="text-[#000] text-[12px] font-medium text-center mt-[10px] md:mt-[2px]">
                 1-MINUTE
@@ -77,9 +77,9 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
                     ))}
                 </div>
             </div>
-            <div className="px-[20px] md:mt-[20px] mt-[5px]">
+            <div className="md:px-[20px] md:mt-[40px] mt-[15px]">
                 <div className="text-center text-[#606060] text-[12px] mt-[17px]">
-                    By clicking “next”, you agree with
+                    By selecting one of the options above, you agree with
                     <button className="underline">
                         <a href="https://www.reaction-club.com/termsofuse/" target="_blank" rel="noopener noreferrer">
                             Terms of Conditions,
