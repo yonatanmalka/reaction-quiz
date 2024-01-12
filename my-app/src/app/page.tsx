@@ -2,7 +2,7 @@
 
 import React, {useState} from "react";
 import Image from "next/image";
-import Logo from "../../images/logo.svg";
+import Logo from "../../images/Logo1.png";
 import Back from "../../images/back.svg";
 import Question2 from "@/component/Questions2/page";
 import Question3 from "@/component/Questions3/page";
@@ -59,7 +59,7 @@ const Dailog = () => {
     const [states, setStates] = useState<any>(defaultStates);
     console.log(states);
     const getProgressBarWidth = () => {
-        return ((currentStep - 1) / 23) * 100;
+        return ((currentStep - 1) / 13) * 100;
     };
 
     const handleNextStep = () => {
@@ -71,24 +71,26 @@ const Dailog = () => {
 
         const shouldRenderComponent =  currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
-    const ProgressComponent = currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
+    const ProgressComponent = currentStep !== 21 && currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22 && currentStep !== 16 && currentStep !== 17 && currentStep !== 18 && currentStep !== 19;
 
     return(
         <main className="flex justify-center bg-[#F5F5F5] items-center">
             <div className={`md:w-[400px] w-[425px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
                 {shouldRenderComponent  && (
-                    <div className={`flex w-[100%] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7) ? 'justify-between' : 'justify-center'} items-end `}>
-                        {(currentStep !== 15 && currentStep !== 7) && (
+                    <div className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7 && currentStep !==21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) ? 'justify-between' : 'justify-center'} items-end `}>
+                        {(currentStep !== 15 && currentStep !== 7 && currentStep !==21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) && (
                         <button onClick={() => setCurrentStep(currentStep - 1)}>
                             <Image src={Back} alt={'backButton'} width={15} height={14} />
                         </button>
                          )}
-                        <Image src={Logo} alt={'logo'} width={103} height={50} />
-                        {(currentStep !== 15 && currentStep !== 7) && (
+                        <Image src={Logo} alt={'logo'} width={93} height={40} autoFocus={true} />
+                        <div>
+                        {(currentStep !== 15 && currentStep !== 7 && currentStep !==21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16 ) && (
                         <div className="text-[#3C8AF0] text-[16px] font-medium">
-                            <span className="text-[#3C8AF0]">{currentStep}</span>/<span className="text-[#979797]">24</span>
+                            <span className="text-[#3C8AF0]">{currentStep}</span>/<span className="text-[#979797]">14</span>
                         </div>
                         )}
+                        </div>
                     </div>
                 )}
                 {ProgressComponent  && (
