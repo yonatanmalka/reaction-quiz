@@ -1,7 +1,4 @@
 import React, {useEffect, useState} from "react";
-import Image from "next/image";
-import Start from "../../../images/stars.svg";
-import Slider from "@/component/Slider";
 import SliderComp from "@/component/SliderNew";
 
 interface QuestionProps {
@@ -71,9 +68,6 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
             </div>
             <SliderComp/>
 
-            {/*<button onClick={handleClick} className="uppercase h-[40px] flex items-center justify-center mt-[32px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] font-semibold leading-10 tracking-tight text-[#000]">*/}
-            {/*    Next*/}
-            {/*</button>*/}
         </div>
     )
 }

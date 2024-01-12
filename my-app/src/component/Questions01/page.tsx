@@ -16,7 +16,7 @@ const data = [
     },
     {
         Image:Pic2,
-        name:"Promote Wellbeing"
+        name:"Promote WellBeing"
     },
     {
         Image:Pic3,

@@ -75,7 +75,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick,states}) => {
             <div className="fixed md:w-[400px] w-[425px]">
                 <Timer/>
             </div>
-            <div className="">
+            <div className="hy">
 
 
                 <div className="flex flex-col justify-center  items-center">

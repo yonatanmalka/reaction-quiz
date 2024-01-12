@@ -1,7 +1,6 @@
 "use client"
 
-import React, {useState} from "react";
-import {Img} from "@/utils/Img";
+import React from "react";
 
 interface QuestionProps {
     handleClick: () => void;
@@ -13,7 +12,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
         <div className="md:px-[10px] mt-[30px] relative  px-0">
             <div className="textDiv ">
                 <h1 className="text-[#000] mb-[10px] md:mb-[20px] text-[22px] md:text-[26px] font-semibold text-center">
-                    Recommanded plan
+                    Recommended plan
                 </h1>
             </div>
             <div className="w-[20px] md:h-[200px] h-[180px] md:top-[70px] top-[60px] md:left-[18px] left-[7px]  absolute z-10 lineVertical">
@@ -65,7 +64,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                     Ongoing
                 </div>
                 <div className=" text-[12px] text-[#787676] font-normal">
-                    Unlock other app features to elevate team excitment
+                    Unlock other app features to elevate team excitement
                 </div>
             </div>
 

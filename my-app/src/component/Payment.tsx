@@ -1,12 +1,10 @@
 "use client"
 import React, {useState} from "react";
 import {Img} from "@/utils/Img";
-import Slider from "@/component/Slider";
 import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
 import Logo from "../../images/logo.svg";
 import {BarChart} from "@/component/chats";
-import LineGraph from "../../images/linegraph.svg"
 
 const months =  ['Week1', "Week2", "Week3", "Week4"];
 
