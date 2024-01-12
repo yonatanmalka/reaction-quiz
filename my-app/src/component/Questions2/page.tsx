@@ -2,7 +2,7 @@
 import React, {useState} from "react";
 import Image from "next/image"
 import BriefCase from "../../../images/Briefcase.png";
-import Factory from "../../../images/factory.png";
+import Factory from "../../../images/Factory.png";
 import Heart from "../../../images/heart.svg";
 import Ok from "../../../images/Ok.svg";
 
