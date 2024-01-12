@@ -102,7 +102,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                         <Img src='/images/girl.png' alt='logo' className='w-[94px] h-[134px]'/>
                     </div>
                 </div>
-                <div className="bg-[#979797] h-[1px] mx-[40px] flex-1" />
+                <div className="bg-[#979797] h-[1px] md:mx-[40px] mx-[20px] flex-1" />
                 <div className='text-[14px] text-[#000] px-[40px] mt-[10px] font-semibold'>
                     Engagement prediction
                 </div>
@@ -115,7 +115,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                         }}
                     />
                 </div>
-                <div className="px-[20px]">
+                <div className="md:px-[40px] px-[20px]">
                 <div className={`paymentCard w-[100%] flex  items-center ${isMonthlySelected ? 'selected' : ''}`}
                      onClick={() => handleOptionSelect('monthly')}>
                     <div className='flex flex-row items-center  justify-between px-[10px] w-[100%] '>
@@ -218,10 +218,10 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                         </div>
                     </div>
                 </div>
-                <div className="px-[20px] mt-[20px] ">
+                <div className="md:px-[40px] px-[20px] mt-[20px] ">
                     <button onClick={handleClick}  className="uppercase  h-[40px]  flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000]">GET MY CHALLENGE</button>
                 </div>
-                <div className='px-[20px] text-center text-[10px] mt-[20px] text-[#979797]'>
+                <div className='md:px-[40px] px-[20px] text-center text-[10px] mt-[20px] text-[#979797]'>
                     By clicking <span className='text-black font-bold'>GET MY CHALLENGE, </span>I agree to pay $0.99 per
                     user per month and that if I do not cancel before
                     the end of the first month plan, it will convert to a monthly subscription plan and Reaction will
@@ -233,7 +233,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                 <div className='md:text-[26px]  text-center font-semibold text-[22px] mt-[15px] pb-[10px]'>
                     What you get
                 </div>
-                <div className='flex flex-col  gap-[10px] px-[20px] justify-start items-start'>
+                <div className='flex flex-col  gap-[10px] md:px-[40px] px-[20px] justify-start items-start'>
                     {list.map((item,index) => (
                     <div
                         key={index}
@@ -248,7 +248,10 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData}) => {
                     </div>
                     ))}
                 </div>
-                <SliderComp/>
+                <div className="md:px-[20px] px-[0px]">
+                    <SliderComp/>
+
+                </div>
             </div>
         </div>
     );

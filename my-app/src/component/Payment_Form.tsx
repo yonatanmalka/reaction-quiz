@@ -108,7 +108,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
                         <Img src='/images/girl.png' alt='logo' className='w-[94px] h-[134px]'/>
                     </div>
                 </div>
-                <div className="bg-[#979797] h-[1px] mx-[40px] flex-1" />
+                <div className="bg-[#979797] h-[1px] md:mx-[40px] mx-[20px] flex-1" />
                 <div className='text-[12px] text-[#000] px-[40px] mt-[10px] font-semibold'>
                     Engagement prediction
                 </div>
@@ -121,12 +121,12 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
                         }}
                     />
                 </div>
-                <div className='md:text-[18px] text-[14px] px-[30px]  md:px-[20px] text-[#979797]  text-center mt-[15px] font-semibold'>
+                <div className='md:text-[18px] text-[14px] px-[30px]  md:px-[30px] text-[#979797]  text-center mt-[15px] font-semibold'>
                     Subscription starts at <span className='text-black font-bold'>$4.99</span> per user per month.
                     Cancel
                     anytime
                 </div>
-                <div className="mx-[20px]">
+                <div className="mx-[30px] md:mx-[30px]">
                 <div
                     className="w-full h-[35px] md:h-[50px]  px-[20px] flex  flex-row justify-between items-center mt-[25px] iosCard">
                     <div className=" text-[14px] md:text-[18px] font-normal text-[#343434]">
@@ -152,7 +152,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
                     </div>
                 </div>
                 </div>
-                <div className="w-full mt-[10px] px-[20px] ">
+                <div className="w-full mt-[10px] px-[30px] ">
                     <button onClick={handleClick} className="uppercase  h-[40px] flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000]">SUBSCRIBE NOW</button>
                 </div>
                 <div className='px-[20px] text-center text-[11px] mt-[20px] text-[#979797]'>
@@ -167,7 +167,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
                 <div className='md:text-[26px]  text-center font-semibold text-[22px] mt-[15px] pb-[10px]'>
                     What you get
                 </div>
-                <div className='flex  flex-col  gap-[10px] px-[20px] justify-start items-start'>
+                <div className='flex  flex-col  gap-[10px] px-[30px] justify-start items-start'>
                     {list.map((item,index) => (
 
                         <div
@@ -183,7 +183,10 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick}) => {
                         </div>
                     ))}
                 </div>
-                <SliderComp/>
+                <div className="md:mx-[10px]">
+                    <SliderComp/>
+
+                </div>
             </div>
         </div>
     );
