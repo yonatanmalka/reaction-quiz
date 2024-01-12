@@ -39,7 +39,7 @@ const Question2:React.FC<QuestionProps> = ({ handleNextStep,setData }) => {
 
     return(
         <div>
-            <h1 className="text-[22px] md:text-[26px] text-[#000] text-center font-semibold mt-[30px]">What type of organization are you working in?</h1>
+            <h1 className="text-[22px] md:text-[26px] hy text-[#000] text-center font-semibold mt-[30px]">What type of organization are you working in?</h1>
             <div className="flex px-[20px] flex-col gap-[10px] mt-[30px]">
                 {list.map((item,index) => (
                     <button
