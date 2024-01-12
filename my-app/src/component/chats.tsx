@@ -96,5 +96,5 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
         };
     }, [data]);
 
-    return <canvas className="w-full" ref={chartRef} />;
+    return <canvas className="w-full min-w-[370px]" ref={chartRef} />;
 };

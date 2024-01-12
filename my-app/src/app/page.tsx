@@ -2,7 +2,7 @@
 
 import React, {useState} from "react";
 import Image from "next/image";
-import Logo from "../../images/Logo1.png";
+import Logo from "../../images/logo.png";
 import Back from "../../images/back.svg";
 import Question2 from "@/component/Questions2/page";
 import Question3 from "@/component/Questions3/page";
@@ -31,7 +31,7 @@ import Element2 from "../../images/element2.svg";
 import DownLoad_App from "@/component/DownLoad_App";
 import Question1 from "@/component/Questions01/page";
 
-const Dailog = () => {
+const Questionary = () => {
     const [currentStep, setCurrentStep] = useState<number>(1);
 
     const defaultStates = {
@@ -57,7 +57,7 @@ const Dailog = () => {
 
 
     const [states, setStates] = useState<any>(defaultStates);
-    console.log(states);
+
     const getProgressBarWidth = () => {
         return ((currentStep - 1) / 13) * 100;
     };
@@ -69,7 +69,7 @@ const Dailog = () => {
     };
 
 
-        const shouldRenderComponent =  currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
+    const shouldRenderComponent =  currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
     const ProgressComponent = currentStep !== 21 && currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22 && currentStep !== 16 && currentStep !== 17 && currentStep !== 18 && currentStep !== 19;
 
@@ -126,7 +126,7 @@ const Dailog = () => {
                     {currentStep === 12 && ( <Question12 setData={(team_members_know_each_other_on_persoal_level: string) => setStates({ ...states, team_members_know_each_other_on_persoal_level })} handleNextStep={handleNextStep} /> )}
                     {currentStep === 13 && ( <Question13 setData={(team_members_comfort: string) => setStates({ ...states, team_members_comfort })} handleNextStep={handleNextStep} /> )}
                     {currentStep === 14 && ( <Question14 setData={(improve_team: any[]) => setStates({ ...states, improve_team })}  handleClick={() => setCurrentStep(15)} />)}
-                    {currentStep === 15 && ( <Question15   handleNextStep={() => setCurrentStep(16)} /> )}
+                    {currentStep === 15 && ( <Question15  handleNextStep={() => setCurrentStep(16)} /> )}
                     {currentStep === 16 && ( <Questions16 states={states} handleClick={() => setCurrentStep(17)} /> )}
                     {currentStep === 17 && ( <Question17  handleClick={() => setCurrentStep(18)}  />  )}
                     {currentStep === 18 && ( <Question18 setData={(create_step_challenge: string) => setStates({ ...states, create_step_challenge })} handleClick={() => setCurrentStep(19)} /> )}
@@ -157,4 +157,4 @@ const Dailog = () => {
     )
 }
 
-export default Dailog;
+export default Questionary;
