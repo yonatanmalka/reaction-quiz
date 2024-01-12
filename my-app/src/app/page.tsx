@@ -94,7 +94,7 @@ const Dailog = () => {
                     </div>
                 )}
                 {ProgressComponent  && (
-                    <div className="mt-[13px] w-[100%] z-20 relative">
+                    <div className="mt-[13px] hy w-[100%] z-20 relative">
                         <div
                             className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md overflow-hidden"
                             style={{ borderRadius: '3px' }}
