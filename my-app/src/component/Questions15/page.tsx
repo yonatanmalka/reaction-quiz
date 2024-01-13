@@ -112,11 +112,11 @@ const Questions15: React.FC<QuestionProps> = ({ handleNextStep }) => {
                 const nextPercent = prevPercent + 1;
                 if (nextPercent === 100) {
                     clearInterval(interval); // Stop the interval when percent reaches 100
-                    setTimeout(handleNextStep, 2000); // Call handleNextStep after 2 seconds
+                    setTimeout(handleNextStep, 3500); // Call handleNextStep after 2 seconds
                 }
                 return nextPercent;
             });
-        }, 30); // Adjust the interval duration for smoother animation
+        }, 160); // Adjust the interval duration for smoother animation
         return () => clearInterval(interval); // Cleanup the interval on component unmount
     }, [handleNextStep]);
 
