@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .Qustionaries {
     width: 693px;
     height: 1262px;
@@ -337,4 +336,13 @@
 }
 .lineVertical{
     background: linear-gradient(180deg, #F9B22D 0%, #FFF 93.5%);
+}
+
+
+.slick-slider {
+    width: 100% !important;
+}
+
+.flex{
+ display: flex !important;
 }

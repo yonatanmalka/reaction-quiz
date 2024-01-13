@@ -112,13 +112,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData,states}) => {
                     Engagement prediction
                 </div>
                 <div className="my-[10px] mx-[30px]">
-                    <BarChart
-                        params={{
-                            labels: months,
-                            datasets: [freq1],
-                            chartType: 'line',
-                        }}
-                    />
+                   <Img src="/chart.png" alt="Engagement Prediction Chart" className="w-full"/>
                 </div>
                 <div className="px-[20px]">
                 <div className={`paymentCard w-[100%] flex  items-center ${isMonthlySelected ? 'selected' : ''}`}
