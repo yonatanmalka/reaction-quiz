@@ -7,7 +7,7 @@ import InternationalImage from "../../../images/earth.png";
 const list = [
     {
         image: NationalImage,
-        name : "Everyone in my team is in the same time zone?",
+        name : "Everyone in my team is in the same time zone",
     },
     {
         image: InternationalImage,
