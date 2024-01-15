@@ -124,13 +124,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick,states}) => {
                     Engagement prediction
                 </div>
                 <div className="my-[10px] mx-[30px]">
-                    <BarChart
-                        params={{
-                            labels: months,
-                            datasets: [freq1],
-                            chartType: 'line',
-                        }}
-                    />
+                    <Img src="/chart.png" alt="Engagement Prediction Chart" className="w-full"/>
                 </div>
                 <div className='md:text-[18px] text-[14px] px-[30px]  md:px-[20px] text-[#979797]  text-center mt-[15px] font-semibold'>
                     Subscription starts at <span className='text-black font-bold'>$4.99</span> per user per month.
