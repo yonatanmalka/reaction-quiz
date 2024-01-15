@@ -52,9 +52,10 @@ const Slider = () => {
                     }}
                     modules={[Autoplay, Pagination, Navigation]}
                     className="mySwiper"
+
                 >
                     {cardData.map((card,index) => (
-                        <SwiperSlide style={{border:'1px solid #dadada',borderRadius:14,height:170,overflow:'hidden'}} key={index}>
+                        <SwiperSlide  style={{border:'1px solid #dadada',borderRadius:14,height:185}} key={index}>
                             <div  className="w-full p-[15px]  h-[200px]">
                                 <div className="flex flex-row gap-[15px] justify-start items-center">
                                     <div>

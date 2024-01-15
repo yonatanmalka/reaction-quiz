@@ -72,21 +72,19 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick,states}) => {
     // @ts-ignore
     return (
         <div className="w-[100%]">
-            <div className="fixed md:w-[400px] w-[425px]">
+            <div className="fixed md:w-[400px] z-20 w-[425px]">
                 <Timer/>
             </div>
             <div className="hy">
-
-
                 <div className="flex flex-col justify-center  items-center">
                     <div>
-                        <Img src={Logo} alt='logo' className='w-[100px] h-[70px] mt-[30px]'/>
+                        <Img src={Logo} alt='logo' className='w-[100px] h-[70px] mt-[40px]'/>
                     </div>
                     <div className='md:text-[26px] font-semibold text-[22px] mt-[10px]'>
                         Your Challenge Is Ready!
                     </div>
                 </div>
-                <div className='flex flex-row px-[20px] my-[10px] md:px-[40px] justify-between items-center '>
+                <div className='flex flex-row px-[40px] my-[10px] md:px-[40px] justify-between items-center '>
                     <div className='flex-col flex items-start'>
                         <div className='flex justify-center items-center gap-[8px] flex-row'>
                             <div className='h-[34px] w-[34px] bg-[#DADADA] flex items-center justify-center rounded-full'>
@@ -116,7 +114,7 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick,states}) => {
                         </div>
                     </div>
                     <div>
-                        <Img src='/images/girl.png' alt='logo' className='w-[94px] h-[134px]'/>
+                        <Img src='/images/girl.png' alt='logo' className='w-[84px] h-[134px]'/>
                     </div>
                 </div>
                 <div className="bg-[#979797] h-[1px] mx-[40px] flex-1" />
@@ -133,11 +131,11 @@ const PaymentForm:React.FC<QuestionProps> = ({setData,handleClick,states}) => {
                 </div>
                 <div className="mx-[20px]">
                 <div
-                    className="w-full h-[35px] md:h-[50px]  px-[20px] flex  flex-row justify-between items-center mt-[25px] iosCard">
+                    className="w-full h-[45px] md:h-[50px]  px-[20px] flex  flex-row justify-between items-center mt-[25px] iosCard">
                     <div className=" text-[14px] md:text-[18px] font-normal text-[#343434]">
                         Unlock 7 days free trial
                     </div>
-                    <div className="mt-[7px]">
+                    <div className="mt-[7px] relative z-10  ">
                         <label>
                             <Switch
                                 onChange={handleChange}
