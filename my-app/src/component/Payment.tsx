@@ -114,7 +114,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData,states}) => {
                 <div className="my-[10px] mx-[30px]">
                    <Img src="/chart.png" alt="Engagement Prediction Chart" className="w-full"/>
                 </div>
-                <div className="px-[20px]">
+                <div className="px-[20px] mt-[30px]">
                 <div className={`paymentCard w-[100%] flex  items-center ${isMonthlySelected ? 'selected' : ''}`}
                      onClick={() => handleOptionSelect('monthly')}>
                     <div className='flex flex-row items-center  justify-between px-[10px] w-[100%] '>
@@ -134,7 +134,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData,states}) => {
                         </div>
                         <div className="relative z-0">
                             <Img src='/images/rectangle.png' alt='logo'
-                                 className='md:w-[140px] w-[120px] h-[80px] ml-[5px] md:h-[65px]'/>
+                                 className='md:w-[140px] w-[120px] h-[60px] ml-[5px] md:h-[65px]'/>
                             <div className='absolute top-0  left-[55px] mt-[5px]'>
                                 <div className='md:text-[10px] text-[8px] font-semibold '>
                                     Try first month
@@ -187,7 +187,7 @@ const Payment:React.FC<QuestionProps> = ({handleClick,setData,states}) => {
                             </div>
                             <div className="relative">
                                 <Img src='/images/rectangle.png' alt='logo'
-                                     className='md:w-[140px] w-[120px] h-[80px] ml-[5px] md:h-[65px]'/>
+                                     className='md:w-[140px] w-[120px] h-[60px] ml-[5px] md:h-[65px]'/>
                                 <div className='absolute top-0  left-[55px] mt-[5px]'>
                                     <div className='md:text-[10px] text-[8px] font-semibold '>
                                         Try first month
