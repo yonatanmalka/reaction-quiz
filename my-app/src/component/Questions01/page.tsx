@@ -3,10 +3,10 @@
 import React, {useState} from "react";
 import Image from "next/image";
 import Logo from "../../../images/logo.svg";
-import Pic1 from "../../../images/goals1.svg";
-import Pic2 from "../../../images/goals2.svg";
-import Pic3 from "../../../images/goals3.svg";
-import Pic4 from "../../../images/goals4.svg";
+import Pic1 from "../../../images/partners.png";
+import Pic2 from "../../../images/lotus.png";
+import Pic3 from "../../../images/running.png";
+import Pic4 from "../../../images/confusion.png";
 import Ok from "../../../images/Ok.svg"
 
 const data = [
