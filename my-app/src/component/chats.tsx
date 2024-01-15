@@ -75,7 +75,6 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
                                 ctx.save();
                                 ctx.strokeStyle = '#615C55';
                                 ctx.lineWidth = 2;
-                                ctx.setLineDash([5, 5]);
                                 ctx.beginPath();
                                 ctx.moveTo(xPixel, chart.chartArea.top);
                                 ctx.lineTo(xPixel, chart.chartArea.bottom);
