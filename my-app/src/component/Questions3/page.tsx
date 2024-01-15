@@ -1,10 +1,10 @@
 "use client"
 import React, {useState} from "react";
 import Image from "next/image"
-import Technologist from "../../../images/Technologist.svg";
-import House from "../../../images/House.svg";
-import OfficeBuilding from "../../../images/Office Building.svg";
-import Bus from "../../../images/Bus.svg";
+import Technologist from "../../../images/work-from-home.png";
+import House from "../../../images/house.png";
+import OfficeBuilding from "../../../images/flat.png";
+import Bus from "../../../images/bus.png";
 import Ok from "../../../images/Ok.svg";
 
 const list = [

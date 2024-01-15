@@ -8,23 +8,23 @@ interface QuestionProps {
 const Question8:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
     const images = [
         {
-            image:'/images/1star.png',
+            image:'/images/sad.png',
             name:'1 Star'
         },
         {
-            image:'/images/2star.png',
+            image:'/images/sad (1).png',
             name:'2 Star'
         },
         {
-            image:'/images/3star.png',
+            image:'/images/confused.png',
             name:'3 Star'
         },
         {
-            image:'/images/4star.png',
+            image:'/images/smile.png',
             name:'4 Star'
         },
         {
-            image:'/images/5star.png',
+            image:'/images/happy.png',
             name:'5 Star'
         }
     ];

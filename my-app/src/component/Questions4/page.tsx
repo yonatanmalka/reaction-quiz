@@ -1,10 +1,10 @@
 "use client"
 import React, {useState} from "react";
 import Image from "next/image"
-import Clock from "../../../images/clock.svg";
-import Owl from "../../../images/Owl.png"
-import Pencil from "../../../images/Pencil.svg";
-import ManPilot from "../../../images/ManPilot.svg";
+import Clock from "../../../images/clock.png";
+import Owl from "../../../images/owl (1).png"
+import Pencil from "../../../images/pencil.png";
+import ManPilot from "../../../images/flexible.png";
 import Ok from "../../../images/Ok.svg";
 
 const list = [

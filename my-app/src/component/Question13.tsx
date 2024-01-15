@@ -9,11 +9,11 @@ interface QuestionProps {
 
 const list = [
     {
-        images:'/images/no.png',
+        images:'/images/thumb-down.png',
         name:'Disagree'
     },
     {
-        images:'/images/yes.png',
+        images:'/images/thumb-up.png',
         name:'Agree'
     }
 ]

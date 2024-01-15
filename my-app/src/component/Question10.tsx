@@ -9,23 +9,23 @@ const Question10:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
 
     const images = [
         {
-            image:'/images/11star.png',
+            image:'/images/angry.png',
             name:'1 Star'
         },
         {
-            image:'/images/22star.png',
+            image:'/images/angry1.png',
             name:'2 Star'
         },
         {
-            image:'/images/33star.png',
+            image:'/images/ok-hand.svg',
             name:'3 Star'
         },
         {
-            image:'/images/44star.png',
+            image:'/images/hang-10.svg',
             name:'4 Star'
         },
         {
-            image:'/images/55star.png',
+            image:'/images/tap-dance.png',
             name:'5 Star'
         }
     ];

@@ -2,8 +2,8 @@
 import React, {useState} from "react";
 import Image from "next/image";
 import Ok from "../../../images/Ok.svg";
-import NationalImage from "../../../images/pin.png";
-import InternationalImage from "../../../images/earth.png";
+import NationalImage from "../../../images/placeholder.png";
+import InternationalImage from "../../../images/planet-earth.png";
 const list = [
     {
         image: NationalImage,
@@ -43,8 +43,8 @@ const Question4:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
                         <Image
                             src={item.image}
                             alt={item.name}
-                            width={35}
-                            height={35}
+                            width={30}
+                            height={30}
                         />
                         <h1 className="text-[#343434]  md:text-[20px] text-[18px] max-w-[250px]   font-semibold">{item.name}</h1>
                         {selected === index && (
