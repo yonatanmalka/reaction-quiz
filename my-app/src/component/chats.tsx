@@ -47,6 +47,7 @@ export const BarChart: FC<BarChartDataInterface> = (props) => {
                         responsive: true,
                         scales: {
                             y: {
+                                display: false,
                                 beginAtZero: true,
                                 ticks: {
                                     callback: (value: any) => `${Number(value)}`, // Customize the y-axis label format
