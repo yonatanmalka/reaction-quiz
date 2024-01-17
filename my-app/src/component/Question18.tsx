@@ -57,7 +57,7 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
     }, [isDatePickerOpen]);
 
     const handleNextClick = () => {
-        if (firstName && selectedDate.startDate && selectedDate.endDate) {
+        if (firstName && selectedDate.startDate) {
             const data = {
                 Challenge_title: firstName,
                 selectedDate: selectedDate,
@@ -67,11 +67,7 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
             toast.success('Saving Your Details');
         } else if(firstName === "") {
             toast.error('Write Challenge title');
-        } else if (selectedDate.endDate === undefined) {
-            toast.error('Select End Date')
-        } else (
-            toast.error('Fill all the details')
-        )
+        }
     };
 
     return (

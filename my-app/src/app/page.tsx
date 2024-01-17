@@ -76,6 +76,9 @@ const Questionary = () => {
     return(
         <main className="flex justify-center bg-[#F5F5F5] items-center">
             <div className={`md:w-[400px] w-[425px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+                        <button onClick={() => setCurrentStep(currentStep - 1)}>
+                            <Image src={Back} alt={'backButton'} width={15} height={14} />
+                        </button>
                 {shouldRenderComponent  && (
                     <div className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7 && currentStep !==21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) ? 'justify-between' : 'justify-center'} items-end `}>
                         {(currentStep !== 15 && currentStep !== 7 && currentStep !==21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) && (
@@ -131,8 +134,8 @@ const Questionary = () => {
                     {currentStep === 17 && ( <Question17  handleClick={() => setCurrentStep(18)}  />  )}
                     {currentStep === 18 && ( <Question18 setData={(create_step_challenge: string) => setStates({ ...states, create_step_challenge })} handleClick={() => setCurrentStep(19)} /> )}
                     {currentStep === 19 && ( <Question19 setData={(participation_reward: string) => setStates({ ...states, participation_reward })}  handleNextStep={handleNextStep} /> )}
-                    {currentStep === 20 && ( <Questions20   handleClick={() => setCurrentStep(21)} /> )}
-                    {currentStep === 21 && ( <Create_user  setData={(admin_detail: string) => setStates({ ...states, admin_detail })}  handleClick={() => setCurrentStep(22)} /> )}
+                    {currentStep === 20 && ( <Questions20 handleClick={() => setCurrentStep(21)} /> )}
+                    {currentStep === 21 && ( <Create_user setData={(admin_detail: string) => setStates({ ...states, admin_detail })}  handleClick={() => setCurrentStep(22)} states={states}/> )}
                     {currentStep === 22 && ( <Payment states={states} setData={(pricing: string) => setStates({ ...states, pricing })} handleClick={() => setCurrentStep(23)}  />  )}
                     {currentStep === 23 && ( <PaymentForm states={states} handleClick={() => setCurrentStep(24)}  setData={(free_trial: boolean) => setStates({ ...states, free_trial })}  /> )}
                     {currentStep === 24 && ( <DownLoad_App  /> )}
