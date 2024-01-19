@@ -7,7 +7,7 @@ import { Img } from "@/utils/Img";
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const Slider = () => {
-    const cardData = [
+    const cardData:any[] = [
         {
             id: 1,
             name: "Olivia Davis",
