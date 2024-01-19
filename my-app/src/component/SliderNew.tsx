@@ -47,7 +47,7 @@ const Slider = () => {
                         clickable: true,
                     }}
                     autoplay={{
-                        delay: 1500,
+                        delay: 1700,
                         disableOnInteraction: false,
                     }}
                     modules={[Autoplay, Pagination, Navigation]}

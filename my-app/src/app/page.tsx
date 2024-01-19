@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import Logo from "../../images/logo.png";
 import Back from "../../images/back.svg";
@@ -72,6 +72,21 @@ const Questionary = () => {
     const shouldRenderComponent =  currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
 
     const ProgressComponent = currentStep !== 21 && currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22 && currentStep !== 16 && currentStep !== 17 && currentStep !== 18 && currentStep !== 19;
+
+    function sendHeightToParent() {
+        const height = document.body.scrollHeight;
+        window.parent.postMessage({
+            'frameHeight': height
+        }, '*'); // Replace '*' with your WordPress site's origin for added security
+    }
+
+    useEffect(() => {
+        sendHeightToParent();
+    },[handleNextStep]);
+
+
+    sendHeightToParent();
+
 
     return(
         <main className="flex justify-center items-center">
