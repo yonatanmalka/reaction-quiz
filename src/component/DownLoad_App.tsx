@@ -14,9 +14,9 @@ const DownLoad_App: React.FC<any> = () => {
                     </div>
                     <div
                         className='text-center px-[20px] text-[#343434] font-normal text-[14px] md:text-[16px] my-[30px] md:my-[60px]'>
-                        We are currently customizing the platform to align with your company's goals and needs. This
+                        We are currently customizing the platform to align with your companys goals and needs. This
                         process may take a few hours, and once completed, we will send you an email with your dashboard
-                        and the team's app.
+                        and the teams app.
                     </div>
                     <div className="w-full px-[25px]">
                         <button
