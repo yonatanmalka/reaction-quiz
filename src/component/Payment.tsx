@@ -1,9 +1,11 @@
 "use client"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Img} from "@/utils/Img";
 import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
 import Logo from "../../images/logo.svg";
+import {loadStripe} from "@stripe/stripe-js";
+import {stripe_public_key} from "@/utils/stripe";
 
 const months = ['Week1', "Week2", "Week3", "Week4"];
 
@@ -39,10 +41,14 @@ const list = [
 interface QuestionProps {
     handleClick: () => void;
     setData: any;
+    setPriceId: any;
     states: any;
+    setStates: any;
 }
 
-const Payment: React.FC<QuestionProps> = ({handleClick, setData, states}) => {
+const Payment: React.FC<QuestionProps> = ({handleClick, setData, setPriceId, states, setStates}) => {
+    const stripePromise = loadStripe(stripe_public_key);
+    const [clientSecret, setClientSecret] = useState<any>('');
     const [selectedOption, setSelectedOption] = useState("yearly");
 
     const handleOptionSelect = (option: React.SetStateAction<string>) => {
@@ -59,6 +65,29 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states}) => {
 
     const isMonthlySelected = selectedOption === "monthly";
     const isYearlySelected = selectedOption === "yearly";
+
+    useEffect(() => {
+        setPriceId(selectedOption === 'yearly' ? 'price_1OaKMBFN3wpDa6wtK3j1IIYN' : 'price_1OaKNbFN3wpDa6wteX1LXYxm')
+    }, [selectedOption]);
+
+    const createPaymentIntent = async () => {
+        const response: any = await fetch('/api/createPaymentIntent', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({'priceId': states.pricing === 'monthly' ? 'price_1OaKMBFN3wpDa6wtK3j1IIYN' : 'price_1OaKNbFN3wpDa6wteX1LXYxm'}),
+        });
+        const {clientSecret} = await response.json()
+        await setStates({...states, 'client_secret': clientSecret})
+        setClientSecret(clientSecret);
+    };
+
+    useEffect(() => {
+        if (clientSecret !== '')
+            handleClick();
+    }, [clientSecret]);
+
 
     return (
         <div className="w-[100%] h-[100%]">
@@ -234,7 +263,7 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states}) => {
                     </div>
                 </div>
                 <div className="px-[20px] mt-[20px] ">
-                    <button onClick={handleClick}
+                    <button onClick={createPaymentIntent}
                             className="uppercase flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[28px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000] py-[6px]">GET
                         MY CHALLENGE
                     </button>

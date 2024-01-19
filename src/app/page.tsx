@@ -22,7 +22,6 @@ import Question14 from "@/component/Question14";
 import Question18 from "@/component/Question18";
 import Question19 from "@/component/Question19";
 import Question12 from "@/component/Question12";
-import PaymentForm from "@/component/Payment_Form";
 import Payment from "@/component/Payment";
 import Question17 from "@/component/Question17";
 import Create_user from "@/component/Create_user";
@@ -30,9 +29,10 @@ import Element1 from "../../images/element1.svg";
 import Element2 from "../../images/element2.svg";
 import DownLoad_App from "@/component/DownLoad_App";
 import Question1 from "@/component/Questions01/page";
+import Checkout from "@/component/Checkout";
 
 const Questionary = () => {
-    const [currentStep, setCurrentStep] = useState<number>(1);
+    const [currentStep, setCurrentStep] = useState<any>(1);
 
     const defaultStates = {
         goal: null,
@@ -53,6 +53,8 @@ const Questionary = () => {
         admin_detail: {},
         pricing: 'monthly',
         free_trial: false,
+        price_id: '',
+        client_secret: ''
     };
 
 
@@ -64,12 +66,12 @@ const Questionary = () => {
 
     const handleNextStep = () => {
         setTimeout(() => {
-            setCurrentStep((prevStep) => prevStep + 1);
+            setCurrentStep((prevStep: any) => prevStep + 1);
         }, 1000);
     };
 
 
-    const shouldRenderComponent = currentStep !== 1 && currentStep !== 23 && currentStep !== 22;
+    const shouldRenderComponent = currentStep !== 1 && currentStep !== 22;
 
     const ProgressComponent = currentStep !== 21 && currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22 && currentStep !== 16 && currentStep !== 17 && currentStep !== 18 && currentStep !== 19;
 
@@ -95,19 +97,23 @@ const Questionary = () => {
                 {shouldRenderComponent && (
                     <div
                         className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7 && currentStep !== 21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) ? 'justify-between' : 'justify-center'} items-end `}>
-                        {(currentStep !== 15 && currentStep !== 7 && currentStep !== 21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) && (
-                            <button onClick={() => setCurrentStep(currentStep - 1)}>
-                                <Image src={Back} alt={'backButton'} width={15} height={14}/>
-                            </button>
-                        )}
+                        {
+                            // @ts-ignore
+                            ![7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].includes(currentStep) ? (
+                                <button onClick={() => setCurrentStep(currentStep - 1)}>
+                                    <Image src={Back} alt={'backButton'} width={15} height={14}/>
+                                </button>
+                            ) : <div/>}
                         <Image src={Logo} alt={'logo'} width={93} height={40} autoFocus={true}/>
                         <div>
-                            {(currentStep !== 15 && currentStep !== 7 && currentStep !== 21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) && (
-                                <div className="text-[#3C8AF0] text-[16px] font-medium">
-                                    <span className="text-[#3C8AF0]">{currentStep}</span>/<span
-                                    className="text-[#979797]">14</span>
-                                </div>
-                            )}
+                            {
+                                // @ts-ignore
+                                ![7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].includes(currentStep) ? (
+                                    <div className="text-[#3C8AF0] text-[16px] font-medium">
+                                        <span className="text-[#3C8AF0]">{currentStep}</span>/<span
+                                        className="text-[#979797]">14</span>
+                                    </div>
+                                ) : <div/>}
                         </div>
                     </div>
                 )}
@@ -182,16 +188,24 @@ const Questionary = () => {
                         <Create_user setData={(admin_detail: string) => setStates({...states, admin_detail})}
                                      handleClick={() => setCurrentStep(22)} states={states}/>)}
                     {currentStep === 22 && (
-                        <Payment states={states} setData={(pricing: string) => setStates({...states, pricing})}
-                                 handleClick={() => setCurrentStep(23)}/>)}
-                    {currentStep === 23 && (<PaymentForm states={states} handleClick={() => setCurrentStep(24)}
-                                                         setData={(free_trial: boolean) => setStates({
-                                                             ...states,
-                                                             free_trial
-                                                         })}/>)}
+                        <Payment
+                            states={states}
+                            handleClick={() => setCurrentStep(23)}
+                            setData={(pricing: string) => setStates({...states, pricing})}
+                            setPriceId={(id: string) => {
+                                setStates({...states, id});
+                            }}
+                            setStates={setStates}
+                        />
+                    )}
+                    {
+                        currentStep === 23 && (
+                            <Checkout states={states} handleClick={() => setCurrentStep(24)}/>
+                        )
+                    }
                     {currentStep === 24 && (<DownLoad_App/>)}
                 </div>
-                {currentStep !== 22 && currentStep !== 23 && (
+                {currentStep === 1 && currentStep !== 23 && (
                     <div className="z-1">
                         <Image src={Element1} alt={'element1'} className="absolute top-[-120px] left-[-100px]"/>
                     </div>
