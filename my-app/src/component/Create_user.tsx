@@ -46,7 +46,7 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
             howDoYouPerceiveTheOverallMoraleOfYourTeam: states.moral,
             howOftenDoYouExperienceConflictsInYourTeam: states.team_conflicts_experince,
             howWellDoTeamMembersKnowEachOtherOnAPersonalLevel: states.team_members_know_each_other_on_persoal_level,
-            letSCreateAStepChallengeDate: states.create_step_challenge?.selectedDate,
+            letSCreateAStepChallengeDate: JSON.stringify(states.create_step_challenge.selectedDate),
             letSCreateAStepChallengeTitle: states.create_step_challenge?.Challenge_title,
             selectUpToThreeAreasWhereYouBelieveTheTeamCouldImproveTheMost: states.improve_team.join(),
             selectYourMainGoal: states.goal,
@@ -81,8 +81,9 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
                 email: email,
             };
             await setData(data);
+            // console.log(states, JSON.stringify(states.create_step_challenge.selectedDate),  states.improve_team.join());
             await submit(e);
-            handleClick();
+            // handleClick();
         }
     };
 

@@ -74,8 +74,11 @@ const Questionary = () => {
     const ProgressComponent = currentStep !== 21 && currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22 && currentStep !== 16 && currentStep !== 17 && currentStep !== 18 && currentStep !== 19;
 
     return(
-        <main className="flex justify-center bg-[#F5F5F5] items-center">
+        <main className="flex justify-center items-center">
             <div className={`md:w-[400px] w-[425px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+                <button onClick={() => setCurrentStep(currentStep - 1)}>
+                    <Image src={Back} alt={'backButton'} width={15} height={14} />
+                </button>
                 {shouldRenderComponent  && (
                     <div className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7 && currentStep !==21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) ? 'justify-between' : 'justify-center'} items-end `}>
                         {(currentStep !== 15 && currentStep !== 7 && currentStep !==21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) && (
