@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {PaymentElement} from "@stripe/react-stripe-js";
+import {PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
 
 const ELEMENT_STYLES = {
     base: {
@@ -23,8 +23,35 @@ interface CheckoutFormInterface {
 }
 
 const CheckoutForm: FC<CheckoutFormInterface> = ({states, clientSecret, click: handleClick}) => {
-    const {id: priceId, admin_detail} = states;
-    const [activePaymentType, setActivePaymentType] = useState<string>('credit_card');
+    const {id: priceId, customer_id: customerId} = states;
+    const stripe = useStripe();
+    const elements = useElements();
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const handleSubscribe = async () => {
+        setLoading(true);
+        if (!stripe || !elements) {
+            // Stripe.js has not yet loaded.
+            // Make sure to disable form submission until Stripe.js has loaded.
+            console.log('Stripe.js has not loaded yet.');
+            return;
+        }
+
+        // Confirm the card setup using the PaymentElement.
+        const result = await stripe.confirmSetup({
+            elements,
+            confirmParams: {
+                return_url: 'http://localhost:3000/success',
+            },
+        });
+
+        if (result.error) {
+            console.log(result.error.message);
+        } else {
+            subscribe();
+        }
+        setLoading(false);
+    };
 
     const subscribe = async () => {
         try {
@@ -34,16 +61,12 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({states, clientSecret, click: h
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email: admin_detail.email,
-                    name: `${admin_detail.first_Name} ${admin_detail.last_Name}`,
+                    customerId,
                     priceId
                 }),
             });
 
             const data = await response.json();
-            if (response.status === 200) {
-                handleClick();
-            }
             console.log('Subscription and Customer created:', data);
         } catch (error) {
             console.error('Error:', error);
@@ -148,7 +171,8 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({states, clientSecret, click: h
         </div>
         <div className="w-full pt-[25px]">
             <button
-                onClick={subscribe}
+                onClick={handleSubscribe}
+                disabled={loading}
                 className="uppercase  text-[#000] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
             >
                 SUBSCRIBE

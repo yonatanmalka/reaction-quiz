@@ -4,8 +4,6 @@ import {Img} from "@/utils/Img";
 import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
 import Logo from "../../images/logo.svg";
-import {loadStripe} from "@stripe/stripe-js";
-import {stripe_public_key} from "@/utils/stripe";
 
 const months = ['Week1', "Week2", "Week3", "Week4"];
 
@@ -41,13 +39,11 @@ const list = [
 interface QuestionProps {
     handleClick: () => void;
     setData: any;
-    setPriceId: any;
     states: any;
     setStates: any;
 }
 
-const Payment: React.FC<QuestionProps> = ({handleClick, setData, setPriceId, states, setStates}) => {
-    const stripePromise = loadStripe(stripe_public_key);
+const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStates}) => {
     const [clientSecret, setClientSecret] = useState<any>('');
     const [selectedOption, setSelectedOption] = useState("yearly");
 
@@ -66,26 +62,27 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, setPriceId, sta
     const isMonthlySelected = selectedOption === "monthly";
     const isYearlySelected = selectedOption === "yearly";
 
-    useEffect(() => {
-        setPriceId(selectedOption === 'yearly' ? 'price_1OaKMBFN3wpDa6wtK3j1IIYN' : 'price_1OaKNbFN3wpDa6wteX1LXYxm')
-    }, [selectedOption]);
-
     const createPaymentIntent = async () => {
         const response: any = await fetch('/api/createPaymentIntent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({'priceId': states.pricing === 'monthly' ? 'price_1OaKMBFN3wpDa6wtK3j1IIYN' : 'price_1OaKNbFN3wpDa6wteX1LXYxm'}),
+            body: JSON.stringify({
+                email: states.admin_detail.email,
+                name: `${states.admin_detail.first_Name} ${states.admin_detail.last_Name}`,
+            }),
         });
-        const {clientSecret} = await response.json()
+        const {clientSecret, customerId} = await response.json()
         await setStates({...states, 'client_secret': clientSecret})
+        await setStates({...states, 'customer_id': customerId})
         setClientSecret(clientSecret);
     };
 
     useEffect(() => {
         if (clientSecret !== '')
-            handleClick();
+            console.log(clientSecret)
+        handleClick();
     }, [clientSecret]);
 
 
@@ -148,7 +145,10 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, setPriceId, sta
                 <div className="px-[20px] mt-[30px]">
                     <div
                         className={`paymentCard w-[100%] flex flex-col justify-center ${isMonthlySelected ? 'selected' : ''}`}
-                        onClick={() => handleOptionSelect('monthly')}>
+                        onClick={async () => {
+                            await handleOptionSelect('monthly');
+                            setStates({...states, 'id': 'price_1OaKMBFN3wpDa6wtK3j1IIYN'})
+                        }}>
                         <div className='flex flex-row items-center  justify-between px-[10px] w-[100%] '>
                             <div className='flex flex-row gap-[8px]  justify-center items-center'>
                                 <div>
@@ -208,7 +208,10 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, setPriceId, sta
 
                     <div
                         className={`paymentCard2 flex flex-col w-[100%] justify-center ${isYearlySelected ? 'selected' : ''}`}
-                        onClick={() => handleOptionSelect('yearly')}>
+                        onClick={async () => {
+                            await handleOptionSelect('yearly')
+                            setStates({...states, 'id': 'price_1OaKNbFN3wpDa6wteX1LXYxm'})
+                        }}>
                         <div className='flex flex-row items-center px-[10px] w-[100%]   justify-between'>
                             <div className='flex flex-row gap-[8px]  justify-center items-center'>
                                 <div>
