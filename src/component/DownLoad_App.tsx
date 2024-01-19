@@ -2,7 +2,7 @@
 import React from "react";
 
 
-const DownLoad_App:React.FC<any> = () => {
+const DownLoad_App: React.FC<any> = () => {
 
     return (
         <div className="w-[100%] h-[100%]">
@@ -12,14 +12,18 @@ const DownLoad_App:React.FC<any> = () => {
                     <div className='md:text-[26px] font-semibold text-[22px] mt-[30px]'>
                         You’re all set!
                     </div>
-                    <div className=' text-center px-[20px]  text-[#979797] font-normal text-[14px] mt-[15px]'>
-                        Click to download your new engagement app with your challenge ready to launch!
+                    <div
+                        className='text-center px-[20px] text-[#343434] font-normal text-[14px] md:text-[16px] my-[30px] md:my-[60px]'>
+                        We are currently customizing the platform to align with your company's goals and needs. This
+                        process may take a few hours, and once completed, we will send you an email with your dashboard
+                        and the team's app.
                     </div>
-                    <div className="w-full mt-[10px] px-[25px] ">
-                        <button  className="uppercase flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000] py-[6px]">Download App</button>
-                    </div>
-                    <div className=' text-center px-[20px]  text-[#343434] font-normal text-[14px] mt-[55px]'>
-                        We’ve sent you an email with the login information to the admin panel
+                    <div className="w-full px-[25px]">
+                        <button
+                            className="uppercase flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000] py-[6px]"
+                        >
+                            Close
+                        </button>
                     </div>
                 </div>
 
