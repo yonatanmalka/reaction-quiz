@@ -147,7 +147,7 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
                         className={`paymentCard w-[100%] flex flex-col justify-center ${isMonthlySelected ? 'selected' : ''}`}
                         onClick={async () => {
                             await handleOptionSelect('monthly');
-                            setStates({...states, 'id': 'price_1OaKMBFN3wpDa6wtK3j1IIYN'})
+                            setStates({...states, 'price_id': 'price_1OaKMBFN3wpDa6wtK3j1IIYN'})
                         }}>
                         <div className='flex flex-row items-center  justify-between px-[10px] w-[100%] '>
                             <div className='flex flex-row gap-[8px]  justify-center items-center'>
@@ -210,7 +210,7 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
                         className={`paymentCard2 flex flex-col w-[100%] justify-center ${isYearlySelected ? 'selected' : ''}`}
                         onClick={async () => {
                             await handleOptionSelect('yearly')
-                            setStates({...states, 'id': 'price_1OaKNbFN3wpDa6wteX1LXYxm'})
+                            setStates({...states, 'price_id': 'price_1OaKNbFN3wpDa6wteX1LXYxm'})
                         }}>
                         <div className='flex flex-row items-center px-[10px] w-[100%]   justify-between'>
                             <div className='flex flex-row gap-[8px]  justify-center items-center'>
