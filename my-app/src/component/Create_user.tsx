@@ -82,8 +82,8 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
             };
             await setData(data);
             // console.log(states, JSON.stringify(states.create_step_challenge.selectedDate),  states.improve_team.join());
-            await submit(e);
-            // handleClick();
+            // await submit(e);
+            handleClick();
         }
     };
 

@@ -73,7 +73,7 @@ const Question17: React.FC<QuestionProps> = ({handleClick}) => {
                 This strategy designed to maintain long-term engagement and maximize program ROI
             </div>
             <div className="px-[30px]">
-                <button onClick={handleClick} className="uppercase text-[#000] mt-[24px] md:mt-[20px] py-[8px] md:py-[10px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[12px]">
+                <button onClick={handleClick} className="uppercase text-[#000] mt-[24px] md:mt-[20px] py-[8px] md:py-[14px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[12px]">
                     Get started
                 </button>
             </div>

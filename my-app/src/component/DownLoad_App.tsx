@@ -16,7 +16,7 @@ const DownLoad_App:React.FC<any> = () => {
                         Click to download your new engagement app with your challenge ready to launch!
                     </div>
                     <div className="w-full mt-[10px] px-[25px] ">
-                        <button  className="uppercase  h-[40px] flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000]">Download App</button>
+                        <button  className="uppercase flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000] py-[6px]">Download App</button>
                     </div>
                     <div className=' text-center px-[20px]  text-[#343434] font-normal text-[14px] mt-[55px]'>
                         We’ve sent you an email with the login information to the admin panel

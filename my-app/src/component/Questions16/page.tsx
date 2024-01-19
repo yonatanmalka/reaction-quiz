@@ -59,7 +59,7 @@ const Questions16:React.FC<QuestionProps> = ({handleClick,states}) => {
             <p className="text-[#979797] mt-[20px] text-[12px] font-normal text-center px-[15px]">*Based on data of companies using Reaction for 90 days, analysed by Reaction. The chart is a non-customized illustration and results may vary</p>
 
            <div className="px-[40px] mt-[70px]">
-               <button onClick={handleClick} className="text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]">
+               <button onClick={handleClick} className="text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[14px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]">
                    Show me plan
                </button>
            </div>

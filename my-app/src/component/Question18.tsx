@@ -111,7 +111,7 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
             <div className="mt-[224px] px-[20px] ">
                 <button
                     onClick={handleNextClick}
-                    className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
+                    className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
                 >
                     Next
                 </button>

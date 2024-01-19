@@ -82,7 +82,7 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
             <div className="w-[100%] px-[20px] pb-[40px]">
                 <button
                     onClick={handleNextClick}
-                    className="uppercase   h-[40px] flex items-center justify-center mt-[30px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000]"
+                    className="uppercase flex items-center justify-center mt-[30px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000] py-[6px]"
                 >
                     Next
                 </button>
