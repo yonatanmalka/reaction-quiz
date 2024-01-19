@@ -23,7 +23,7 @@ interface CheckoutFormInterface {
 }
 
 const CheckoutForm: FC<CheckoutFormInterface> = ({states, clientSecret: secret, click: handleClick}) => {
-    const {id: priceId, customer_id: customerId, client_secret: clientSecret} = states;
+    const {price_id: priceId, customer_id: customerId, client_secret: clientSecret} = states;
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState<boolean>(false);
