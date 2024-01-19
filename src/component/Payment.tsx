@@ -74,15 +74,15 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
             }),
         });
         const {clientSecret, customerId} = await response.json()
-        await setStates({...states, 'client_secret': clientSecret})
-        await setStates({...states, 'customer_id': customerId})
+        await setStates({...states, 'client_secret': clientSecret, 'customer_id': customerId})
         setClientSecret(clientSecret);
     };
 
     useEffect(() => {
-        if (clientSecret !== '')
-            console.log(clientSecret)
-        handleClick();
+        if (clientSecret !== '') {
+            console.log(states)
+            handleClick();
+        }
     }, [clientSecret]);
 
 

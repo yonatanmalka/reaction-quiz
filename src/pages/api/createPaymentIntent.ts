@@ -1,21 +1,23 @@
+// pages/api/createSetupIntent.ts
 import {NextApiRequest, NextApiResponse} from 'next';
 import stripe from "@/utils/stripe";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        const {priceId} = req.body;
+        const {email, name} = req.body;
 
         try {
-            const price: any = await stripe.prices.retrieve(priceId);
+            // Create a new Stripe customer
+            const customer = await stripe.customers.create({email, name});
 
-            const paymentIntent = await stripe.paymentIntents.create({
-                amount: price.unit_amount,
-                currency: price.currency,
+            // Create a Setup Intent to save the payment method for future usage
+            const setupIntent = await stripe.setupIntents.create({
+                customer: customer.id,
             });
-            
-            res.status(200).json({clientSecret: paymentIntent.client_secret});
-        } catch (err: any) {
-            res.status(500).json({statusCode: 500, message: err.message});
+
+            res.status(200).json({clientSecret: setupIntent.client_secret, customerId: customer.id});
+        } catch (error: any) {
+            res.status(500).json({statusCode: 500, message: error.message});
         }
     } else {
         res.setHeader('Allow', 'POST');

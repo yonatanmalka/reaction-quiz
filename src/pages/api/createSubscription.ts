@@ -3,26 +3,25 @@ import stripe from "@/utils/stripe";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        const {email, name, priceId} = req.body;
+        const {customerId, priceId} = req.body;
 
         try {
-            // Create a new Stripe customer
-            const customer = await stripe.customers.create({
-                email: email,
-                name: name
-                // Add other customer details here as needed
-            });
+            // Assuming the customer has already been created and you have their ID
+            // You do not need to create a customer again, just create the subscription
 
             // Create a new subscription for this customer with a 7-day free trial
             const subscription = await stripe.subscriptions.create({
-                customer: customer.id,
+                customer: customerId,  // Use the existing customer ID
                 items: [{price: priceId}],
                 trial_period_days: 7,
+                // Add this line to automatically invoice and charge the payment method on file
+                payment_behavior: 'default_incomplete',
+                expand: ['latest_invoice.payment_intent'],
             });
 
             res.status(200).json({
                 subscriptionId: subscription.id,
-                customerId: customer.id,
+                customerId: customerId,
                 message: 'Subscription Created Successfully'
             });
         } catch (error: any) {
