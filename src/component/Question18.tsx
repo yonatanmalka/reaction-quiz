@@ -64,10 +64,9 @@ const Question18: React.FC<QuestionProps> = ({ handleClick, setData }) => {
             setData(data);
             handleClick();
             toast.success('Saving Your Details');
+        } else if (selectedDate.endDate === undefined) {
+            toast.error('Select End Date')
         }
-        // else if (selectedDate.endDate === undefined) {
-        //     toast.error('Select End Date')
-        // }
     };
 
     return (
