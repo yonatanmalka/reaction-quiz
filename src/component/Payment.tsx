@@ -5,52 +5,38 @@ import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
 import Logo from "../../images/logo.svg";
 
-const months = ['Week1', "Week2", "Week3", "Week4"];
-
-const freq1 = {
-    label: 'Week',
-    data: ['10', '80', '60', '120'],
-    borderColor: '#343434',
-    backgroundColor: '#dadada',
-    fill: false,
-}
 const list = [
     {
-        name: 'Step challenge '
+        name: 'Ready to launch step challenge'
     },
     {
         name: 'AI engagement engine'
 
     },
     {
-        name: 'Admin dashboard'
+        name: 'Points unlock real rewards'
 
     },
     {
-        name: 'Personal account manager to answer questions and support your program'
+        name: 'Admin dashboard & analytics'
 
     },
     {
-        name: 'Marketing materials '
+        name: 'VIP customer support'
 
     }
 ]
 
 interface QuestionProps {
     handleClick: () => void;
-    setData: any;
     states: any;
     setStates: any;
 }
 
-const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStates}) => {
+const Payment: React.FC<QuestionProps> = ({handleClick, states, setStates}) => {
     const [clientSecret, setClientSecret] = useState<any>('');
     const [selectedOption, setSelectedOption] = useState("yearly");
 
-    const handleOptionSelect = (option: React.SetStateAction<string>) => {
-        setSelectedOption(option);
-        setData(option);
-    };
     const StartDate = states.create_step_challenge.selectedDate.startDate.toLocaleDateString('en-US', {
         day: 'numeric',
         month: 'long',
@@ -58,9 +44,6 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
     });
 
     const timeDifferenceInDays = Math.floor((states.create_step_challenge.selectedDate.endDate - states.create_step_challenge.selectedDate.startDate) / (1000 * 60 * 60 * 24));
-
-    const isMonthlySelected = selectedOption === "monthly";
-    const isYearlySelected = selectedOption === "yearly";
 
     const createPaymentIntent = async () => {
         const response: any = await fetch('/api/createPaymentIntent', {
@@ -84,6 +67,18 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
             handleClick();
         }
     }, [clientSecret]);
+
+    useEffect(() => {
+        let id, type;
+        if (selectedOption === 'monthly') {
+            id = 'price_1OaKMBFN3wpDa6wtK3j1IIYN';
+            type = 'monthly'
+        } else if (selectedOption === 'yearly') {
+            id = 'price_1OaKNbFN3wpDa6wteX1LXYxm';
+            type = 'yearly'
+        }
+        setStates({...states, 'price_id': id, 'pricing': type});
+    }, [selectedOption]);
 
 
     return (
@@ -144,16 +139,15 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
                 </div>
                 <div className="px-[20px] mt-[30px]">
                     <div
-                        className={`paymentCard w-[100%] flex flex-col justify-center ${isMonthlySelected ? 'selected' : ''}`}
-                        onClick={async () => {
-                            await handleOptionSelect('monthly');
-                            setStates({...states, 'price_id': 'price_1OaKMBFN3wpDa6wtK3j1IIYN'})
-                        }}>
+                        className={`paymentCard w-[100%] flex flex-col justify-center ${selectedOption === 'monthly' ? 'selected' : ''}`}
+                        onClick={() => setSelectedOption('monthly')}
+                    >
                         <div className='flex flex-row items-center  justify-between px-[10px] w-[100%] '>
                             <div className='flex flex-row gap-[8px]  justify-center items-center'>
                                 <div>
-                                    <Img src={isMonthlySelected ? '/images/checkbox.png' : '/images/circle.png'}
-                                         alt='logo' className='w-[20px] h-[20px]'/>
+                                    <Img
+                                        src={selectedOption === 'monthly' ? '/images/checkbox.png' : '/images/circle.png'}
+                                        alt='logo' className='w-[20px] h-[20px]'/>
                                 </div>
                                 <div className="flex flex-col ">
                                     <div className="text-[12px] font-semibold">
@@ -167,10 +161,11 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
                                     </div>
                                 </div>
                             </div>
-                            <div className="relative z-0">
+                            <div className="relative z-0 min-w-[145px] flex items-center justify-end">
                                 <Img src='/images/rectangle.png' alt='logo'
                                      className='md:w-[140px] w-[120px] h-[60px] ml-[5px] md:h-[65px]'/>
-                                <div className='absolute top-0  left-[55px] mt-[5px]'>
+                                <div
+                                    className='absolute top-0 left-0 mt-[5px] flex flex-col items-end w-full pr-[10px]'>
                                     <div className='md:text-[10px] text-[8px] font-semibold '>
                                         Try first month
                                     </div>
@@ -202,21 +197,20 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
                         </div>
                     </div>
                     <div
-                        className={`w-full text-[#fff] flex justify-center items-center mt-[15px] h-[20px] rounded-tl-[10px] rounded-tr-[10px] ${isYearlySelected ? 'bg-[#F9B22D]' : 'bg-[#979797]'}`}>
+                        className={`w-full text-[#fff] flex justify-center items-center mt-[15px] h-[20px] rounded-tl-[10px] rounded-tr-[10px] ${selectedOption === 'yearly' ? 'bg-[#F9B22D]' : 'bg-[#979797]'}`}>
                         Most Popular
                     </div>
 
                     <div
-                        className={`paymentCard2 flex flex-col w-[100%] justify-center ${isYearlySelected ? 'selected' : ''}`}
-                        onClick={async () => {
-                            await handleOptionSelect('yearly')
-                            setStates({...states, 'price_id': 'price_1OaKNbFN3wpDa6wteX1LXYxm'})
-                        }}>
+                        className={`paymentCard2 flex flex-col w-[100%] justify-center ${selectedOption === 'yearly' ? 'selected' : ''}`}
+                        onClick={() => setSelectedOption('yearly')}
+                    >
                         <div className='flex flex-row items-center px-[10px] w-[100%]   justify-between'>
                             <div className='flex flex-row gap-[8px]  justify-center items-center'>
                                 <div>
-                                    <Img src={isYearlySelected ? '/images/checkbox.png' : '/images/circle.png'}
-                                         alt='logo' className='w-[20px] h-[20px]'/>
+                                    <Img
+                                        src={selectedOption === 'yearly' ? '/images/checkbox.png' : '/images/circle.png'}
+                                        alt='logo' className='w-[20px] h-[20px]'/>
                                 </div>
                                 <div className="flex flex-col ">
                                     <div className="text-[12px] font-semibold">
@@ -230,10 +224,11 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
                                     </div>
                                 </div>
                             </div>
-                            <div className="relative">
+                            <div className="relative z-0 min-w-[145px] flex items-center justify-end">
                                 <Img src='/images/rectangle.png' alt='logo'
                                      className='md:w-[140px] w-[120px] h-[60px] ml-[5px] md:h-[65px]'/>
-                                <div className='absolute top-0  left-[55px] mt-[5px]'>
+                                <div
+                                    className='absolute top-0 left-0 mt-[5px] flex flex-col items-end w-full pr-[10px]'>
                                     <div className='md:text-[10px] text-[8px] font-semibold '>
                                         Try first month
                                     </div>
@@ -272,13 +267,11 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
                     </button>
                 </div>
                 <div className='px-[20px] text-center text-[10px] mt-[20px] text-[#979797]'>
-                    By clicking <span className='text-black font-bold'>GET MY CHALLENGE, </span>I agree to pay $0.99 per
-                    user per month and that if I do not cancel before
-                    the end of the first month plan, it will convert to a monthly subscription plan and Reaction will
-                    automatically charge my payment method the regular price of $5.99 per user every month thereafter
-                    until
-                    I cancel. I can cancel online by visiting the subscription page on Reaction’s website to avoid being
-                    charged the next next billing cycle.
+                    By clicking <span className='text-black font-bold'>GET MY CHALLENGE, </span>you agree to the
+                    following terms: Your introductory offer is valid for the specified period. If you do not cancel
+                    before the end of the then-current period, you will be charged the full price of our monthly
+                    subscription plan based on your user count each month until you cancel your subscription. Learn more
+                    about our pricing, refund, and cancellation policies in the Subscription Terms
                 </div>
                 <div className='md:text-[26px]  text-center font-semibold text-[22px] mt-[15px] pb-[10px]'>
                     What you get
@@ -293,7 +286,7 @@ const Payment: React.FC<QuestionProps> = ({handleClick, setData, states, setStat
                                      className='w-[30px] h-[30px] '/>
                             </div>
                             <div
-                                className="md:text-[14px] w-[275px] md:w-[330px]  text-[12px]  ml-[15px] font-semibold">
+                                className="md:text-[14px] w-[275px] md:w-[330px] text-[12px]  ml-[15px]">
                                 {item.name}
                             </div>
                         </div>

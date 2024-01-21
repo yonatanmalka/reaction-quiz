@@ -1,18 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Img } from "@/utils/Img";
-import { DateRangePicker } from "react-date-range";
+import { DateRangePicker, Range } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import { Range } from "react-date-range";
-import { Toaster, toast } from 'sonner';
+import { toast, Toaster } from 'sonner';
 
 interface QuestionProps {
     handleClick: () => void;
-    setData:any;
+    setData: any;
 }
 
-const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
+const Question18: React.FC<QuestionProps> = ({ handleClick, setData }) => {
     const [firstName, setFirstName] = useState("");
 
     const today = new Date();
@@ -57,7 +56,7 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
     }, [isDatePickerOpen]);
 
     const handleNextClick = () => {
-        if (firstName && selectedDate.startDate) {
+        if (selectedDate.startDate) {
             const data = {
                 Challenge_title: firstName,
                 selectedDate: selectedDate,
@@ -65,9 +64,10 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
             setData(data);
             handleClick();
             toast.success('Saving Your Details');
-        } else if(firstName === "") {
-            toast.error('Write Challenge title');
         }
+        // else if (selectedDate.endDate === undefined) {
+        //     toast.error('Select End Date')
+        // }
     };
 
     return (
@@ -94,7 +94,7 @@ const Question18: React.FC<QuestionProps> = ({handleClick, setData }) => {
                     onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
                 >
                     <div>
-                        <Img src="/images/clock1.png" alt="none" className="w-[20px] h-[20px]" />
+                        <Img src="/images/clock1.png" alt="none" className="w-[20px] h-[20px]"/>
                     </div>
                     <div className="text-[14px] ml-[10px] cursor-pointer">
                         {selectedDate.startDate.toLocaleDateString()} -{" "}

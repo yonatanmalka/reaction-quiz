@@ -11,20 +11,20 @@ import Ok from "../../../images/Ok.svg"
 
 const data = [
     {
-        Image:Pic1,
-        name:"Bond my team"
+        Image: Pic1,
+        name: "Bond my team"
     },
     {
-        Image:Pic2,
-        name:"Promote WellBeing"
+        Image: Pic2,
+        name: "Promote WellBeing"
     },
     {
-        Image:Pic3,
-        name:"improve Fitness"
+        Image: Pic3,
+        name: "improve Fitness"
     },
     {
-        Image:Pic4,
-        name:"Not Sure"
+        Image: Pic4,
+        name: "Not Sure"
     }
 ]
 
@@ -33,7 +33,7 @@ interface QuestionProps {
     setData: any;
 }
 
-const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
+const Question1: React.FC<QuestionProps> = ({handleClick, setData}) => {
     const [selected, setSelected] = useState<number | null>(null);
     const handleCardClick = (index: number) => {
         setSelected(index);
@@ -41,23 +41,20 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
         handleClick();
     };
 
-    return(
+    return (
         <div className="relative">
             <div className="flex mt-[40px] md:mt-[10px] justify-center">
-                <Image src={Logo} alt={'logo'} className="w-[120px] h-[55px]" />
+                <Image src={Logo} alt={'logo'} className="w-[120px] h-[55px]"/>
             </div>
             <div className="mt-[22px] md:mt-[20px] flex flex-col text-center">
                 <h1 className="text-[35px] font-medium text-center">
-                    AI WORKPLACE
+                    SELECT YOUR
                 </h1>
-                <h1 className="text-[35px] font-bold text-center">STEP CHALLENGE</h1>
+                <h1 className="text-[35px] font-bold text-center">MAIN GOAL</h1>
             </div>
-            <div className="flex justify-center">
-                <h1 className="text-[#979797] text-[14px] mt-[10px] md:mt-[5px] font-normal">SELECT YOUR <span className="font-bold text-[#565454]">MAIN GOAL</span></h1>
-            </div>
-            <h1 className="text-[#000] text-[12px] font-medium text-center mt-[10px] md:mt-[2px]">
+            <div className="text-[#979797] text-[12px] font-medium text-center mt-[10px] md:mt-[2px]">
                 1-MINUTE
-            </h1>
+            </div>
             <div className="mt-[25px] px-[20px] md:mt-[12px]">
                 <div className="grid grid-cols-2 gap-x-[15px] gap-y-[12px] mt-[15px] md:mt-[8px]">
                     {data.map((item, index) => (
@@ -66,11 +63,11 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
                             className={`rounded-[12px] ${selected === index ? 'bg-opacity-30' : ''} ${selected === index ? 'bg-yellow-400' : 'bg-[#F5F5F5]'}  ${selected === index ? 'border-none' : 'border-none'} border-[#979797] flex flex-col  gap-[3px] md:gap-[5px] py-[25px] justify-center relative items-center transition duration-300 ease-in-out hover:bg-opacity-30 hover:bg-yellow-400 hover:border-[#F9B22D]`}
                             onClick={() => handleCardClick(index)}
                         >
-                            <Image src={item.Image} alt={"image"} className="w-[35px] h-[35px]" />
+                            <Image src={item.Image} alt={"image"} className="w-[35px] h-[35px]"/>
                             <h1 className="text-[#343434] text-[14px] font-semibold">{item.name}</h1>
                             {selected === index && (
                                 <div className="TickImage">
-                                    <Image src={Ok} alt={'Tick'} width={20} height={20} />
+                                    <Image src={Ok} alt={'Tick'} width={20} height={20}/>
                                 </div>
                             )}
                         </button>
@@ -86,7 +83,8 @@ const Question1:React.FC<QuestionProps> = ({handleClick, setData}) => {
                         </a>
                     </button>
                     <button className="underline">
-                        <a href="https://www.reaction-club.com/privacypolicy/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.reaction-club.com/privacypolicy/" target="_blank"
+                           rel="noopener noreferrer">
                             Privacy Policy,
                         </a>
                     </button>

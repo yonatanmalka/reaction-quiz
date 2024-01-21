@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Img } from "@/utils/Img";
+import { toast, Toaster } from "sonner";
 
 interface QuestionProps {
     handleClick: () => void;
@@ -17,9 +18,6 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
         { title: "Employees energy " },
         { title: "Overall wellbeing" },
         { title: "Conflict resolution " },
-
-
-
     ];
     const [selected, setSelected] = useState<number[]>([]);
 
@@ -37,16 +35,17 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
     };
 
     const handleNextClick = () => {
-        // Check if at least three options are selected
-        if (selected.length >= 3) {
+        if (selected.length > 3) {
+            toast.error('You are allowed to select maximum 3 areas.');
+        } else {
+            toast.error('Please select at least 1 areas.');
+        }
+        if (selected.length >= 1 && selected.length <= 3) {
             const selectedTitles = selected.map((index) => areasToImprove[index].title);
             // Update setData with the selected titles
             setData(selectedTitles);
             // Call the handleClick function
             handleClick();
-        } else {
-            // Provide feedback or handle the case when less than three options are selected
-            console.log("Please select at least three areas.");
         }
     };
 
@@ -72,12 +71,16 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
                             <h1 className="text-[#343434] ml-[8px] font-semibold text-[18px]">{area.title}</h1>
                             {selected.includes(index) && (
                                 <div className="absolute top-[20px] right-[5px]">
-                                    <Img src="/images/Ok.png" alt="none" className="w-[20px] h-[20px] md:w-[20px] md:h-[20px]" />
+                                    <Img src="/images/Ok.png" alt="none"
+                                         className="w-[20px] h-[20px] md:w-[20px] md:h-[20px]"/>
                                 </div>
                             )}
                         </div>
                     ))}
                 </div>
+            </div>
+            <div>
+                <Toaster richColors position={"top-center"} closeButton={true}/>
             </div>
             <div className="w-[100%] px-[20px] pb-[40px]">
                 <button

@@ -1,5 +1,6 @@
-import React, {FC, useEffect, useState} from 'react';
-import {PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
+import React, { FC, useEffect, useState } from 'react';
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { ClipLoader } from "react-spinners";
 
 const ELEMENT_STYLES = {
     base: {
@@ -22,8 +23,8 @@ interface CheckoutFormInterface {
     click: any,
 }
 
-const CheckoutForm: FC<CheckoutFormInterface> = ({states, clientSecret: secret, click: handleClick}) => {
-    const {price_id: priceId, customer_id: customerId, client_secret: clientSecret} = states;
+const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret, click: handleClick }) => {
+    const { price_id: priceId, customer_id: customerId, client_secret: clientSecret, pricing: type } = states;
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState<boolean>(false);
@@ -80,18 +81,20 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({states, clientSecret: secret, 
         <div className="pt-[25px] pb-[20px] text-[14px] border-b border-b-[#979797]">
             <div className="flex items-center text-[#979797]">
                 <div className="flex-1 p-1">
-                    AI team building & wellbeing plan
+                    <span
+                        className="text-[#343434]"
+                    >5 seats X </span>{type === 'yearly' ? 'Reaction Premium Subscription' : 'Reaction Basic subscription with all the'}
                 </div>
                 <div className="p-1">
-                    $3.99
+                    {type === 'yearly' ? '$59.99' : '$35.00'}
                 </div>
             </div>
             <div className="flex items-center">
                 <div className="flex-1 text-[#979797] p-1">
-                    with customize challenge
+                    {type === 'yearly' ? 'with the ability to redeem points for rewards' : 'features needed for a successful step challenge'}
                 </div>
                 <div className="p-1 text-[#C73D23] font-semibold">
-                    $20
+                    {type === 'yearly' ? '-$55.00' : '-$25.00'}
                 </div>
             </div>
         </div>
@@ -101,14 +104,14 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({states, clientSecret: secret, 
                     Total
                 </div>
                 <div className="p-1">
-                    $0.99
+                    {type === 'yearly' ? '$4.95' : '$9.95'}
                 </div>
             </div>
             <div className="flex items-center">
                 <div className="flex-1 text-[#979797] p-1">
                 </div>
                 <div className="p-1 text-[#C73D23] font-semibold">
-                    You just saved $50 (70% off)
+                    You just saved {type === 'yearly' ? '$55' : '$25'} ({type === '' ? '90%' : '70%'} off)
                 </div>
             </div>
         </div>
@@ -117,6 +120,12 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({states, clientSecret: secret, 
                 clientSecret ? <PaymentElement/> : ''
             }
         </div>
+        {
+            loading && <div className="flex fixed left-0 top-0 bottom-0 right-0 items-center justify-center z-50"
+                            style={{ background: 'rgba(0,0,0,0.25)' }}>
+                <ClipLoader color={'#F9B400'} loading={loading} size={100}/>
+            </div>
+        }
         <div className="w-full pt-[25px]">
             <button
                 onClick={subscribe}
