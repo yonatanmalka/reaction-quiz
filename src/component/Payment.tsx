@@ -80,6 +80,12 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
     }, [selectedOption]);
 
 
+    useEffect(() => {
+        if (typeof localStorage !== 'undefined') {
+            localStorage.removeItem('hasVisited');
+        }
+    }, []);
+
     return (
         <div className="w-[100%] h-[100%]">
             <div className="fixed z-10 md:w-[400px] w-[425px]">
