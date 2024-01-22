@@ -5,7 +5,6 @@ import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
 import Logo from "../../images/logo.svg";
 
-declare let fbq: Function;
 const list = [
     {
         name: 'Ready to launch step challenge'
@@ -60,10 +59,6 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
         const { clientSecret, customerId } = await response.json()
         await setStates({ ...states, 'client_secret': clientSecret, 'customer_id': customerId })
         setClientSecret(clientSecret);
-
-        if (typeof fbq === 'function') {
-            fbq('track', 'Purchase', { currency: "USD", value: selectedOption === 'monthly' ? 9.95 : 4.95 });
-        }
     };
 
     useEffect(() => {

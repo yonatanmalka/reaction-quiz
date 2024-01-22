@@ -56,6 +56,7 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem('customer_id', btoa(customerId));
                 localStorage.setItem('price_id', priceId);
+                localStorage.setItem('type', type);
             }
         }
     }, [states]);

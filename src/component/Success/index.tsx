@@ -7,6 +7,8 @@ import Element2 from "../../../images/element2.svg";
 import { useStripe } from "@stripe/react-stripe-js";
 import { ClipLoader } from "react-spinners";
 
+declare let fbq: Function;
+
 interface SuccessPageInterface {
     setup_intent_client_secret: any;
     setup_intent: any,
@@ -31,6 +33,10 @@ export const SuccessPage: FC<SuccessPageInterface> = (
             const result: any = await stripe.retrieveSetupIntent(setup_intent_client_secret);
             if (result.setupIntent && result.setupIntent.status === 'succeeded') {
                 const priceId = localStorage.getItem('price_id');
+                const priceType = localStorage.getItem('type');
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Purchase', { currency: "USD", value: priceType === 'monthly' ? 9.95 : 4.95 });
+                }
                 console.log(result.setupIntent.payment_method)
                 await attachPaymentMethod(customerId, result.setupIntent.payment_method)
                 await subscribe(priceId);
