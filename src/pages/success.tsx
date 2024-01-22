@@ -1,30 +1,34 @@
-import React from 'react';
-import Logo from "../../images/logo.png";
-import Image from "next/image";
-import DownLoad_App from "@/component/DownLoad_App";
-import Element1 from "../../images/element1.svg";
-import Element2 from "../../images/element2.svg";
+import React, { useEffect, useState } from 'react';
 import '../app/globals.css'
+import { Elements } from "@stripe/react-stripe-js";
+import { useRouter } from "next/router";
+import { loadStripe } from "@stripe/stripe-js";
+import { stripe_public_key } from "@/utils/stripe";
+import { SuccessPage } from "@/component/Success";
 
 const Success = () => {
+    const stripePromise = loadStripe(stripe_public_key);
+    const router = useRouter();
+    const { setup_intent, setup_intent_client_secret } = router.query;
+
+    const [customerId, setCustomerId] = useState<any>('');
+
+    useEffect(() => {
+        if (typeof localStorage !== 'undefined') {
+            const customer = localStorage.getItem('customer_id') || '';
+            const decruptCustomer = atob(customer);
+            if (customer) setCustomerId(decruptCustomer);
+        }
+    }, []);
+
     return (
-        <main className="flex justify-center items-center font-primary">
-            <div className="md:w-[400px] w-[425px] min-h-[100vh] z-[20] relative bg-white p-[15px] overflow-hidden">
-                <div className="flex w-full justify-center mt-[10px]">
-                    <Image src={Logo} alt={'logo'} width={93} height={40} autoFocus={true}/>
-                </div>
-                <div className="mt-[40px] w-full relative z-20">
-                    <DownLoad_App/>
-                </div>
-                <div className="z-1">
-                    <Image src={Element1} alt={'element1'} className="absolute top-[-120px] left-[-100px]"/>
-                </div>
-                <div className="z-1">
-                    <Image src={Element2} alt={'element1'}
-                           className="absolute bottom-[-100px] h-[400px] right-[-130px]"/>
-                </div>
-            </div>
-        </main>
+        <Elements stripe={stripePromise}>
+            <SuccessPage
+                customerId={customerId}
+                setup_intent={setup_intent}
+                setup_intent_client_secret={setup_intent_client_secret}
+            />
+        </Elements>
     )
 };
 

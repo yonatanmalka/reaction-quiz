@@ -71,10 +71,10 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
     useEffect(() => {
         let id, type;
         if (selectedOption === 'monthly') {
-            id = 'price_1ObHqoFN3wpDa6wtMqfJ3zyA';
+            id = 'price_1ObNYaFN3wpDa6wtL2SyOzCn';
             type = 'monthly'
         } else if (selectedOption === 'yearly') {
-            id = 'price_1ObHqeFN3wpDa6wtoQO61NgN';
+            id = 'price_1ObNYJFN3wpDa6wtPk7wvNnQ';
             type = 'yearly'
         }
         setStates({ ...states, 'price_id': id, 'pricing': type });

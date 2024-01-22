@@ -41,6 +41,7 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
             elements,
             confirmParams: {
                 return_url: 'https://reaction-omega-ecru.vercel.app/success',
+                // return_url: 'http://localhost:3000/success',
             },
         });
 
@@ -50,31 +51,13 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
         setLoading(false);
     };
 
-    const subscribe = async () => {
-        try {
-            const response = await fetch('/api/createSubscription', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    customerId,
-                    priceId
-                }),
-            });
-
-            const data = await response.json();
-            if (response.status === 200) {
-                handleSubscribe();
-            }
-            console.log('Subscription and Customer created:', data);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-
     useEffect(() => {
-        console.log(states)
+        if (states) {
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem('customer_id', btoa(customerId));
+                localStorage.setItem('price_id', priceId);
+            }
+        }
     }, [states]);
 
     return <div className="flex flex-col font-primary min-h-[850px]">
@@ -128,7 +111,7 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
         }
         <div className="w-full pt-[25px]">
             <button
-                onClick={subscribe}
+                onClick={handleSubscribe}
                 disabled={loading}
                 className="uppercase  text-[#000] py-[12px] md:py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
             >

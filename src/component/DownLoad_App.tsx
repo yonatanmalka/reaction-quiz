@@ -3,11 +3,9 @@ import React from "react";
 
 
 const DownLoad_App: React.FC<any> = () => {
-
     return (
         <div className="w-[100%] h-[100%]">
             <div>
-
                 <div className="flex flex-col justify-center  items-center mt-[5px]">
                     <div className='md:text-[26px] font-semibold text-[22px] mt-[30px]'>
                         You’re all set!
@@ -19,11 +17,12 @@ const DownLoad_App: React.FC<any> = () => {
                         and the teams app.
                     </div>
                     <div className="w-full px-[25px]">
-                        <button
+                        <a
+                            href="https://www.reaction-club.com/"
                             className="uppercase flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[24px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000] py-[6px]"
                         >
                             Close
-                        </button>
+                        </a>
                     </div>
                 </div>
 
