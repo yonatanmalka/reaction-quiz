@@ -1,6 +1,6 @@
 "use client"
-import React, {useEffect, useState} from "react";
-import {Img} from "@/utils/Img";
+import React, { useEffect, useState } from "react";
+import { Img } from "@/utils/Img";
 import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
 import Logo from "../../images/logo.svg";
@@ -33,7 +33,7 @@ interface QuestionProps {
     setStates: any;
 }
 
-const Payment: React.FC<QuestionProps> = ({handleClick, states, setStates}) => {
+const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) => {
     const [clientSecret, setClientSecret] = useState<any>('');
     const [selectedOption, setSelectedOption] = useState("yearly");
 
@@ -56,8 +56,8 @@ const Payment: React.FC<QuestionProps> = ({handleClick, states, setStates}) => {
                 name: `${states.admin_detail.first_Name} ${states.admin_detail.last_Name}`,
             }),
         });
-        const {clientSecret, customerId} = await response.json()
-        await setStates({...states, 'client_secret': clientSecret, 'customer_id': customerId})
+        const { clientSecret, customerId } = await response.json()
+        await setStates({ ...states, 'client_secret': clientSecret, 'customer_id': customerId })
         setClientSecret(clientSecret);
     };
 
@@ -71,13 +71,13 @@ const Payment: React.FC<QuestionProps> = ({handleClick, states, setStates}) => {
     useEffect(() => {
         let id, type;
         if (selectedOption === 'monthly') {
-            id = 'price_1OaKMBFN3wpDa6wtK3j1IIYN';
+            id = 'price_1ObHqoFN3wpDa6wtMqfJ3zyA';
             type = 'monthly'
         } else if (selectedOption === 'yearly') {
-            id = 'price_1OaKNbFN3wpDa6wteX1LXYxm';
+            id = 'price_1ObHqeFN3wpDa6wtoQO61NgN';
             type = 'yearly'
         }
-        setStates({...states, 'price_id': id, 'pricing': type});
+        setStates({ ...states, 'price_id': id, 'pricing': type });
     }, [selectedOption]);
 
 
