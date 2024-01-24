@@ -1,11 +1,8 @@
 "use client"
-import React, { useState, useEffect } from "react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useEffect, useState } from "react";
 import 'swiper/css';
 
 import 'swiper/css/pagination';
-import { Img } from "@/utils/Img";
 import { LogosSlider } from "@/component/logosSlider";
 
 interface QuestionProps {
@@ -15,91 +12,91 @@ interface QuestionProps {
 const Questions15: React.FC<QuestionProps> = ({ handleNextStep }) => {
     const logos1 = [
         {
-            img:'/logos/microsoft.png',
+            img: '/logos/microsoft.png',
             label: 'Microsoft'
         },
         {
-            img:'/logos/ikea.png',
+            img: '/logos/ikea.png',
             label: 'Ikea'
         },
         {
-            img:'/logos/remax.png',
+            img: '/logos/remax.png',
             label: 'Remax'
         },
         {
-            img:'/logos/amazon.png',
+            img: '/logos/amazon.png',
             label: 'Amazon'
         },
         {
-            img:'/logos/american_express.png',
+            img: '/logos/american_express.png',
             label: 'American Express'
         },
         {
-            img:'/logos/department_of_justice.png',
+            img: '/logos/department_of_justice.png',
             label: 'Department Of Justice'
         },
         {
-            img:'/logos/hyundai.png',
+            img: '/logos/hyundai.png',
             label: 'Hyundai'
         },
     ];
     const logos2 = [
         {
-            img:'/logos/amdocs.png',
+            img: '/logos/amdocs.png',
             label: 'Amdocs'
         },
         {
-            img:'/logos/phzer.png',
+            img: '/logos/phzer.png',
             label: 'Phzer'
         },
         {
-            img:'/logos/arla.png',
+            img: '/logos/arla.png',
             label: 'Arla'
         },
         {
-            img:'/logos/google.png',
+            img: '/logos/google.png',
             label: 'Google'
         },
         {
-            img:'/logos/jp_morgan.png',
+            img: '/logos/jp_morgan.png',
             label: 'J.P. Morgan'
         },
         {
-            img:'/logos/american_cancer_society.png',
+            img: '/logos/american_cancer_society.png',
             label: 'American Cancer Society'
         },
         {
-            img:'/logos/barclays.png',
+            img: '/logos/barclays.png',
             label: 'Barclays'
         },
     ];
     const logos3 = [
         {
-            img:'/logos/lululemon_athletica.png',
+            img: '/logos/lululemon_athletica.png',
             label: 'Lululemon Athletica'
         },
         {
-            img:'/logos/meta.png',
+            img: '/logos/meta.png',
             label: 'Meta'
         },
         {
-            img:'/logos/citi.png',
+            img: '/logos/citi.png',
             label: 'Citi'
         },
         {
-            img:'/logos/lidl.png',
+            img: '/logos/lidl.png',
             label: 'Lidl'
         },
         {
-            img:'/logos/pwc.png',
+            img: '/logos/pwc.png',
             label: 'PWC'
         },
         {
-            img:'/logos/unilever.png',
+            img: '/logos/unilever.png',
             label: 'Unilever'
         },
         {
-            img:'/logos/bnp_paribas.png',
+            img: '/logos/bnp_paribas.png',
             label: 'BNP Paribas'
         },
     ];
@@ -112,7 +109,7 @@ const Questions15: React.FC<QuestionProps> = ({ handleNextStep }) => {
                 const nextPercent = prevPercent + 1;
                 if (nextPercent === 100) {
                     clearInterval(interval); // Stop the interval when percent reaches 100
-                    setTimeout(handleNextStep, 3500); // Call handleNextStep after 2 seconds
+                    setTimeout(handleNextStep, 3300); // Call handleNextStep after 2 seconds
                 }
                 return nextPercent;
             });
