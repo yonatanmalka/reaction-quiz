@@ -172,13 +172,13 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                 <div
                                     className='absolute top-0 left-0 mt-[5px] flex flex-col items-end w-full pr-[10px]'>
                                     <div className='md:text-[10px] text-[8px] font-semibold '>
-                                        Try first month
+                                        Try first week
                                     </div>
                                     <div className="flex flex-row md:ml-[15px] ">
                                         <div className="text-[8px] mt-[5px] font-bold">
                                             $
                                         </div>
-                                        <div className="text-[20px] ml-[3px] font-bold">
+                                        <div className="text-[34px] ml-[3px] font-bold leading-[1]">
                                             1
                                         </div>
 
@@ -235,13 +235,13 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                 <div
                                     className='absolute top-0 left-0 mt-[5px] flex flex-col items-end w-full pr-[10px]'>
                                     <div className='md:text-[10px] text-[8px] font-semibold '>
-                                        Try first month
+                                        Try first week
                                     </div>
                                     <div className="flex flex-row md:ml-[15px] ">
                                         <div className="text-[8px] mt-[5px] font-bold">
                                             $
                                         </div>
-                                        <div className="text-[20px] ml-[3px] font-bold">
+                                        <div className="text-[34px] ml-[3px] font-bold leading-[1]">
                                             0
                                         </div>
 
