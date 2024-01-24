@@ -113,7 +113,7 @@ const Questions15: React.FC<QuestionProps> = ({ handleNextStep }) => {
                 }
                 return nextPercent;
             });
-        }, 160); // Adjust the interval duration for smoother animation
+        }, 150); // Adjust the interval duration for smoother animation
         return () => clearInterval(interval); // Cleanup the interval on component unmount
     }, [handleNextStep]);
 
