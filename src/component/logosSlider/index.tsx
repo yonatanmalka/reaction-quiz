@@ -13,7 +13,7 @@ interface LogosSliderInterface {
 export const LogosSlider: FC<LogosSliderInterface> = ({ items1, items2, items3 }) => {
     const settings = {
         autoplay: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 800,
         dots: false,
         infinite: true,
         arrows: false,

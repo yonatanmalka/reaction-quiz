@@ -95,7 +95,7 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
                 <div className="flex-1 text-[#979797] p-1">
                 </div>
                 <div className="p-1 text-[#C73D23] font-semibold">
-                    You just saved {type === 'yearly' ? '$55' : '$25'} ({type === '' ? '90%' : '70%'} off)
+                    You just saved {type === 'yearly' ? '$55' : '$25'} ({type === 'yearly' ? '90%' : '70%'} off)
                 </div>
             </div>
         </div>

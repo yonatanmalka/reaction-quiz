@@ -56,6 +56,10 @@ const Question18: React.FC<QuestionProps> = ({ handleClick, setData }) => {
     }, [isDatePickerOpen]);
 
     const handleNextClick = () => {
+        if (selectedDate.endDate === undefined) {
+            toast.error('Select End Date')
+            return false;
+        }
         if (selectedDate.startDate) {
             const data = {
                 Challenge_title: firstName,
@@ -64,8 +68,6 @@ const Question18: React.FC<QuestionProps> = ({ handleClick, setData }) => {
             setData(data);
             handleClick();
             toast.success('Saving Your Details');
-        } else if (selectedDate.endDate === undefined) {
-            toast.error('Select End Date')
         }
     };
 
