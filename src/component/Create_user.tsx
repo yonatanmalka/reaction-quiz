@@ -33,7 +33,7 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
     const submit = async (e: any) => {
         e.preventDefault();
         try {
-            const response = await airtableClient('Table 1').create([
+            const response = await airtableClient('Quiz Results').create([
                 {
                     fields: {
                         "Select Your Main Goal": states.goal,
