@@ -5,6 +5,7 @@ import { toast, Toaster } from 'sonner';
 import { useMutation } from "@apollo/client";
 import { SAVE_QUIZ_MUTATION } from "@/utils/cms/mutations/quiz";
 import client from "@/utils/apolloClient";
+import { airtableClient } from "@/utils/airtableClient";
 
 interface QuestionProps {
     handleClick: () => void;
@@ -31,34 +32,31 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
 
     const submit = async (e: any) => {
         e.preventDefault();
-        const variables: any = {
-            categories: {
-                nodes: [{ id: '97' }]
-            },
-            areYourOrganizationNationalOrInternational: states.organization,
-            doTeamMembersActivelyParticipateAndContribute: states.actively_participate,
-            doTeamMembersOftenExperienceHighLevelsOfStressAtWork: states.stress_at_work,
-            enterYourDetailsToGetAccessToTheAdminDashboard: {
-                firstName: states.admin_detail?.first_Name,
-                lastName: states.admin_detail?.last_Name,
-                workEmail: states.admin_detail?.email
-            },
-            howDoYouPerceiveTheOverallMoraleOfYourTeam: states.moral,
-            howOftenDoYouExperienceConflictsInYourTeam: states.team_conflicts_experince,
-            howWellDoTeamMembersKnowEachOtherOnAPersonalLevel: states.team_members_know_each_other_on_persoal_level,
-            letSCreateAStepChallengeDate: JSON.stringify(states.create_step_challenge.selectedDate),
-            letSCreateAStepChallengeTitle: states.create_step_challenge?.Challenge_title,
-            selectUpToThreeAreasWhereYouBelieveTheTeamCouldImproveTheMost: states.improve_team.join(),
-            selectYourMainGoal: states.goal,
-            teamMembersFeelComfortableExpressingTheirThoughtsAndIdeasOpenly: states.team_members_comfort,
-            whatIsYourTeamSWorkScheduleLike: states.work_schedule,
-            whatIsYourTeamSize: states.team_size,
-            whatIsYourTeamsWorkStyle: states.work_style,
-            whatTypeOfOrganizationAreYouWorkingIn: states.company,
-            wouldYouLikeToMotivateParticipationWithRewards: states.participation_reward
-        };
         try {
-            const response = await save_quiz({ variables });
+            const response = await airtableClient('Table 1').create([
+                {
+                    fields: {
+                        "Select Your Main Goal": states.goal,
+                        "What type of organization are you working in?": states.company,
+                        "What is your team's work style?": states.work_style,
+                        "What is your team’s work schedule like?": states.work_schedule,
+                        "Are your organization national or international?": states.organization,
+                        "What is your team size?": states.team_size,
+                        "How do you perceive the overall morale of your team?": states.moral,
+                        "Do team members actively participate and contribute?": states.actively_participate,
+                        "How often do you experience  conflicts in your team?": states.team_conflicts_experince,
+                        "Do team members often experience high levels of stress at work?": states.stress_at_work,
+                        "How well do team members know each other on a personal level?": states.team_members_know_each_other_on_persoal_level,
+                        "Team members feel comfortable expressing their thoughts and ideas openly": states.team_members_comfort,
+                        "Select up to three areas where you believe the team could improve the most": states.improve_team.join(','),
+                        "Let’s create a step challenge Title": states.create_step_challenge?.Challenge_title,
+                        "Let’s create a step challenge Date": JSON.stringify(states.create_step_challenge.selectedDate),
+                        "Would you like to motivate participation with rewards?": states.participation_reward,
+                        "Enter your details to get access to the admin dashboard user name": `${states.admin_detail?.first_Name} ${states.admin_detail?.last_Name}`,
+                        "Enter your details to get access to the admin dashboard user email": states.admin_detail?.email
+                    }
+                }
+            ]);
             console.log('Quiz saved:', response);
         } catch (error) {
             console.error('Error creating quiz:', error);
@@ -82,7 +80,7 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
             };
             await setData(data);
             // console.log(states, JSON.stringify(states.create_step_challenge.selectedDate),  states.improve_team.join());
-            // await submit(e);
+            await submit(e);
             handleClick();
         }
     };
