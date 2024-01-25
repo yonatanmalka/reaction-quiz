@@ -52,8 +52,8 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
                         "Let’s create a step challenge Title": states.create_step_challenge?.Challenge_title,
                         "Let’s create a step challenge Date": JSON.stringify(states.create_step_challenge.selectedDate),
                         "Would you like to motivate participation with rewards?": states.participation_reward,
-                        "Enter your details to get access to the admin dashboard user name": `${states.admin_detail?.first_Name} ${states.admin_detail?.last_Name}`,
-                        "Enter your details to get access to the admin dashboard user email": states.admin_detail?.email
+                        "Enter your details to get access to the admin dashboard user name": `${firstName} ${lastName}`,
+                        "Enter your details to get access to the admin dashboard user email": email
                     }
                 }
             ]);
