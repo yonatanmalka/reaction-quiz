@@ -40,7 +40,7 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
         const result = await stripe.confirmSetup({
             elements,
             confirmParams: {
-                return_url: 'https://reaction-omega-ecru.vercel.app/success',
+                return_url: 'https://quiz.reaction-club.com/success',
                 // return_url: 'http://localhost:3000/success',
             },
         });
