@@ -56,7 +56,7 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
     }, [states]);
 
     return (
-        <div className="flex flex-col font-primary min-h-[850px] overflow-scroll">
+        <div className="flex flex-col font-primary min-h-[850px]">
             <div className="flex justify-between pt-[25px] pb-[20px] text-[14px] border-b border-b-[#979797]">
                 <div className="flex items-center text-[#979797]">
                     <div className="flex-1 p-1 text-[12px]">
