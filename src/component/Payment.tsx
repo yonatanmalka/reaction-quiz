@@ -56,13 +56,14 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
     useEffect(() => {
         let id, type;
         if (selectedOption === 'monthly') {
-            type === 'monthly'
+            type = 'monthly'
             id = ONE_WEEK_MONTH_SUBSCRIPTION
         } else if (selectedOption === 'yearly') {
-            type === 'yearly'
+            type = 'yearly'
             id = FOUR_WEEK_MONTH_SUBSCRIPTION
         }
         setStates({ ...states, 'price_id': id, 'pricing': type });
+
     }, [selectedOption]);
 
 
@@ -74,7 +75,7 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
 
     return (
         <div className="w-[100%] h-[100%]">
-            <div className="fixed z-10 md:w-[400px] w-[425px]">
+            <div className="fixed top-0 z-10 md:w-[400px] w-[425px]">
                 <Timer/>
             </div>
             <div>

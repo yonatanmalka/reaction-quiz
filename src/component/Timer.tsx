@@ -23,7 +23,7 @@ const Timer = () => {
     const seconds = timeRemaining % 60;
 
     return (
-        <div className="w-full bg-[#F9B22D] flex justify-center items-center h-[35px]">
+        <div className="w-full bg-[#F9B22D] flex justify-center items-center h-[70px]">
             <h1 className="text-white font-bold">
                 Reserved price for : {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
             </h1>
