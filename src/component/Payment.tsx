@@ -3,28 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Img } from "@/utils/Img";
 import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
-import Logo from "../../images/logo.svg";
+import { FOUR_WEEK_MONTH_SUBSCRIPTION, ONE_WEEK_MONTH_SUBSCRIPTION } from "@/utils/stripe";
 
 const list = [
-    {
-        name: 'Ready to launch step challenge'
-    },
-    {
-        name: 'AI engagement engine'
-
-    },
-    {
-        name: 'Points unlock real rewards'
-
-    },
-    {
-        name: 'Admin dashboard & analytics'
-
-    },
-    {
-        name: 'VIP customer support'
-
-    }
+    { name: 'Step challenge designed for your team' },
+    { name: 'No wearables required' },
+    { name: 'Easy to use app' },
+    { name: 'Admin dashboard & analytics' },
+    { name: 'VIP customer support' }
 ]
 
 interface QuestionProps {
@@ -70,11 +56,11 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
     useEffect(() => {
         let id, type;
         if (selectedOption === 'monthly') {
-            id = 'price_1ObNYaFN3wpDa6wtL2SyOzCn';
-            type = 'monthly'
+            type === 'monthly'
+            id = ONE_WEEK_MONTH_SUBSCRIPTION
         } else if (selectedOption === 'yearly') {
-            id = 'price_1ObNYJFN3wpDa6wtPk7wvNnQ';
-            type = 'yearly'
+            type === 'yearly'
+            id = FOUR_WEEK_MONTH_SUBSCRIPTION
         }
         setStates({ ...states, 'price_id': id, 'pricing': type });
     }, [selectedOption]);
@@ -93,15 +79,42 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
             </div>
             <div>
                 <div className="flex flex-col justify-center  items-center">
-                    <div>
-                        <Img src={Logo} alt='logo' className='w-[100px] h-[70px] mt-[40px]'/>
-                    </div>
-                    <div className='md:text-[26px] font-semibold text-[22px] mt-[10px]'>
+                    <div className='md:text-[26px] font-semibold text-[22px] mt-[40px]'>
                         Your Challenge Is Ready!
                     </div>
                 </div>
-                <div className='flex flex-row px-[40px] my-[10px] md:px-[40px] justify-between items-center '>
-                    <div className='flex-col flex items-start'>
+                <div className="flex justify-center gap-6 py-6">
+                    <div className="flex-col flex items-start gap-3">
+                        <div className='flex justify-center items-center gap-[8px] flex-row'>
+                            <div
+                                className='h-[34px] w-[34px] bg-[#DADADA] flex items-center justify-center rounded-full'>
+                                <Img src='/images/compass.png' alt='logo' className='w-[18px] h-[18px]'/>
+                            </div>
+                            <div className='flex flex-col'>
+                                <div className='text-[13px] font-normal text-[#979797]'>
+                                    Goal
+                                </div>
+                                <div className='text-[12px] font-medium text-[#343434]'>
+                                    {states.goal}
+                                </div>
+                            </div>
+                        </div>
+                        <div className='flex justify-center items-center gap-[8px] flex-row'>
+                            <div
+                                className='h-[34px] w-[34px] bg-[#DADADA] flex items-center justify-center rounded-full'>
+                                <Img src='/images/team.png' alt='logo' className='w-[18px] h-[18px]'/>
+                            </div>
+                            <div className='flex flex-col'>
+                                <div className='text-[13px] font-normal text-[#979797]'>
+                                    Team-size
+                                </div>
+                                <div className='text-[12px] font-medium text-[#343434]'>
+                                    {states.team_size} members
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex-col flex items-start gap-3">
                         <div className='flex justify-center items-center gap-[8px] flex-row'>
                             <div
                                 className='h-[34px] w-[34px] bg-[#DADADA] flex items-center justify-center rounded-full'>
@@ -116,7 +129,7 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                 </div>
                             </div>
                         </div>
-                        <div className='flex justify-center mt-[15px] items-center gap-[8px] flex-row'>
+                        <div className='flex justify-center items-center gap-[8px] flex-row'>
                             <div
                                 className='h-[34px] w-[34px] bg-[#DADADA] flex items-center justify-center rounded-full'>
                                 <Img src='/images/arrow.png' alt='logo' className='w-[18px] h-[18px]'/>
@@ -130,9 +143,6 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <Img src='/images/girl.png' alt='logo' className='w-[84px] h-[134px]'/>
                     </div>
                 </div>
                 <div className="bg-[#979797] h-[1px] mx-[40px] flex-1"/>
@@ -156,53 +166,41 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                 </div>
                                 <div className="flex flex-col ">
                                     <div className="text-[12px] font-semibold">
-                                        Step challenge
+                                        1-Week Plan <span className="text-[10px] font-normal ml-1">5 users</span>
                                     </div>
-                                    <div className="md:text-[12px] text-[12px] text-[#979797] font-semibold">
-                                        First 5 seats
-                                    </div>
-                                    <div className="md:text-[12px] line text-[12px] text-[#979797] font-semibold">
-                                        $7 seat/month
+                                    <div className="text-[10px]">
+                                        {states.trial_discount ? (
+                                        <><span className="text-[#979797] line-through">&nbsp;$21&nbsp;</span> → $13</>
+                                        ) : "$21"}
                                     </div>
                                 </div>
                             </div>
                             <div className="relative z-0 min-w-[145px] flex items-center justify-end">
                                 <Img src='/images/rectangle.png' alt='logo'
-                                     className='md:w-[140px] w-[120px] h-[60px] ml-[5px] md:h-[65px]'/>
+                                     className='md:w-[140px] w-[120px] h-[70px] ml-[5px]'/>
                                 <div
-                                    className='absolute top-0 left-0 mt-[5px] flex flex-col items-end w-full pr-[10px]'>
-                                    <div className='md:text-[10px] text-[8px] font-semibold '>
-                                        Try first week
-                                    </div>
+                                    className={`absolute left-4 md:left-1 bottom-[${states.trial_discount ? "5px" : "10px"}] mt-[5px] flex flex-col items-center w-full pr-[10px]`}>
+                                    {states.trial_discount && <div className="text-[11px] ml-6 text-[#979797] line-through">&nbsp;$3&nbsp;</div>}
                                     <div className="flex flex-row md:ml-[15px] ">
-                                        <div className="text-[8px] mt-[5px] font-bold">
+                                        <div className="text-[14px] mr-1 font-semibold">
                                             $
                                         </div>
-                                        <div className="text-[34px] ml-[3px] font-bold leading-[1]">
+                                        <div className="text-[32px] ml-[3px] font-semibold leading-[1]">
                                             1
                                         </div>
-
-                                        <div className="flex flex-col ml-[3px] text-[8px] font-semibold">
+                                        <div className="flex flex-col ml-2 text-[14px] font-semibold">
                                             <div>
                                                 99
                                             </div>
-                                            <div>
-                                                per seat
-                                            </div>
-                                            <div>
-                                                per week
-                                            </div>
                                         </div>
                                     </div>
+                                    <div className="text-[9px] ml-[30px] font-semibold">per day</div>
                                 </div>
                             </div>
                         </div>
-                        <div className="md:text-[10px] text-[8px] pl-[37px] text-[#979797] font-light">
-                            $35 for 5 seats billed monthly after the 1st week
-                        </div>
                     </div>
                     <div
-                        className={`w-full text-[#fff] flex justify-center items-center mt-[15px] h-[20px] rounded-tl-[10px] rounded-tr-[10px] ${selectedOption === 'yearly' ? 'bg-[#F9B22D]' : 'bg-[#979797]'}`}>
+                        className={`w-full text-[#fff] flex justify-center text-[14px] py-3 font-medium items-center mt-[15px] h-[20px] rounded-tl-[10px] rounded-tr-[10px] ${selectedOption === 'yearly' ? 'bg-[#F9B22D]' : 'bg-[#979797]'}`}>
                         Most Popular
                     </div>
 
@@ -210,8 +208,8 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                         className={`paymentCard2 flex flex-col w-[100%] justify-center ${selectedOption === 'yearly' ? 'selected' : ''}`}
                         onClick={() => setSelectedOption('yearly')}
                     >
-                        <div className='flex flex-row items-center px-[10px] w-[100%]   justify-between'>
-                            <div className='flex flex-row gap-[8px]  justify-center items-center'>
+                        <div className='flex flex-row items-center px-[10px] w-[100%] justify-between'>
+                            <div className='flex flex-row gap-[8px] justify-center items-center'>
                                 <div>
                                     <Img
                                         src={selectedOption === 'yearly' ? '/images/checkbox.png' : '/images/circle.png'}
@@ -219,49 +217,37 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                 </div>
                                 <div className="flex flex-col ">
                                     <div className="text-[12px] font-semibold">
-                                        Step challenge + Earn rewards
+                                        4-Week Plan <span className="text-[10px] font-normal ml-1">5 users</span>
                                     </div>
-                                    <div className="text-[12px] text-[#979797] font-semibold">
-                                        First 5 seats
-                                    </div>
-                                    <div className="text-[12px] line  text-[#979797] font-semibold">
-                                        $12 seat/month
+                                    <div className="text-[10px]">
+                                        {states.trial_discount ? (
+                                        <><span className="text-[#979797] line-through">&nbsp;$60&nbsp;</span> → $29</>
+                                        ) : "$60"}
                                     </div>
                                 </div>
                             </div>
                             <div className="relative z-0 min-w-[145px] flex items-center justify-end">
                                 <Img src='/images/rectangle.png' alt='logo'
-                                     className='md:w-[140px] w-[120px] h-[60px] ml-[5px] md:h-[65px]'/>
+                                     className='md:w-[140px] w-[120px] h-[70px] ml-[5px]'/>
                                 <div
-                                    className='absolute top-0 left-0 mt-[5px] flex flex-col items-end w-full pr-[10px]'>
-                                    <div className='md:text-[10px] text-[8px] font-semibold '>
-                                        Try first week
-                                    </div>
+                                    className={`absolute left-6 md:left-2 bottom-[${states.trial_discount ? "5px" : "10px"}] mt-[5px] flex flex-col items-center w-full pr-[10px]`}>
+                                    {states.trial_discount && <div className="text-[11px] ml-6 text-[#979797] line-through">&nbsp;$2&nbsp;</div>}
                                     <div className="flex flex-row md:ml-[15px] ">
-                                        <div className="text-[8px] mt-[5px] font-bold">
+                                        <div className="text-[14px] font-semibold">
                                             $
                                         </div>
-                                        <div className="text-[34px] ml-[3px] font-bold leading-[1]">
+                                        <div className="text-[32px] ml-[3px] font-semibold leading-[1]">
                                             0
                                         </div>
-
-                                        <div className="flex flex-col ml-[3px] text-[8px] font-semibold">
+                                        <div className="flex flex-col ml-1  text-[14px] font-semibold">
                                             <div>
                                                 99
                                             </div>
-                                            <div>
-                                                per seat
-                                            </div>
-                                            <div>
-                                                per week
-                                            </div>
                                         </div>
                                     </div>
+                                    <div className="text-[9px] ml-[16px] font-semibold">per day</div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="md:text-[10px] text-[8px] pl-[37px] text-[#979797] font-light">
-                            $35 for 5 seats billed monthly after the 1st week
                         </div>
                     </div>
                 </div>

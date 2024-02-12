@@ -2,20 +2,14 @@ import React, { FC, useEffect, useState } from 'react';
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { ClipLoader } from "react-spinners";
 
-const ELEMENT_STYLES = {
-    base: {
-        fontSize: '16px',
-        color: '#424770',
-        letterSpacing: '0.025em',
-        '::placeholder': {
-            color: '#aab7c4',
-        },
-        padding: '20px 24px',
-    },
-    invalid: {
-        color: '#9e2146',
-    },
-};
+const PRICES = {
+    yearly: 60,
+    yearlyDiscount: 31,
+    monthly: 21,
+    monthlyDiscount: 8 ,
+    countYearDiscount: () => Math.floor((PRICES.yearlyDiscount * 100)/PRICES.yearly),
+    countMothDiscount: () => Math.floor((PRICES.monthlyDiscount * 100)/PRICES.monthly),
+}
 
 interface CheckoutFormInterface {
     states: any,
@@ -62,52 +56,59 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
     }, [states]);
 
     return <div className="flex flex-col font-primary min-h-[850px]">
-        <div className="pt-[25px] pb-[20px] text-[14px] border-b border-b-[#979797]">
+        <div className="flex justify-between pt-[25px] pb-[20px] text-[14px] border-b border-b-[#979797]">
             <div className="flex items-center text-[#979797]">
-                <div className="flex-1 p-1">
-                    <span
-                        className="text-[#343434]"
-                    >5 seats X </span>{type === 'yearly' ? 'Reaction Premium Subscription' : 'Reaction Basic subscription with all the'}
-                </div>
-                <div className="p-1">
-                    {type === 'yearly' ? '$59.99' : '$35.00'}
+                <div className="flex-1 p-1 text-[12px]">
+                    <span className="text-[#343434] text-[14px]"> 5 seats X </span>
+                    {type === 'yearly' ?  (
+                        'Reaction Premium Subscription with the ability to redeem points for rewards') : (
+                        'Reaction Basic subscription with all the features needed for a successful step challenge'
+                    )}
                 </div>
             </div>
-            <div className="flex items-center">
-                <div className="flex-1 text-[#979797] p-1">
-                    {type === 'yearly' ? 'with the ability to redeem points for rewards' : 'features needed for a successful step challenge'}
+            <div className="flex flex-col gap-3 items-end">
+                <div className="p-1 text-[#979797]">
+                    {type === 'yearly' ? `$${PRICES.yearly}` : `$${PRICES.monthly}`}
                 </div>
-                <div className="p-1 text-[#C73D23] font-semibold">
-                    {type === 'yearly' ? '-$55.00' : '-$25.00'}
-                </div>
+                {states.trial_discount && <div className="p-1 text-[#C73D23] font-semibold">
+                        {type === 'yearly' ? `-$${PRICES.yearlyDiscount}` : `-$${PRICES.monthlyDiscount}`}
+                    </div>
+                }
             </div>
         </div>
         <div className="pt-[25px] pb-[20px] text-[14px] border-b border-b-[#979797]">
             <div className="flex items-center text-[#000]  font-semibold">
-                <div className="flex-1 p-1">
-                    Total
+                <div className="flex-1 p-1 text-[20px]">
+                    {type === 'yearly' ? '4-Week Plan' : '1-Week Plan'}
                 </div>
                 <div className="p-1">
-                    {type === 'yearly' ? '$4.95' : '$9.95'}
+                    {type === 'yearly' ? (
+                        `$${states.trial_discount ? PRICES.yearly - PRICES.yearlyDiscount : PRICES.yearly}`) : (
+                        `$${states.trial_discount ? PRICES.monthly - PRICES.monthlyDiscount : PRICES.monthly}`
+                    )}
                 </div>
             </div>
-            <div className="flex items-center">
+            {states.trial_discount && <div className="flex items-center">
                 <div className="flex-1 text-[#979797] p-1">
                 </div>
                 <div className="p-1 text-[#C73D23] font-semibold">
-                    You just saved {type === 'yearly' ? '$55' : '$25'} ({type === 'yearly' ? '90%' : '70%'} off)
+                    You just saved {type === 'yearly' ? `$${PRICES.yearlyDiscount}` : `$${PRICES.monthlyDiscount}`}
+                    ({type === 'yearly' ? `${PRICES.countYearDiscount()}%` : `${PRICES.countMothDiscount()}%`} off)
                 </div>
             </div>
-        </div>
-        <div className="w-full pt-[25px]">
-            {
-                clientSecret ? <PaymentElement/> : ''
+
             }
         </div>
+        <div className="w-full pt-[25px]">
+            { clientSecret ? <PaymentElement/> : '' }
+        </div>
         {
-            loading && <div className="flex fixed left-0 top-0 bottom-0 right-0 items-center justify-center z-50"
-                            style={{ background: 'rgba(0,0,0,0.25)' }}>
-                <ClipLoader color={'#F9B400'} loading={loading} size={100}/>
+            loading && <div className="flex fixed left-0 top-0 bottom-0 right-0 items-center justify-center z-50" style={{ background: 'rgba(0,0,0,0.25)' }}>
+                <ClipLoader
+                    color={'#F9B400'}
+                    loading={loading}
+                    size={100}
+                />
             </div>
         }
         <div className="w-full pt-[25px]">
@@ -123,4 +124,3 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
 };
 
 export default CheckoutForm;
-
