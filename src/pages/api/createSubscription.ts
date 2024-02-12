@@ -1,35 +1,18 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import stripe, {
-    stripe_product_1_key,
-    stripe_product_1_trail_key,
-    stripe_product_2_key,
-    stripe_product_2_trail_key
-} from "@/utils/stripe";
+import stripe, { FOUR_WEEK_TRIAL, ONE_WEEK_MONTH_SUBSCRIPTION, ONE_WEEK_TRIAL } from "@/utils/stripe";
 
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         const { customerId, priceId } = req.body;
 
-        let trail_key;
-
-        if (priceId === stripe_product_1_key) {
-            trail_key = stripe_product_1_trail_key
-        } else if (priceId === stripe_product_2_key) {
-            trail_key = stripe_product_2_trail_key
-        }
         try {
-            await stripe.invoiceItems.create({
-                customer: customerId,
-                price: trail_key, // This should be the price ID for $4.99
-            });
-            // Create a new subscription with a trial price and set it to upgrade after 7 days
             const subscription = await stripe.subscriptions.create({
                 customer: customerId,
                 items: [{ price: priceId }],
-                trial_end: Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60), // 7 days from now
+                add_invoice_items: [{ price: priceId === ONE_WEEK_MONTH_SUBSCRIPTION ? ONE_WEEK_TRIAL : FOUR_WEEK_TRIAL }],
+                trial_period_days: priceId === ONE_WEEK_MONTH_SUBSCRIPTION ? 7 : 28,
                 expand: ['latest_invoice.payment_intent'],
             });
-
 
             res.status(200).json({
                 subscriptionId: subscription.id,

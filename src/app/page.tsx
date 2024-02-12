@@ -30,6 +30,7 @@ import Element2 from "../../images/element2.svg";
 import DownLoad_App from "@/component/DownLoad_App";
 import Question1 from "@/component/Questions01/page";
 import Checkout from "@/component/Checkout";
+import TrialDiscount from "@/component/TrialDiscount/page";
 
 const Questionary = () => {
     const [currentStep, setCurrentStep] = useState<any>(1);
@@ -53,6 +54,7 @@ const Questionary = () => {
         admin_detail: {},
         pricing: '',
         free_trial: false,
+        trial_discount: true,
         price_id: '',
         client_secret: '',
         customer_id: ''
@@ -94,7 +96,7 @@ const Questionary = () => {
     return (
         <main className="flex justify-center items-center">
             <div
-                className={`md:w-[400px] w-[425px] z-[20] relative bg-white  ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'}  ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
+                className={`md:w-[400px] w-[425px] z-[20] relative bg-white ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'} ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hidden`}>
                 {shouldRenderComponent && (
                     <div
                         className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7 && currentStep !== 21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) ? 'justify-between' : 'justify-center'} items-end `}>
@@ -136,85 +138,150 @@ const Questionary = () => {
                 )}
                 <div className="w-[100%] z-20  relative">
                     {currentStep === 1 && (
-                        <Question1 setData={(goal: string) => setStates({ ...states, goal })}
-                                   handleClick={handleNextStep}/>
+                        <Question1
+                            setData={(goal: string) => setStates({ ...states, goal })}
+                            handleClick={handleNextStep}
+                        />
                     )}
-                    {currentStep === 2 && (<Question2 setData={(company: string) => setStates({ ...states, company })}
-                                                      handleNextStep={handleNextStep}/>)}
+                    {currentStep === 2 && (
+                        <Question2
+                            setData={(company: string) => setStates({ ...states, company })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
                     {currentStep === 3 && (
-                        <Question3 setData={(work_style: string) => setStates({ ...states, work_style })}
-                                   handleNextStep={handleNextStep}/>)}
+                        <Question3
+                            setData={(work_style: string) => setStates({ ...states, work_style })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
                     {currentStep === 4 && (
-                        <Question4 setData={(work_schedule: string) => setStates({ ...states, work_schedule })}
-                                   handleNextStep={handleNextStep}/>)}
+                        <Question4
+                            setData={(work_schedule: string) => setStates({ ...states, work_schedule })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
                     {currentStep === 5 && (
-                        <Question5 setData={(organization: string) => setStates({ ...states, organization })}
-                                   handleNextStep={handleNextStep}/>)}
+                        <Question5
+                            setData={(organization: string) => setStates({ ...states, organization })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
                     {currentStep === 6 && (
-                        <Question6 setData={(team_size: string) => setStates({ ...states, team_size })}
-                                   handleNextStep={handleNextStep}/>)}
+                        <Question6
+                            setData={(team_size: string) => setStates({ ...states, team_size })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
                     {currentStep === 7 && (<Question7 handleClick={() => setCurrentStep(8)}/>)}
-                    {currentStep === 8 && (<Question8 setData={(moral: string) => setStates({ ...states, moral })}
-                                                      handleNextStep={handleNextStep}/>)}
-                    {currentStep === 9 && (<Question9
-                        setData={(actively_participate: string) => setStates({ ...states, actively_participate })}
-                        handleNextStep={handleNextStep}/>)}
-                    {currentStep === 10 && (<Question10
-                        setData={(team_conflicts_experince: string) => setStates({
-                            ...states,
-                            team_conflicts_experince
-                        })}
-                        handleNextStep={handleNextStep}/>)}
+                    {currentStep === 8 && (
+                        <Question8
+                            setData={(moral: string) => setStates({ ...states, moral })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
+                    {currentStep === 9 && (
+                        <Question9
+                            setData={(actively_participate: string) => setStates({ ...states, actively_participate })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
+                    {currentStep === 10 && (
+                        <Question10
+                            setData={(team_conflicts_experince: string) => setStates({...states,team_conflicts_experince})}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
                     {currentStep === 11 && (
-                        <Question11 setData={(stress_at_work: string) => setStates({ ...states, stress_at_work })}
-                                    handleNextStep={handleNextStep}/>)}
-                    {currentStep === 12 && (<Question12
-                        setData={(team_members_know_each_other_on_persoal_level: string) => setStates({
-                            ...states,
-                            team_members_know_each_other_on_persoal_level
-                        })} handleNextStep={handleNextStep}/>)}
-                    {currentStep === 13 && (<Question13
-                        setData={(team_members_comfort: string) => setStates({ ...states, team_members_comfort })}
-                        handleNextStep={handleNextStep}/>)}
+                        <Question11
+                            setData={(stress_at_work: string) => setStates({ ...states, stress_at_work })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
+                    {currentStep === 12 && (
+                        <Question12
+                            setData={(team_members_know_each_other_on_persoal_level: string) => setStates({...states, team_members_know_each_other_on_persoal_level})}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
+                    {currentStep === 13 && (
+                        <Question13
+                            setData={(team_members_comfort: string) => setStates({ ...states, team_members_comfort })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
                     {currentStep === 14 && (
-                        <Question14 setData={(improve_team: any[]) => setStates({ ...states, improve_team })}
-                                    handleClick={() => setCurrentStep(15)}/>)}
+                        <Question14
+                            setData={(improve_team: any[]) => setStates({ ...states, improve_team })}
+                            handleClick={() => setCurrentStep(15)}
+                        />
+                    )}
                     {currentStep === 15 && (<Question15 handleNextStep={() => setCurrentStep(16)}/>)}
-                    {currentStep === 16 && (<Questions16 states={states} handleClick={() => setCurrentStep(17)}/>)}
+                    {currentStep === 16 && (
+                        <Questions16
+                            states={states}
+                            handleClick={() => setCurrentStep(17)}
+                        />
+                    )}
                     {currentStep === 17 && (<Question17 handleClick={() => setCurrentStep(18)}/>)}
-                    {currentStep === 18 && (<Question18
-                        setData={(create_step_challenge: string) => setStates({ ...states, create_step_challenge })}
-                        handleClick={() => setCurrentStep(19)}/>)}
-                    {currentStep === 19 && (<Question19
-                        setData={(participation_reward: string) => setStates({ ...states, participation_reward })}
-                        handleNextStep={handleNextStep}/>)}
+                    {currentStep === 18 && (
+                        <Question18
+                            setData={(create_step_challenge: string) => setStates({ ...states, create_step_challenge })}
+                            handleClick={() => setCurrentStep(19)}
+                        />
+                    )}
+                    {currentStep === 19 && (
+                        <Question19
+                            setData={(participation_reward: string) => setStates({ ...states, participation_reward })}
+                            handleNextStep={handleNextStep}
+                        />
+                    )}
                     {currentStep === 20 && (<Questions20 handleClick={() => setCurrentStep(21)}/>)}
                     {currentStep === 21 && (
-                        <Create_user setData={(admin_detail: string) => setStates({ ...states, admin_detail })}
-                                     handleClick={() => setCurrentStep(22)} states={states}/>)}
-                    {currentStep === 22 && (
-                        <Payment
+                        <Create_user
+                            setData={(admin_detail: string) => setStates({ ...states, admin_detail })}
+                            handleClick={() => setCurrentStep(22)}
                             states={states}
+                        />
+                    )}
+                    {currentStep === 22 && (
+                        <TrialDiscount
                             handleClick={() => setCurrentStep(23)}
+                            states={states}
                             setStates={setStates}
                         />
                     )}
-                    {
-                        currentStep === 23 && (
-                            <Checkout states={states} handleClick={() => setCurrentStep(24)}/>
-                        )
-                    }
-                    {currentStep === 24 && (<DownLoad_App/>)}
+                    {currentStep === 23 && (
+                        <Payment
+                            states={states}
+                            handleClick={() => setCurrentStep(24)}
+                            setStates={setStates}
+                        />
+                    )}
+                    {currentStep === 24 && (
+                        <Checkout
+                            states={states}
+                            handleClick={() => setCurrentStep(25)}
+                        />
+                    )}
+                    {currentStep === 25 && (<DownLoad_App/>)}
                 </div>
-                {![1, 23].includes(currentStep) && (
+                {![1, 24].includes(currentStep) && (
                     <div className="z-1">
-                        <Image src={Element1} alt={'element1'} className="absolute top-[-120px] left-[-100px]"/>
+                        <Image
+                            className="absolute top-[-120px] left-[-100px]"
+                            src={Element1}
+                            alt={'element1'}
+                        />
                     </div>
                 )}
                 {(currentStep !== 1 && currentStep !== 23 && currentStep !== 22) && (
                     <div className="z-1">
-                        <Image src={Element2} alt={'element1'}
-                               className="absolute bottom-[-100px] h-[400px] right-[-130px]"/>
+                        <Image
+                            src={Element2}
+                            alt={'element1'}
+                            className="absolute bottom-[-100px] h-[400px] right-[-130px]"
+                        />
                     </div>
                 )}
             </div>
