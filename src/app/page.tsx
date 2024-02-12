@@ -96,7 +96,7 @@ const Questionary = () => {
     return (
         <main className="flex justify-center items-center">
             <div
-                className={`md:w-[400px] w-[425px] z-[20] relative bg-white ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'} ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-x-hidden overflow-y-scroll`}>
+                className={`md:w-[400px] w-[425px] z-[20] relative bg-white ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'} ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-hideen`}>
                 {shouldRenderComponent && (
                     <div
                         className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7 && currentStep !== 21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) ? 'justify-between' : 'justify-center'} items-end `}>
