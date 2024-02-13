@@ -67,11 +67,11 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
                         )}
                     </div>
                 </div>
-                <div className="flex flex-col gap-3 items-end">
-                    <div className="p-1 text-[#979797]">
+                <div className="flex flex-col gap-3 items-end ml-2">
+                    <div className="text-[#979797]">
                         {type === 'yearly' ? `$${PRICES.yearly}` : `$${PRICES.monthly}`}
                     </div>
-                    {states.trial_discount && <div className="p-1 text-[#C73D23] font-semibold">
+                    {states.trial_discount && <div className="text-[#C73D23] font-semibold">
                             {type === 'yearly' ? `-$${PRICES.yearlyDiscount}` : `-$${PRICES.monthlyDiscount}`}
                         </div>
                     }
@@ -100,7 +100,7 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
 
                 }
             </div>
-            <div className="w-full pt-[25px]">
+            <div className="w-full pt-[25px] ">
                 { clientSecret ? <PaymentElement/> : '' }
             </div>
             {

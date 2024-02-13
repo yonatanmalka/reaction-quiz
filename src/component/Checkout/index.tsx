@@ -16,13 +16,11 @@ const Checkout: FC<CheckoutInterface> = ({states, handleClick}) => {
         console.log(states)
     }, []);
 
-    return <Elements stripe={stripePromise} options={{clientSecret}}>
-        {
-            clientSecret ?
-                <CheckoutForm states={states} clientSecret={clientSecret} click={handleClick}/> : 'loading...'
-        }
-    </Elements>
+    return (
+        <Elements stripe={stripePromise} options={{clientSecret}}>
+            { clientSecret ? <CheckoutForm states={states} clientSecret={clientSecret} click={handleClick}/> : 'loading...' }
+        </Elements>
+    )
 };
 
 export default Checkout;
-
