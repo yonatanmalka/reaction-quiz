@@ -33,6 +33,7 @@ import Checkout from "@/component/Checkout";
 import TrialDiscount from "@/component/TrialDiscount/page";
 
 const Questionary = () => {
+
     const [currentStep, setCurrentStep] = useState<any>(1);
 
     const defaultStates = {
@@ -91,7 +92,6 @@ const Questionary = () => {
 
         sendHeightToParent();
     }, [handleNextStep]);
-
 
     return (
         <main className="flex justify-center items-center">
@@ -264,7 +264,7 @@ const Questionary = () => {
                             handleClick={() => setCurrentStep(25)}
                         />
                     )}
-                    {currentStep === 25 && (<DownLoad_App/>)}
+                    {currentStep === 25 && (<DownLoad_App />)}
                 </div>
                 {![1, 24].includes(currentStep) && (
                     <div className="z-1">

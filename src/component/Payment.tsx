@@ -254,8 +254,9 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                 </div>
                 <div className="px-[20px] mt-[20px] ">
                     <button onClick={createPaymentIntent}
-                            className="uppercase flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[28px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000] py-[6px]">GET
-                        MY CHALLENGE
+                        className="uppercase flex items-center justify-center mt-[12px] bg-[#F9B22D] w-[100%] rounded-[28px] text-[12px] md:text-[16px] font-semibold leading-10 tracking-tight text-[#000] py-[6px]"
+                    >
+                        GET MY CHALLENGE
                     </button>
                 </div>
                 <div className='px-[20px] text-center text-[10px] mt-[20px] text-[#979797]'>

@@ -37,11 +37,12 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
                 return_url: 'https://quiz.reaction-club.com/success',
                 // return_url: 'http://localhost:3000/success',
             },
-        });
+        })
 
         if (result.error) {
             console.log(result.error.message);
         }
+
         setLoading(false);
     };
 
@@ -51,6 +52,8 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
                 localStorage.setItem('customer_id', btoa(customerId));
                 localStorage.setItem('price_id', priceId);
                 localStorage.setItem('type', type);
+                localStorage.setItem('client_secret', clientSecret)
+                localStorage.setItem('email', states.admin_detail.email)
             }
         }
     }, [states]);

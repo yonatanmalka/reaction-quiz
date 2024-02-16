@@ -1,8 +1,8 @@
 "use client"
 import React from "react";
 
-
 const DownLoad_App: React.FC<any> = () => {
+
     return (
         <div className="w-[100%] h-[100%]">
             <div>

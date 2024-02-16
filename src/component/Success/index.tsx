@@ -6,6 +6,7 @@ import Element1 from "../../../images/element1.svg";
 import Element2 from "../../../images/element2.svg";
 import { useStripe } from "@stripe/react-stripe-js";
 import { ClipLoader } from "react-spinners";
+import { handlePaying } from '@/utils/customer.io';
 
 declare let fbq: Function;
 
@@ -93,6 +94,13 @@ export const SuccessPage: FC<SuccessPageInterface> = (
             });
 
             const data = await response.json();
+            await handlePaying(
+                localStorage.getItem('email') as string,
+                localStorage.getItem('customer_id') as string,
+                localStorage.getItem('client_secret') as string,
+                localStorage.getItem('price_id') as string,
+                localStorage.getItem('type') as string
+            )
             console.log('Subscription created:', data);
         } catch (error) {
             console.error('Error:', error);

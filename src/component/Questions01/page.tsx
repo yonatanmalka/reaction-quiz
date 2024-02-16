@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useState} from "react";
+import React, { useState} from "react";
 import Image from "next/image";
 import Logo from "../../../images/logo.svg";
 import Pic1 from "../../../images/partners.png";
@@ -10,22 +10,10 @@ import Pic4 from "../../../images/confusion.png";
 import Ok from "../../../images/Ok.svg"
 
 const data = [
-    {
-        Image: Pic1,
-        name: "Bond my team"
-    },
-    {
-        Image: Pic2,
-        name: "Promote WellBeing"
-    },
-    {
-        Image: Pic3,
-        name: "improve Fitness"
-    },
-    {
-        Image: Pic4,
-        name: "Not Sure"
-    }
+    { Image: Pic1, name: "Bond my team" },
+    { Image: Pic2, name: "Promote WellBeing" },
+    { Image: Pic3, name: "improve Fitness" },
+    { Image: Pic4, name: "Not Sure" }
 ]
 
 interface QuestionProps {
@@ -94,8 +82,6 @@ const Question1: React.FC<QuestionProps> = ({handleClick, setData}) => {
                         </a>
                     </button>
                 </div>
-
-
             </div>
         </div>
     )

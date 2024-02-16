@@ -1,7 +1,9 @@
 "use client"
+
 import Switch from "react-switch";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Img } from "@/utils/Img";
+import { createCustomer } from "@/utils/customer.io";
 
 const list = [
   { name:"Unlock all challenge features" },
@@ -18,6 +20,10 @@ interface QuestionProps {
 const TrialDiscount:React.FC<QuestionProps> = ({ handleClick, states, setStates }) => {
 
   const [checked, setChecked] = useState(true);
+
+  useEffect(() =>  {
+    createCustomer(states)
+  }, [])
 
   const handleChange = async (checked: boolean) => {
     setChecked(checked);
