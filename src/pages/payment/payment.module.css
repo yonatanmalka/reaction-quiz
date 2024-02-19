@@ -1,0 +1,27 @@
+.paymentCard{
+  border-radius: 10px;
+  width: 100%;
+  height: 100px;
+  border: 1px solid #979797;
+  background: rgba(217, 217, 217, 0.00);
+}
+.paymentCard.selected {
+  border: 1px solid #F9B22D;
+  /* Add any additional styling for the selected state */
+}
+.paymentCard2 {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #979797;
+  border-top: none;
+  border-bottom-left-radius: 10px; /* Radius for the bottom-left corner */
+  border-bottom-right-radius: 10px; /* Radius for the bottom-right corner */
+  background: rgba(217, 217, 217, 0.00);
+}
+
+
+
+.paymentCard2.selected {
+  border: 1px solid #F9B22D;
+  /* Add any additional styling for the selected state */
+}

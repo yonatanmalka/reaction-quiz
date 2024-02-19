@@ -1,41 +1,27 @@
 "use client"
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Img} from "@/utils/Img";
+import { AppContext } from "@/utils/ContextProvider";
 interface QuestionProps {
     handleNextStep: () => void;
-    setData:any;
 }
-const Question10:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
+const Question10:React.FC<QuestionProps> = ({handleNextStep}) => {
 
     const images = [
-        {
-            image:'/images/angry.png',
-            name:'1 Star'
-        },
-        {
-            image:'/images/angry1.png',
-            name:'2 Star'
-        },
-        {
-            image:'/images/ok-hand.svg',
-            name:'3 Star'
-        },
-        {
-            image:'/images/hang-10.svg',
-            name:'4 Star'
-        },
-        {
-            image:'/images/tap-dance.png',
-            name:'5 Star'
-        }
+        { image:'/images/angry.png', name:'1 Star' },
+        { image:'/images/angry1.png', name:'2 Star' },
+        { image:'/images/ok-hand.svg', name:'3 Star' },
+        { image:'/images/hang-10.svg', name:'4 Star' },
+        { image:'/images/tap-dance.png', name:'5 Star' }
     ];
 
     const [selectedCard, setSelectedCard] = useState(null);
+    const state = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelectedCard(index);
-        setData(images[index].name)
+        state.team_conflicts_experince = images[index].name
         handleNextStep();
     };
 

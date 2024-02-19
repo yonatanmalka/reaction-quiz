@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import {BarChart} from "@/component/chats";
 import Image from "next/image";
 import Fire from "../../../images/fire.svg";
+import { AppContext } from "@/utils/ContextProvider";
 
 const freq1 = {
     label: 'Before',
@@ -18,14 +19,13 @@ const freq2 = {
 
 interface QuestionProps {
     handleClick: () => void;
-    states:{
-        improve_team:string[];
-    };
 }
 
-const Questions16:React.FC<QuestionProps> = ({handleClick,states}) => {
+const Questions16:React.FC<QuestionProps> = ({handleClick}) => {
 
-    const months= states.improve_team;
+    const state = useContext(AppContext)
+    const months = state.improve_team;
+
     return(
         <div className="">
             <div className="mt-[30px]  flex flex-row justify-between">

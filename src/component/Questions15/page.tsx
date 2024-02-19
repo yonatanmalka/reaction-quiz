@@ -11,94 +11,31 @@ interface QuestionProps {
 
 const Questions15: React.FC<QuestionProps> = ({ handleNextStep }) => {
     const logos1 = [
-        {
-            img: '/logos/microsoft.png',
-            label: 'Microsoft'
-        },
-        {
-            img: '/logos/ikea.png',
-            label: 'Ikea'
-        },
-        {
-            img: '/logos/remax.png',
-            label: 'Remax'
-        },
-        {
-            img: '/logos/amazon.png',
-            label: 'Amazon'
-        },
-        {
-            img: '/logos/american_express.png',
-            label: 'American Express'
-        },
-        {
-            img: '/logos/department_of_justice.png',
-            label: 'Department Of Justice'
-        },
-        {
-            img: '/logos/hyundai.png',
-            label: 'Hyundai'
-        },
+        { img: '/logos/microsoft.png', label: 'Microsoft' },
+        { img: '/logos/ikea.png', label: 'Ikea' },
+        { img: '/logos/remax.png', label: 'Remax' },
+        { img: '/logos/amazon.png', label: 'Amazon' },
+        { img: '/logos/american_express.png', label: 'American Express' },
+        { img: '/logos/department_of_justice.png', label: 'Department Of Justice' },
+        { img: '/logos/hyundai.png', label: 'Hyundai' },
     ];
     const logos2 = [
-        {
-            img: '/logos/amdocs.png',
-            label: 'Amdocs'
-        },
-        {
-            img: '/logos/phzer.png',
-            label: 'Phzer'
-        },
-        {
-            img: '/logos/arla.png',
-            label: 'Arla'
-        },
-        {
-            img: '/logos/google.png',
-            label: 'Google'
-        },
-        {
-            img: '/logos/jp_morgan.png',
-            label: 'J.P. Morgan'
-        },
-        {
-            img: '/logos/american_cancer_society.png',
-            label: 'American Cancer Society'
-        },
-        {
-            img: '/logos/barclays.png',
-            label: 'Barclays'
-        },
+        { img: '/logos/amdocs.png', label: 'Amdocs' },
+        { img: '/logos/phzer.png', label: 'Phzer' },
+        { img: '/logos/arla.png', label: 'Arla' },
+        { img: '/logos/google.png', label: 'Google' },
+        { img: '/logos/jp_morgan.png', label: 'J.P. Morgan' },
+        { img: '/logos/american_cancer_society.png', label: 'American Cancer Society' },
+        { img: '/logos/barclays.png', label: 'Barclays' },
     ];
     const logos3 = [
-        {
-            img: '/logos/lululemon_athletica.png',
-            label: 'Lululemon Athletica'
-        },
-        {
-            img: '/logos/meta.png',
-            label: 'Meta'
-        },
-        {
-            img: '/logos/citi.png',
-            label: 'Citi'
-        },
-        {
-            img: '/logos/lidl.png',
-            label: 'Lidl'
-        },
-        {
-            img: '/logos/pwc.png',
-            label: 'PWC'
-        },
-        {
-            img: '/logos/unilever.png',
-            label: 'Unilever'
-        },
-        {
-            img: '/logos/bnp_paribas.png',
-            label: 'BNP Paribas'
-        },
+        { img: '/logos/lululemon_athletica.png', label: 'Lululemon Athletica' },
+        { img: '/logos/meta.png', label: 'Meta' },
+        { img: '/logos/citi.png', label: 'Citi' },
+        { img: '/logos/lidl.png', label: 'Lidl' },
+        { img: '/logos/pwc.png', label: 'PWC' },
+        { img: '/logos/unilever.png', label: 'Unilever' },
+        { img: '/logos/bnp_paribas.png', label: 'BNP Paribas' },
     ];
 
     const [percent, setPercent] = useState(0);

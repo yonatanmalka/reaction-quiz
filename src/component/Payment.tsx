@@ -1,9 +1,10 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Img } from "@/utils/Img";
 import SliderComp from "@/component/Slider";
 import Timer from "@/component/Timer";
 import { FOUR_WEEK_MONTH_SUBSCRIPTION, ONE_WEEK_MONTH_SUBSCRIPTION } from "@/utils/stripe";
+import { AppContext } from "@/utils/ContextProvider";
 
 const list = [
     { name: 'Step challenge designed for your team' },
@@ -15,21 +16,21 @@ const list = [
 
 interface QuestionProps {
     handleClick: () => void;
-    states: any;
-    setStates: any;
 }
 
-const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) => {
-    const [clientSecret, setClientSecret] = useState<any>('');
+const Payment: React.FC<QuestionProps> = ({ handleClick }) => {
+    const [clientSecret, setClientSecret] = useState<string>('');
     const [selectedOption, setSelectedOption] = useState("yearly");
 
-    const StartDate = states.create_step_challenge.selectedDate.startDate.toLocaleDateString('en-US', {
+    const state = useContext(AppContext)
+
+    const StartDate = state.create_step_challenge.selectedDate.startDate.toLocaleDateString('en-US', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
     });
 
-    const timeDifferenceInDays = Math.floor((states.create_step_challenge.selectedDate.endDate - states.create_step_challenge.selectedDate.startDate) / (1000 * 60 * 60 * 24));
+    const timeDifferenceInDays = Math.floor((state.create_step_challenge.selectedDate.endDate - state.create_step_challenge.selectedDate.startDate) / (1000 * 60 * 60 * 24));
 
     const createPaymentIntent = async () => {
         const response: any = await fetch('/api/createPaymentIntent', {
@@ -38,12 +39,13 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                email: states.admin_detail.email,
-                name: `${states.admin_detail.first_Name} ${states.admin_detail.last_Name}`,
+                email: state.admin_detail.email,
+                name: `${state.admin_detail.first_Name} ${state.admin_detail.last_Name}`,
             }),
         });
         const { clientSecret, customerId } = await response.json()
-        await setStates({ ...states, 'client_secret': clientSecret, 'customer_id': customerId })
+        state.client_secret = clientSecret
+        state.customer_id = customerId
         setClientSecret(clientSecret);
     };
 
@@ -62,7 +64,10 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
             type = 'yearly'
             id = FOUR_WEEK_MONTH_SUBSCRIPTION
         }
-        setStates({ ...states, 'price_id': id, 'pricing': type });
+        if(id && type) {
+            state.price_id = id
+            state.pricing = type
+        }
 
     }, [selectedOption]);
 
@@ -96,7 +101,7 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                     Goal
                                 </div>
                                 <div className='text-[12px] font-medium text-[#343434]'>
-                                    {states.goal}
+                                    {state.goal}
                                 </div>
                             </div>
                         </div>
@@ -110,7 +115,7 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                     Team-size
                                 </div>
                                 <div className='text-[12px] font-medium text-[#343434]'>
-                                    {states.team_size} members
+                                    {state.team_size} members
                                 </div>
                             </div>
                         </div>
@@ -170,7 +175,7 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                         1-Week Plan <span className="text-[10px] font-normal ml-1">5 users</span>
                                     </div>
                                     <div className="text-[10px]">
-                                        {states.trial_discount ? (
+                                        {state.trial_discount ? (
                                         <><span className="text-[#979797] line-through">&nbsp;$21&nbsp;</span> → $13</>
                                         ) : "$21"}
                                     </div>
@@ -180,8 +185,8 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                 <Img src='/images/rectangle.png' alt='logo'
                                      className='md:w-[140px] w-[120px] h-[70px] ml-[5px]'/>
                                 <div
-                                    className={`absolute left-4 md:left-1 bottom-[${states.trial_discount ? "5px" : "10px"}] mt-[5px] flex flex-col items-center w-full pr-[10px]`}>
-                                    {states.trial_discount && <div className="text-[11px] ml-6 text-[#979797] line-through">&nbsp;$3&nbsp;</div>}
+                                    className={`absolute left-4 md:left-1 bottom-[${state.trial_discount ? "5px" : "10px"}] mt-[5px] flex flex-col items-center w-full pr-[10px]`}>
+                                    {state.trial_discount && <div className="text-[11px] ml-6 text-[#979797] line-through">&nbsp;$3&nbsp;</div>}
                                     <div className="flex flex-row md:ml-[15px] ">
                                         <div className="text-[14px] mr-1 font-semibold">
                                             $
@@ -221,7 +226,7 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                         4-Week Plan <span className="text-[10px] font-normal ml-1">5 users</span>
                                     </div>
                                     <div className="text-[10px]">
-                                        {states.trial_discount ? (
+                                        {state.trial_discount ? (
                                         <><span className="text-[#979797] line-through">&nbsp;$60&nbsp;</span> → $29</>
                                         ) : "$60"}
                                     </div>
@@ -231,8 +236,8 @@ const Payment: React.FC<QuestionProps> = ({ handleClick, states, setStates }) =>
                                 <Img src='/images/rectangle.png' alt='logo'
                                      className='md:w-[140px] w-[120px] h-[70px] ml-[5px]'/>
                                 <div
-                                    className={`absolute left-6 md:left-2 bottom-[${states.trial_discount ? "5px" : "10px"}] mt-[5px] flex flex-col items-center w-full pr-[10px]`}>
-                                    {states.trial_discount && <div className="text-[11px] ml-6 text-[#979797] line-through">&nbsp;$2&nbsp;</div>}
+                                    className={`absolute left-6 md:left-2 bottom-[${state.trial_discount ? "5px" : "10px"}] mt-[5px] flex flex-col items-center w-full pr-[10px]`}>
+                                    {state.trial_discount && <div className="text-[11px] ml-6 text-[#979797] line-through">&nbsp;$2&nbsp;</div>}
                                     <div className="flex flex-row md:ml-[15px] ">
                                         <div className="text-[14px] font-semibold">
                                             $

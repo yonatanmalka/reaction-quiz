@@ -1,15 +1,15 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Img } from "@/utils/Img";
 import { toast, Toaster } from "sonner";
+import { AppContext } from "@/utils/ContextProvider";
 
 interface QuestionProps {
     handleClick: () => void;
-    setData: (data: any[]) => void;
 }
 
-const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
+const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
     const areasToImprove = [
         { title: "Communication" },
         { title: "Team morale" },
@@ -20,6 +20,8 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
         { title: "Conflict resolution " },
     ];
     const [selected, setSelected] = useState<number[]>([]);
+
+    const state = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         const newSelected = [...selected];
@@ -41,10 +43,7 @@ const Question14: React.FC<QuestionProps> = ({ handleClick, setData }) => {
             toast.error('Please select at least 1 areas.');
         }
         if (selected.length >= 1 && selected.length <= 3) {
-            const selectedTitles = selected.map((index) => areasToImprove[index].title);
-            // Update setData with the selected titles
-            setData(selectedTitles);
-            // Call the handleClick function
+            state.improve_team = selected.map((index) => areasToImprove[index].title);
             handleClick();
         }
     };

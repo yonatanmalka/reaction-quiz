@@ -1,17 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Img } from "@/utils/Img";
 import { DateRangePicker, Range } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { toast, Toaster } from 'sonner';
+import { AppContext } from "@/utils/ContextProvider";
 
 interface QuestionProps {
     handleClick: () => void;
-    setData: any;
 }
 
-const Question18: React.FC<QuestionProps> = ({ handleClick, setData }) => {
+const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
+
+    const state = useContext(AppContext)
+
     const [firstName, setFirstName] = useState("");
 
     const today = new Date();
@@ -23,7 +26,6 @@ const Question18: React.FC<QuestionProps> = ({ handleClick, setData }) => {
             key: "selection",
         },
     );
-
 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
@@ -65,7 +67,11 @@ const Question18: React.FC<QuestionProps> = ({ handleClick, setData }) => {
                 Challenge_title: firstName,
                 selectedDate: selectedDate,
             };
-            setData(data);
+            state.create_step_challenge.Challenge_title = data.Challenge_title
+            state.create_step_challenge.selectedDate.startDate = data.selectedDate.startDate
+            if(data.selectedDate.endDate !== undefined) {
+                state.create_step_challenge.selectedDate.endDate = data.selectedDate.endDate
+            }
             handleClick();
             toast.success('Saving Your Details');
         }

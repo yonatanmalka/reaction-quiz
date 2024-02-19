@@ -1,29 +1,24 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Img } from "@/utils/Img";
+import { AppContext } from "@/utils/ContextProvider";
 interface QuestionProps {
     handleNextStep: () => void;
-    setData:any;
 }
 
 const list = [
-    {
-        images:'/images/thumb-down.png',
-        name:'No'
-    },
-    {
-        images:'/images/thumb-up.png',
-        name:'Yes'
-    }
+    { images:'/images/thumb-down.png', name:'No' },
+    { images:'/images/thumb-up.png', name:'Yes' }
 ]
-const Question9:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
+const Question9:React.FC<QuestionProps> = ({handleNextStep}) => {
     const [selectedCard, setSelectedCard] = useState(null);
+    const state = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelectedCard(index);
-        setData(list[index].name);
+        state.actively_participate = list[index].name
         handleNextStep();
     };
 
