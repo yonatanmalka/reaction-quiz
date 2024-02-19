@@ -1,9 +1,10 @@
 "use client"
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Image from "next/image";
 import Ok from "../../../images/Ok.svg";
 import NationalImage from "../../../images/placeholder.png";
 import InternationalImage from "../../../images/planet-earth.png";
+import { AppContext } from "@/utils/ContextProvider";
 const list = [
     {
         image: NationalImage,
@@ -17,17 +18,18 @@ const list = [
 
 interface QuestionProps {
     handleNextStep: () => void
-    setData:any;
 }
 
-const Question4:React.FC<QuestionProps> = ({handleNextStep,setData}) => {
+const Question4:React.FC<QuestionProps> = ({handleNextStep}) => {
 
     const [selected, setSelected] = useState(null);
+    const state = useContext(AppContext)
+
 
     const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelected(index);
-        setData(list[index].name)
+        state.organization = list[index].name
         handleNextStep();
     };
 

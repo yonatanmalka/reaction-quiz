@@ -1,6 +1,7 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { ClipLoader } from "react-spinners";
+import { AppContext } from '@/utils/ContextProvider';
 
 const PRICES = {
     yearly: 60,
@@ -11,14 +12,9 @@ const PRICES = {
     countMothDiscount: () => Math.floor((PRICES.monthlyDiscount * 100)/PRICES.monthly),
 }
 
-interface CheckoutFormInterface {
-    states: any,
-    clientSecret: any,
-    click: any,
-}
-
-const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret, click: handleClick }) => {
-    const { price_id: priceId, customer_id: customerId, client_secret: clientSecret, pricing: type } = states;
+const CheckoutForm = () => {
+    const state = useContext(AppContext)
+    const { price_id: priceId, customer_id: customerId, client_secret: clientSecret, pricing: type } = state;
     const stripe = useStripe();
     const elements = useElements();
     const [loading, setLoading] = useState<boolean>(false);
@@ -47,16 +43,16 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
     };
 
     useEffect(() => {
-        if (states) {
+        if (state) {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem('customer_id', btoa(customerId));
                 localStorage.setItem('price_id', priceId);
                 localStorage.setItem('type', type);
                 localStorage.setItem('client_secret', clientSecret)
-                localStorage.setItem('email', states.admin_detail.email)
+                localStorage.setItem('email', state.admin_detail.email)
             }
         }
-    }, [states]);
+    }, [state]);
 
     return (
         <div className="flex flex-col font-primary min-h-[850px]">
@@ -74,7 +70,7 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
                     <div className="text-[#979797]">
                         {type === 'yearly' ? `$${PRICES.yearly}` : `$${PRICES.monthly}`}
                     </div>
-                    {states.trial_discount && <div className="text-[#C73D23] font-semibold">
+                    {state.trial_discount && <div className="text-[#C73D23] font-semibold">
                             {type === 'yearly' ? `-$${PRICES.yearlyDiscount}` : `-$${PRICES.monthlyDiscount}`}
                         </div>
                     }
@@ -87,12 +83,12 @@ const CheckoutForm: FC<CheckoutFormInterface> = ({ states, clientSecret: secret,
                     </div>
                     <div className="p-1">
                         {type === 'yearly' ? (
-                            `$${states.trial_discount ? PRICES.yearly - PRICES.yearlyDiscount : PRICES.yearly}`) : (
-                            `$${states.trial_discount ? PRICES.monthly - PRICES.monthlyDiscount : PRICES.monthly}`
+                            `$${state.trial_discount ? PRICES.yearly - PRICES.yearlyDiscount : PRICES.yearly}`) : (
+                            `$${state.trial_discount ? PRICES.monthly - PRICES.monthlyDiscount : PRICES.monthly}`
                         )}
                     </div>
                 </div>
-                {states.trial_discount && <div className="flex items-center">
+                {state.trial_discount && <div className="flex items-center">
                     <div className="flex-1 text-[#979797] p-1">
                     </div>
                     <div className="p-1 text-[#C73D23] font-semibold">

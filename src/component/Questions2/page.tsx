@@ -1,39 +1,32 @@
 "use client"
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Image from "next/image"
 import BriefCase from "../../../images/breifcase.png";
 import Factory from "../../../images/enterprise.png";
 import Heart from "../../../images/donation.png";
 import Ok from "../../../images/Ok.svg";
+import { AppContext } from "@/utils/ContextProvider";
 
 const list = [
-    {
-        image: Factory,
-        name : "Company",
-    },
-    {
-        image: Heart,
-        name : "Non-Profit",
-    },
-    {
-        image: BriefCase,
-        name: "Other",
-    }
+    { image: Factory, name : "Company" },
+    { image: Heart, name : "Non-Profit" },
+    { image: BriefCase, name: "Other" }
 ]
 
 interface QuestionProps {
     handleNextStep: () => void;
-    setData:any;
 }
 
-const Question2:React.FC<QuestionProps> = ({ handleNextStep,setData }) => {
+const Question2:React.FC<QuestionProps> = ({ handleNextStep }) => {
+
+    const state = useContext(AppContext)
 
     const [selected, setSelected] = useState(null);
 
     const handleCardClick = (index: number) =>  {
         // @ts-ignore
         setSelected(index);
-        setData(list[index].name);
+        state.company = list[index].name
         handleNextStep();
     };
 

@@ -21,6 +21,7 @@ export const createCustomer = async (states: IStates) => {
           attributes: {
             firstName: admin_detail.first_Name,
             lastName: admin_detail.last_Name,
+            email: admin_detail.email,
             goal: goal,
             company: company,
             work_style: work_style,
@@ -34,7 +35,9 @@ export const createCustomer = async (states: IStates) => {
             team_members_know_each_other_on_persoal_level: team_members_know_each_other_on_persoal_level,
             team_members_comfort: team_members_comfort,
             improve_team: improve_team,
-            create_step_challenge: create_step_challenge,
+            challenge_title: create_step_challenge.Challenge_title,
+            start_date: create_step_challenge.selectedDate.startDate,
+            end_date: create_step_challenge.selectedDate.endDate,
             participation_reward: participation_reward,
             pricing: pricing,
             free_trial: free_trial,
@@ -57,7 +60,7 @@ export const handlePaying = async (email: string, customer_id: string, client_se
     },
     body: JSON.stringify({
         type: 'person',
-        identifiers: {email: email},
+        identifiers: { email: email },
         action: 'identify',
         attributes: {
           customer_id: customer_id,

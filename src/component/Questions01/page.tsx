@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState} from "react";
+import React, { useContext, useEffect, useState} from "react";
 import Image from "next/image";
 import Logo from "../../../images/logo.svg";
 import Pic1 from "../../../images/partners.png";
@@ -8,6 +8,7 @@ import Pic2 from "../../../images/lotus.png";
 import Pic3 from "../../../images/running.png";
 import Pic4 from "../../../images/confusion.png";
 import Ok from "../../../images/Ok.svg"
+import { AppContext } from "@/utils/ContextProvider";
 
 const data = [
     { Image: Pic1, name: "Bond my team" },
@@ -18,14 +19,16 @@ const data = [
 
 interface QuestionProps {
     handleClick: () => void;
-    setData: any;
 }
 
-const Question1: React.FC<QuestionProps> = ({handleClick, setData}) => {
+const Question1: React.FC<QuestionProps> = ({handleClick}) => {
+
+    const state = useContext(AppContext)
+
     const [selected, setSelected] = useState<number | null>(null);
     const handleCardClick = (index: number) => {
         setSelected(index);
-        setData(data[index].name);
+        state.goal = data[index].name
         handleClick();
     };
 

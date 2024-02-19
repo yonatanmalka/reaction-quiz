@@ -1,9 +1,11 @@
 "use client"
 
 import Switch from "react-switch";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Img } from "@/utils/Img";
 import { createCustomer } from "@/utils/customer.io";
+import { AppContext } from "@/utils/ContextProvider";
+import Link from "next/link";
 
 const list = [
   { name:"Unlock all challenge features" },
@@ -11,23 +13,18 @@ const list = [
   { name: "We'll send you an invoice for seamless expense reporting" }
 ]
 
-interface QuestionProps {
-  handleClick: () => void;
-  states: any;
-  setStates: any;
-}
-
-const TrialDiscount:React.FC<QuestionProps> = ({ handleClick, states, setStates }) => {
+const TrialDiscount = () => {
 
   const [checked, setChecked] = useState(true);
+  const state = useContext(AppContext)
 
   useEffect(() =>  {
-    createCustomer(states)
+    createCustomer(state)
   }, [])
 
   const handleChange = async (checked: boolean) => {
     setChecked(checked);
-    setStates({ ...states, 'trial_discount': checked})
+    state.trial_discount = checked
   };
 
   return (
@@ -70,11 +67,12 @@ const TrialDiscount:React.FC<QuestionProps> = ({ handleClick, states, setStates 
           </div>
         ))}
       </div>
-      <button
-        onClick={handleClick}
-        className="flex items-center justify-center bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000] py-[6px] mt-[140px]">
-        Confirm
-      </button>
+      <Link href={`${process.env.NEXT_PUBLIC_URL}/payment/${state.admin_detail.email}`}>
+        <button
+          className="flex items-center justify-center bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000] py-[6px] mt-[140px]">
+          Confirm
+        </button>
+      </Link>
     </div>
   )
 }

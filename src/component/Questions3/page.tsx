@@ -1,11 +1,12 @@
 "use client"
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Image from "next/image"
 import Technologist from "../../../images/work-from-home.png";
 import House from "../../../images/house.png";
 import OfficeBuilding from "../../../images/flat.png";
 import Bus from "../../../images/bus.png";
 import Ok from "../../../images/Ok.svg";
+import { AppContext } from "@/utils/ContextProvider";
 
 const list = [
     {
@@ -28,16 +29,16 @@ const list = [
 
 interface QuestionProps {
     handleNextStep: () => void;
-    setData:any;
 }
-const Question3:React.FC<QuestionProps> = ({ handleNextStep,setData }) => {
+const Question3:React.FC<QuestionProps> = ({ handleNextStep }) => {
 
     const [selected, setSelected] = useState(null);
+    const state = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelected(index);
-        setData(list[index].name)
+        state.work_style = list[index].name
         handleNextStep();
     };
 

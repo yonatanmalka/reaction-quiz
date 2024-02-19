@@ -305,14 +305,10 @@
     background: rgba(217, 217, 217, 0.00);
 }
 
-
-
 .paymentCard2.selected {
     border: 1px solid #F9B22D;
     /* Add any additional styling for the selected state */
 }
-
-
 
 .round{
     fill: rgba(249, 178, 45, 0.00);
@@ -346,4 +342,3 @@
 .flex{
  display: flex !important;
 }
-

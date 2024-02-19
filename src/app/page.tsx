@@ -34,35 +34,7 @@ import TrialDiscount from "@/component/TrialDiscount/page";
 
 const Questionary = () => {
 
-    const [currentStep, setCurrentStep] = useState<any>(1);
-
-    const defaultStates = {
-        goal: null,
-        company: null,
-        work_style: null,
-        work_schedule: null,
-        organization: null,
-        team_size: null,
-        moral: null,
-        actively_participate: null,
-        team_conflicts_experince: null,
-        stress_at_work: null,
-        team_members_know_each_other_on_persoal_level: null,
-        team_members_comfort: null,
-        improve_team: [],
-        create_step_challenge: {},
-        participation_reward: null,
-        admin_detail: {},
-        pricing: '',
-        free_trial: false,
-        trial_discount: true,
-        price_id: '',
-        client_secret: '',
-        customer_id: ''
-    };
-
-
-    const [states, setStates] = useState<any>(defaultStates);
+    const [currentStep, setCurrentStep] = useState<number>(1);
 
     const getProgressBarWidth = () => {
         return ((currentStep - 1) / 13) * 100;
@@ -73,7 +45,6 @@ const Questionary = () => {
             setCurrentStep((prevStep: any) => prevStep + 1);
         }, 1000);
     };
-
 
     const shouldRenderComponent = currentStep !== 1 && currentStep !== 22;
 
@@ -95,8 +66,7 @@ const Questionary = () => {
 
     return (
         <main className="flex justify-center items-center">
-            <div
-                className={`md:w-[400px] w-[425px] z-[20] relative bg-white ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'} ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-x-hidden overflow-y-scroll sm:overflow-y-hidden`}>
+            <div className={`md:w-[400px] w-[425px] z-[20] relative bg-white ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'} ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-x-hidden overflow-y-scroll sm:overflow-y-hidden`}>
                 {shouldRenderComponent && (
                     <div
                         className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7 && currentStep !== 21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) ? 'justify-between' : 'justify-center'} items-end `}>
@@ -137,133 +107,28 @@ const Questionary = () => {
                     </div>
                 )}
                 <div className="w-[100%] z-20  relative">
-                    {currentStep === 1 && (
-                        <Question1
-                            setData={(goal: string) => setStates({ ...states, goal })}
-                            handleClick={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 2 && (
-                        <Question2
-                            setData={(company: string) => setStates({ ...states, company })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 3 && (
-                        <Question3
-                            setData={(work_style: string) => setStates({ ...states, work_style })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 4 && (
-                        <Question4
-                            setData={(work_schedule: string) => setStates({ ...states, work_schedule })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 5 && (
-                        <Question5
-                            setData={(organization: string) => setStates({ ...states, organization })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 6 && (
-                        <Question6
-                            setData={(team_size: string) => setStates({ ...states, team_size })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
+                    {currentStep === 1 && (<Question1 handleClick={handleNextStep}/>)}
+                    {currentStep === 2 && (<Question2 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 3 && (<Question3 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 4 && (<Question4 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 5 && (<Question5 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 6 && (<Question6 handleNextStep={handleNextStep}/>)}
                     {currentStep === 7 && (<Question7 handleClick={() => setCurrentStep(8)}/>)}
-                    {currentStep === 8 && (
-                        <Question8
-                            setData={(moral: string) => setStates({ ...states, moral })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 9 && (
-                        <Question9
-                            setData={(actively_participate: string) => setStates({ ...states, actively_participate })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 10 && (
-                        <Question10
-                            setData={(team_conflicts_experince: string) => setStates({...states,team_conflicts_experince})}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 11 && (
-                        <Question11
-                            setData={(stress_at_work: string) => setStates({ ...states, stress_at_work })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 12 && (
-                        <Question12
-                            setData={(team_members_know_each_other_on_persoal_level: string) => setStates({...states, team_members_know_each_other_on_persoal_level})}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 13 && (
-                        <Question13
-                            setData={(team_members_comfort: string) => setStates({ ...states, team_members_comfort })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
-                    {currentStep === 14 && (
-                        <Question14
-                            setData={(improve_team: any[]) => setStates({ ...states, improve_team })}
-                            handleClick={() => setCurrentStep(15)}
-                        />
-                    )}
+                    {currentStep === 8 && (<Question8 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 9 && (<Question9 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 10 && (<Question10 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 11 && (<Question11 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 12 && (<Question12 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 13 && (<Question13 handleNextStep={handleNextStep}/>)}
+                    {currentStep === 14 && (<Question14 handleClick={() => setCurrentStep(15)}/>)}
                     {currentStep === 15 && (<Question15 handleNextStep={() => setCurrentStep(16)}/>)}
-                    {currentStep === 16 && (
-                        <Questions16
-                            states={states}
-                            handleClick={() => setCurrentStep(17)}
-                        />
-                    )}
+                    {currentStep === 16 && (<Questions16 handleClick={() => setCurrentStep(17)}/>)}
                     {currentStep === 17 && (<Question17 handleClick={() => setCurrentStep(18)}/>)}
-                    {currentStep === 18 && (
-                        <Question18
-                            setData={(create_step_challenge: string) => setStates({ ...states, create_step_challenge })}
-                            handleClick={() => setCurrentStep(19)}
-                        />
-                    )}
-                    {currentStep === 19 && (
-                        <Question19
-                            setData={(participation_reward: string) => setStates({ ...states, participation_reward })}
-                            handleNextStep={handleNextStep}
-                        />
-                    )}
+                    {currentStep === 18 && (<Question18 handleClick={() => setCurrentStep(19)}/>)}
+                    {currentStep === 19 && (<Question19 handleNextStep={handleNextStep}/>)}
                     {currentStep === 20 && (<Questions20 handleClick={() => setCurrentStep(21)}/>)}
-                    {currentStep === 21 && (
-                        <Create_user
-                            setData={(admin_detail: string) => setStates({ ...states, admin_detail })}
-                            handleClick={() => setCurrentStep(22)}
-                            states={states}
-                        />
-                    )}
-                    {currentStep === 22 && (
-                        <TrialDiscount
-                            handleClick={() => setCurrentStep(23)}
-                            states={states}
-                            setStates={setStates}
-                        />
-                    )}
-                    {currentStep === 23 && (
-                        <Payment
-                            states={states}
-                            handleClick={() => setCurrentStep(24)}
-                            setStates={setStates}
-                        />
-                    )}
-                    {currentStep === 24 && (
-                        <Checkout
-                            states={states}
-                            handleClick={() => setCurrentStep(25)}
-                        />
-                    )}
+                    {currentStep === 21 && (<Create_user handleClick={() => setCurrentStep(22)}/>)}
+                    {currentStep === 22 && (<TrialDiscount/>)}
                     {currentStep === 25 && (<DownLoad_App />)}
                 </div>
                 {![1, 24].includes(currentStep) && (

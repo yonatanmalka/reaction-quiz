@@ -1,28 +1,28 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast, Toaster } from 'sonner';
 import { useMutation } from "@apollo/client";
 import { SAVE_QUIZ_MUTATION } from "@/utils/cms/mutations/quiz";
 import client from "@/utils/apolloClient";
 import { airtableClient } from "@/utils/airtableClient";
+import { AppContext } from "@/utils/ContextProvider";
+import { FieldSet } from "airtable";
 
 interface QuestionProps {
     handleClick: () => void;
-    setData: any;
-    states: any;
 }
 
-const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
+const User: React.FC<QuestionProps> = ({ handleClick }) => {
     const [save_quiz, { data, loading, error }] = useMutation<any>(
         SAVE_QUIZ_MUTATION,
-        {
-            client
-        }
+        { client }
     )
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+
+    const state = useContext(AppContext)
 
     const isValidEmail = (email: string) => {
         // Regular expression for basic email validation
@@ -35,23 +35,24 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
         try {
             const response = await airtableClient('Quiz Results').create([
                 {
+                    //@ts-ignore
                     fields: {
-                        "Select Your Main Goal": states.goal,
-                        "What type of organization are you working in?": states.company,
-                        "What is your team's work style?": states.work_style,
-                        "What is your team’s work schedule like?": states.work_schedule,
-                        "Are your organization national or international?": states.organization,
-                        "What is your team size?": states.team_size,
-                        "How do you perceive the overall morale of your team?": states.moral,
-                        "Do team members actively participate and contribute?": states.actively_participate,
-                        "How often do you experience  conflicts in your team?": states.team_conflicts_experince,
-                        "Do team members often experience high levels of stress at work?": states.stress_at_work,
-                        "How well do team members know each other on a personal level?": states.team_members_know_each_other_on_persoal_level,
-                        "Team members feel comfortable expressing their thoughts and ideas openly": states.team_members_comfort,
-                        "Select up to three areas where you believe the team could improve the most": states.improve_team.join(','),
-                        "Let’s create a step challenge Title": states.create_step_challenge?.Challenge_title,
-                        "Let’s create a step challenge Date": JSON.stringify(states.create_step_challenge.selectedDate),
-                        "Would you like to motivate participation with rewards?": states.participation_reward,
+                        "Select Your Main Goal": state.goal,
+                        "What type of organization are you working in?": state.company,
+                        "What is your team's work style?": state.work_style,
+                        "What is your team’s work schedule like?": state.work_schedule,
+                        "Are your organization national or international?": state.organization,
+                        "What is your team size?": state.team_size,
+                        "How do you perceive the overall morale of your team?": state.moral,
+                        "Do team members actively participate and contribute?": state.actively_participate,
+                        "How often do you experience  conflicts in your team?": state.team_conflicts_experince,
+                        "Do team members often experience high levels of stress at work?": state.stress_at_work,
+                        "How well do team members know each other on a personal level?": state.team_members_know_each_other_on_persoal_level,
+                        "Team members feel comfortable expressing their thoughts and ideas openly": state.team_members_comfort,
+                        "Select up to three areas where you believe the team could improve the most": state.improve_team.join(','),
+                        "Let’s create a step challenge Title": state.create_step_challenge?.Challenge_title,
+                        "Let’s create a step challenge Date": JSON.stringify(state.create_step_challenge.selectedDate),
+                        "Would you like to motivate participation with rewards?": state.participation_reward,
                         "Enter your details to get access to the admin dashboard user name": `${firstName} ${lastName}`,
                         "Enter your details to get access to the admin dashboard user email": email
                     }
@@ -73,12 +74,9 @@ const User: React.FC<QuestionProps> = ({ handleClick, setData, states }) => {
         } else if (!isValidEmail(email)) {
             toast.error('Write Correct Email');
         } else {
-            const data = {
-                first_Name: firstName,
-                last_Name: lastName,
-                email: email,
-            };
-            await setData(data);
+            state.admin_detail.first_Name = firstName
+            state.admin_detail.last_Name = lastName
+            state.admin_detail.email = email
             // console.log(states, JSON.stringify(states.create_step_challenge.selectedDate),  states.improve_team.join());
             await submit(e);
             handleClick();
