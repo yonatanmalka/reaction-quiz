@@ -13,12 +13,12 @@ const list = [
 ]
 const Question9:React.FC<QuestionProps> = ({handleNextStep}) => {
     const [selectedCard, setSelectedCard] = useState(null);
-    const state = useContext(AppContext)
+    const { setState } = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelectedCard(index);
-        state.actively_participate = list[index].name
+        setState(prevState => ({ ...prevState, actively_participate: list[index].name }))
         handleNextStep();
     };
 

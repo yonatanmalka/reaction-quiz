@@ -13,8 +13,7 @@ const Slider = () => {
             name: "Olivia Davis",
             role: "HR manager",
             comment: "Amazing fit!",
-            reaction:
-                "It’s the first time we have a program that fits our organisation perfectly. Our employees and managers love it!",
+            reaction: "It’s the first time we have a program that fits our organisation perfectly. Our employees and managers love it!",
             imageSrc: "/review1.png",
         },
         {
@@ -22,8 +21,7 @@ const Slider = () => {
             name: "Jason Nguyen",
             role: "CFO",
             comment: "The best investment we made",
-            reaction:
-                "The program made a significant improvement in our employees' energy and performance, and generally, it’s fun being in the company!",
+            reaction: "The program made a significant improvement in our employees' energy and performance, and generally, it’s fun being in the company!",
             imageSrc: "/review2.png",
         },
 
@@ -32,8 +30,7 @@ const Slider = () => {
             name: "Ethan Williams",
             role: "Team leader",
             comment: "I love Reaction!",
-            reaction:
-                "It has brought our team closer together, and we now collaborate better",
+            reaction: "It has brought our team closer together, and we now collaborate better",
             imageSrc: "/review3.png",
         },
     ];

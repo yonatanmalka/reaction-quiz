@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useContext, useEffect} from 'react';
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "@/component/Checkout/Form";
@@ -8,7 +10,7 @@ import 'tailwindcss/tailwind.css';
 
 const Checkout = () => {
     const stripePromise = loadStripe(stripe_public_key);
-    const state = useContext(AppContext)
+    const { state } = useContext(AppContext)
     const clientSecret = state.client_secret;
     useEffect(() => {
         console.log(state)

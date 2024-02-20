@@ -15,12 +15,12 @@ const Question8:React.FC<QuestionProps> = ({handleNextStep}) => {
     ];
 
     const [selectedCard, setSelectedCard] = useState(null);
-    const state = useContext(AppContext)
+    const { setState } = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelectedCard(index);
-        state.moral = images[index].name
+        setState(prevState => ({ ...prevState, moral: images[index].name }))
         handleNextStep();
     };
 

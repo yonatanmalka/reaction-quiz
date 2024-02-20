@@ -1,58 +1,43 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useRouter } from 'next/router';
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
-import { IStates } from '@/types/states.type'
-import { AppContext } from '@/utils/ContextProvider';
-import { FOUR_WEEK_MONTH_SUBSCRIPTION, ONE_WEEK_MONTH_SUBSCRIPTION } from "@/utils/stripe";
-import { Img } from '@/utils/Img'
-import Timer from '@/component/Timer'
+'use client'
+
+import Advanteges from "@/component/Payments/Advanteges";
+import PaymentCard from "@/component/Payments/PaymentCard";
+import UserInfo from "@/component/Payments/UserInfo";
+import Timer from "@/component/Timer";
+import { Img } from "@/utils/Img";
+import { useSearchParams } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 import SliderComp from "@/component/Slider";
-import UserInfo from '../../component/Payments/UserInfo';
-import Advanteges from '../../component/Payments/Advanteges';
-import PaymentCard from '../../component/Payments/PaymentCard';
 import styles from './payment.module.css'
-import 'tailwindcss/tailwind.css';
+import { AppContext } from "@/utils/ContextProvider";
+import { IAttributes } from "@/types/states.type";
+import { FOUR_WEEK_MONTH_SUBSCRIPTION, ONE_WEEK_MONTH_SUBSCRIPTION } from "@/utils/stripe";
+import { useRouter } from "next/navigation";
 
-export const getServerSideProps = (async (context) => {
+function Payment () {
 
-  const email = context.query.email
-
-  const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/getUserData`, {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      email
-    }),
-  })
-
-  const data = await response.json()
-
-  return { props: { ...data.customer } }
-}) satisfies GetServerSideProps<{ data: IStates }>
-
-export default function Payment({ attributes }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const router = useRouter()
-  const state = useContext(AppContext)
-
+  const [attributes, setAttributes] = useState<IAttributes>()
   const [clientSecret, setClientSecret] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState<string>("yearly");
+  const {setState } = useContext(AppContext)
+  const params = useSearchParams()
+  const email = params?.get("email")
+  const router = useRouter()
 
-  useEffect(() => {
-    let id, type;
-    if (selectedOption === 'monthly') {
-        type = 'monthly'
-        id = ONE_WEEK_MONTH_SUBSCRIPTION
-    } else if (selectedOption === 'yearly') {
-        type = 'yearly'
-        id = FOUR_WEEK_MONTH_SUBSCRIPTION
-    }
-    if (id && type) {
-      state.price_id = id
-      state.pricing = type
-    }
-  }, [selectedOption]);
+  const getData = async (email: string) => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/getUserData`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email
+      }),
+    })
+
+    const data = await response.json()
+    setAttributes(data.customer.attributes)
+  }
 
   useEffect(() => {
     if (clientSecret !== '') {
@@ -64,25 +49,58 @@ export default function Payment({ attributes }: InferGetServerSidePropsType<type
     if (typeof localStorage !== 'undefined') {
         localStorage.removeItem('hasVisited');
     }
-}, []);
+  }, []);
+
+  useEffect(() => {
+    let id: string, type: string;
+    if (selectedOption === 'monthly') {
+        type = 'monthly'
+        id = ONE_WEEK_MONTH_SUBSCRIPTION
+
+    } else if (selectedOption === 'yearly') {
+        type = 'yearly'
+        id = FOUR_WEEK_MONTH_SUBSCRIPTION
+    }
+
+    setState(prevState => ({ ...prevState, price_id: id, pricing: type }))
+  }, [selectedOption]);
+
+  useEffect(() => {
+    getData(email as string)
+  }, [])
 
   const createPaymentIntent = async () => {
+
+    if(!attributes) {
+      return
+    }
+
     const response: any = await fetch('/api/createPaymentIntent', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            email: attributes.email,
-            name: `${attributes.firstName} ${attributes.lastName}`,
-        }),
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          email: attributes.email,
+          name: `${attributes.firstName} ${attributes.lastName}`,
+      }),
     });
     const { clientSecret, customerId } = await response.json()
-    state.client_secret = clientSecret
-    state.customer_id = customerId
-    state.admin_detail.email = attributes.email
+    setState(prevState => ({ ...prevState, client_secret: clientSecret }))
+    setState(prevState => ({ ...prevState, customer_id: customerId }))
+    setState(prevState => ({
+      ...prevState,
+      admin_detail: {
+        ...prevState.admin_detail,
+        email: attributes.email as string
+      }
+    }))
     setClientSecret(clientSecret);
   };
+
+  if(!attributes) {
+    return
+  }
 
   return (
     <main className="flex justify-center items-center">
@@ -144,8 +162,10 @@ export default function Payment({ attributes }: InferGetServerSidePropsType<type
               <Advanteges/>
               <SliderComp/>
           </div>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
   )
 }
+
+export default Payment;

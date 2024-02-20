@@ -9,22 +9,10 @@ import Ok from "../../../images/Ok.svg";
 import { AppContext } from "@/utils/ContextProvider";
 
 const list = [
-    {
-        image: Technologist,
-        name : "Remote",
-    },
-    {
-        image: OfficeBuilding,
-        name : "On-Site",
-    },
-    {
-        image: House,
-        name: "Hybrid",
-    },
-    {
-        image: Bus,
-        name: "Other",
-    }
+    { image: Technologist, name : "Remote", },
+    { image: OfficeBuilding, name : "On-Site", },
+    { image: House, name: "Hybrid", },
+    { image: Bus, name: "Other", }
 ]
 
 interface QuestionProps {
@@ -33,12 +21,12 @@ interface QuestionProps {
 const Question3:React.FC<QuestionProps> = ({ handleNextStep }) => {
 
     const [selected, setSelected] = useState(null);
-    const state = useContext(AppContext)
+    const { setState } = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore
         setSelected(index);
-        state.work_style = list[index].name
+        setState(prevState => ({ ...prevState, work_style: list[index].name }))
         handleNextStep();
     };
 

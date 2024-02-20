@@ -21,7 +21,7 @@ const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
     ];
     const [selected, setSelected] = useState<number[]>([]);
 
-    const state = useContext(AppContext)
+    const { setState } = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         const newSelected = [...selected];
@@ -43,7 +43,7 @@ const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
             toast.error('Please select at least 1 areas.');
         }
         if (selected.length >= 1 && selected.length <= 3) {
-            state.improve_team = selected.map((index) => areasToImprove[index].title);
+            setState(prevState => ({ ...prevState, improve_team: selected.map((index) => areasToImprove[index].title) }))
             handleClick();
         }
     };

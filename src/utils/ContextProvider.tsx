@@ -1,9 +1,9 @@
 "use client"
 
 import { IStates } from "@/types/states.type";
-import { createContext } from "react"
+import { createContext, useState } from "react"
 
-const defaultStates: IStates = {
+export const defaultStates: IStates = {
   goal: '',
   company: '',
   work_style: '',
@@ -38,11 +38,19 @@ const defaultStates: IStates = {
   customer_id: ''
 };
 
-export const AppContext = createContext(defaultStates)
+export const AppContext = createContext<{state: IStates, setState: React.Dispatch<React.SetStateAction<IStates>>}>({
+  state: defaultStates,
+  setState: () => {}
+})
 
 function Provider({ children } : { children: React.ReactNode }) {
+
+  const [state, setState] = useState(defaultStates)
+
   return (
-    <AppContext.Provider value={defaultStates}>{children}</AppContext.Provider>
+    <AppContext.Provider value={{ state, setState }}>
+      {children}
+    </AppContext.Provider>
   );
 }
 

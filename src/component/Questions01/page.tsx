@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useState} from "react";
 import Image from "next/image";
 import Logo from "../../../images/logo.svg";
 import Pic1 from "../../../images/partners.png";
@@ -23,12 +23,12 @@ interface QuestionProps {
 
 const Question1: React.FC<QuestionProps> = ({handleClick}) => {
 
-    const state = useContext(AppContext)
+    const { setState } = useContext(AppContext)
 
     const [selected, setSelected] = useState<number | null>(null);
     const handleCardClick = (index: number) => {
         setSelected(index);
-        state.goal = data[index].name
+        setState(prevState => ({ ...prevState, goal: data[index].name }))
         handleClick();
     };
 

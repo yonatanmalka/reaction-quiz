@@ -13,7 +13,7 @@ interface QuestionProps {
 
 const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
 
-    const state = useContext(AppContext)
+    const { state, setState } = useContext(AppContext)
 
     const [firstName, setFirstName] = useState("");
 
@@ -67,11 +67,33 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
                 Challenge_title: firstName,
                 selectedDate: selectedDate,
             };
-            state.create_step_challenge.Challenge_title = data.Challenge_title
-            state.create_step_challenge.selectedDate.startDate = data.selectedDate.startDate
-            if(data.selectedDate.endDate !== undefined) {
-                state.create_step_challenge.selectedDate.endDate = data.selectedDate.endDate
-            }
+            setState(prevState => ({
+                ...prevState,
+                create_step_challenge: {
+                    ...prevState.create_step_challenge,
+                    Challenge_title: data.Challenge_title
+                }
+            }))
+            setState(prevState => ({
+                ...prevState,
+                create_step_challenge: {
+                    ...prevState.create_step_challenge,
+                    selectedDate: {
+                        ...prevState.create_step_challenge.selectedDate,
+                        startDate: data.selectedDate.startDate
+                    }
+                }
+            }))
+            setState(prevState => ({
+                ...prevState,
+                create_step_challenge: {
+                    ...prevState.create_step_challenge,
+                    selectedDate: {
+                        ...prevState.create_step_challenge.selectedDate,
+                        endDate: data.selectedDate.endDate
+                    }
+                }
+            }))
             handleClick();
             toast.success('Saving Your Details');
         }

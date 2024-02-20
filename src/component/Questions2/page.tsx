@@ -19,14 +19,14 @@ interface QuestionProps {
 
 const Question2:React.FC<QuestionProps> = ({ handleNextStep }) => {
 
-    const state = useContext(AppContext)
+    const { setState } = useContext(AppContext)
 
     const [selected, setSelected] = useState(null);
 
     const handleCardClick = (index: number) =>  {
         // @ts-ignore
         setSelected(index);
-        state.company = list[index].name
+        setState(prevState => ({ ...prevState, company: list[index].name }))
         handleNextStep();
     };
 

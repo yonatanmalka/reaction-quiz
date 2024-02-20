@@ -14,12 +14,12 @@ const list = [
 
 const Question11:React.FC<QuestionProps> = ({handleNextStep}) => {
     const [selectedCard, setSelectedCard] = useState(null);
-    const state = useContext(AppContext)
+    const { setState } = useContext(AppContext)
 
     const handleCardClick = (index:number) => {
         // @ts-ignore
         setSelectedCard(index);
-        state.stress_at_work = list[index].name
+        setState(prevState => ({ ...prevState, stress_at_work: list[index].name }))
         handleNextStep();
     };
 

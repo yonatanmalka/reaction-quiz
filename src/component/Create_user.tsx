@@ -7,7 +7,6 @@ import { SAVE_QUIZ_MUTATION } from "@/utils/cms/mutations/quiz";
 import client from "@/utils/apolloClient";
 import { airtableClient } from "@/utils/airtableClient";
 import { AppContext } from "@/utils/ContextProvider";
-import { FieldSet } from "airtable";
 
 interface QuestionProps {
     handleClick: () => void;
@@ -22,7 +21,7 @@ const User: React.FC<QuestionProps> = ({ handleClick }) => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
 
-    const state = useContext(AppContext)
+    const { state, setState } = useContext(AppContext)
 
     const isValidEmail = (email: string) => {
         // Regular expression for basic email validation
@@ -74,9 +73,27 @@ const User: React.FC<QuestionProps> = ({ handleClick }) => {
         } else if (!isValidEmail(email)) {
             toast.error('Write Correct Email');
         } else {
-            state.admin_detail.first_Name = firstName
-            state.admin_detail.last_Name = lastName
-            state.admin_detail.email = email
+            setState(prevState => ({
+                ...prevState,
+                admin_detail: {
+                    ...prevState.admin_detail,
+                    first_Name: firstName
+                }
+            }))
+            setState(prevState => ({
+                ...prevState,
+                admin_detail: {
+                    ...prevState.admin_detail,
+                    last_Name: lastName
+                }
+            }))
+            setState(prevState => ({
+                ...prevState,
+                admin_detail: {
+                    ...prevState.admin_detail,
+                    email: email
+                }
+            }))
             // console.log(states, JSON.stringify(states.create_step_challenge.selectedDate),  states.improve_team.join());
             await submit(e);
             handleClick();

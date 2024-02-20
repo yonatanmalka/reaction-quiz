@@ -23,7 +23,8 @@ interface QuestionProps {
 
 const Questions16:React.FC<QuestionProps> = ({handleClick}) => {
 
-    const state = useContext(AppContext)
+    const { state } = useContext(AppContext)
+
     const months = state.improve_team;
 
     return(

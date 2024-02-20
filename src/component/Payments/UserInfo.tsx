@@ -4,7 +4,7 @@ import { IAttributes } from "@/types/states.type";
 import React from "react";
 import UserInfoCard from "./UserInfoCard";
 
-function UserInfo({ attributes } : { attributes: IAttributes }) {
+function UserInfo({ attributes } : { attributes: any }) {
 
   const startDate = new Date(attributes.start_date)
   const endDate = new Date(attributes.end_date)

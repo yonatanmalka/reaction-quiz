@@ -13,7 +13,7 @@ const PRICES = {
 }
 
 const CheckoutForm = () => {
-    const state = useContext(AppContext)
+    const { state } = useContext(AppContext)
     const { price_id: priceId, customer_id: customerId, client_secret: clientSecret, pricing: type } = state;
     const stripe = useStripe();
     const elements = useElements();
@@ -30,8 +30,7 @@ const CheckoutForm = () => {
         const result = await stripe.confirmSetup({
             elements,
             confirmParams: {
-                return_url: 'https://quiz.reaction-club.com/success',
-                // return_url: 'http://localhost:3000/success',
+                return_url: `${process.env.NEXT_PUBLIC_URL}/success`,
             },
         })
 

@@ -16,7 +16,7 @@ const list = [
 const TrialDiscount = () => {
 
   const [checked, setChecked] = useState(true);
-  const state = useContext(AppContext)
+  const { state, setState } = useContext(AppContext)
 
   useEffect(() =>  {
     createCustomer(state)
@@ -24,7 +24,7 @@ const TrialDiscount = () => {
 
   const handleChange = async (checked: boolean) => {
     setChecked(checked);
-    state.trial_discount = checked
+    setState(prevState => ({ ...prevState, trial_discount: checked }))
   };
 
   return (
@@ -67,7 +67,7 @@ const TrialDiscount = () => {
           </div>
         ))}
       </div>
-      <Link href={`${process.env.NEXT_PUBLIC_URL}/payment/${state.admin_detail.email}`}>
+      <Link href={`${process.env.NEXT_PUBLIC_URL}/payment?email=${state.admin_detail.email}`}>
         <button
           className="flex items-center justify-center bg-[#F9B22D] w-[100%] rounded-[24px] text-[14px] md:text-[18px] font-semibold leading-10 tracking-tight text-[#000] py-[6px] mt-[140px]">
           Confirm
