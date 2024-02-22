@@ -5,11 +5,7 @@ import { Img } from "@/utils/Img";
 import { toast, Toaster } from "sonner";
 import { AppContext } from "@/utils/ContextProvider";
 
-interface QuestionProps {
-    handleClick: () => void;
-}
-
-const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
+const Question14 = ({ handleNextStep } : { handleNextStep: () => void }) => {
     const areasToImprove = [
         { title: "Communication" },
         { title: "Team morale" },
@@ -37,14 +33,13 @@ const Question14: React.FC<QuestionProps> = ({ handleClick }) => {
     };
 
     const handleNextClick = () => {
-        if (selected.length > 3) {
+        if (selected.length >= 1 && selected.length <= 3) {
+            setState(prevState => ({ ...prevState, improve_team: selected.map((index) => areasToImprove[index].title) }))
+            handleNextStep();
+        } else if (selected.length > 3) {
             toast.error('You are allowed to select maximum 3 areas.');
         } else {
             toast.error('Please select at least 1 areas.');
-        }
-        if (selected.length >= 1 && selected.length <= 3) {
-            setState(prevState => ({ ...prevState, improve_team: selected.map((index) => areasToImprove[index].title) }))
-            handleClick();
         }
     };
 

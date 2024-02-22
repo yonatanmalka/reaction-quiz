@@ -2,11 +2,11 @@ import { IStates } from "@/types/states.type"
 
 const CUSTOMER_API = "https://track.customer.io/api/v2/entity"
 
-export const createCustomer = async (states: IStates) => {
+export const createCustomer = async (state: IStates) => {
 
   const { goal, company, work_style, work_schedule, organization, team_size, moral, actively_participate, team_conflicts_experince, stress_at_work,
-    team_members_know_each_other_on_persoal_level, team_members_comfort, improve_team, create_step_challenge, participation_reward, pricing, free_trial,
-    trial_discount, price_id, client_secret, customer_id, admin_detail } = states
+    team_members_know_each_other_on_persoal_level, team_members_comfort, improve_team, create_step_challenge, competition_type, members_goal, challenge_goal,
+    participation_reward, pricing, free_trial, trial_discount, price_id, client_secret, customer_id, admin_detail } = state
 
   fetch(CUSTOMER_API, {
       method: "POST",
@@ -36,6 +36,9 @@ export const createCustomer = async (states: IStates) => {
             team_members_comfort: team_members_comfort,
             improve_team: improve_team,
             challenge_title: create_step_challenge.Challenge_title,
+            competition_type: competition_type,
+            members_goal: members_goal,
+            challenge_goal: challenge_goal,
             start_date: create_step_challenge.selectedDate.startDate,
             end_date: create_step_challenge.selectedDate.endDate,
             participation_reward: participation_reward,

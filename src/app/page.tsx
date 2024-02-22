@@ -1,15 +1,12 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import Logo from "../../images/logo.png";
-import Back from "../../images/back.svg";
+import React, { useContext, useEffect } from "react";
 import Question2 from "@/component/Questions2/page";
 import Question3 from "@/component/Questions3/page";
 import Question4 from "@/component/Questions4/page";
 import Question5 from "@/component/Questions5/page";
 import Question6 from "@/component/Questions6/page";
-import Question7 from "@/component/Questions7/page";
+import Loading from "@/component/Questions7/page";
 import Question15 from "@/component/Questions15/page";
 import Questions20 from "@/component/Questions20/page";
 import Questions16 from "@/component/Questions16/page";
@@ -22,34 +19,21 @@ import Question14 from "@/component/Question14";
 import Question18 from "@/component/Question18";
 import Question19 from "@/component/Question19";
 import Question12 from "@/component/Question12";
-import Payment from "@/component/Payment";
 import Question17 from "@/component/Question17";
 import Create_user from "@/component/Create_user";
-import Element1 from "../../images/element1.svg";
-import Element2 from "../../images/element2.svg";
 import DownLoad_App from "@/component/DownLoad_App";
 import Question1 from "@/component/Questions01/page";
-import Checkout from "@/component/Checkout";
 import TrialDiscount from "@/component/TrialDiscount/page";
+import Competition_Type from "@/component/Competition_Type"
+import MembersGoal from "@/component/Members_Goal";
+import ChallengeGoal from "@/component/Challenge_Goal";
+import Rewards from "@/component/Rewards";
+import Inclusivity from "@/component/Inclusivity";
+import { AppContext } from "@/utils/ContextProvider";
 
 const Questionary = () => {
 
-    const [currentStep, setCurrentStep] = useState<number>(1);
-
-    const getProgressBarWidth = () => {
-        return ((currentStep - 1) / 13) * 100;
-    };
-
-    const handleNextStep = () => {
-        setTimeout(() => {
-            setCurrentStep((prevStep: any) => prevStep + 1);
-        }, 1000);
-    };
-
-    const shouldRenderComponent = currentStep !== 1 && currentStep !== 22;
-
-    const ProgressComponent = currentStep !== 21 && currentStep !== 24 && currentStep !== 20 && currentStep !== 15 && currentStep !== 7 && currentStep !== 1 && currentStep !== 23 && currentStep !== 22 && currentStep !== 16 && currentStep !== 17 && currentStep !== 18 && currentStep !== 19;
-
+    const { currentStep, setCurrentStep, handleNextStep } = useContext(AppContext)
 
     useEffect(() => {
         function sendHeightToParent () {
@@ -65,92 +49,36 @@ const Questionary = () => {
     }, [handleNextStep]);
 
     return (
-        <main className="flex justify-center items-center">
-            <div className={`md:w-[400px] w-[425px] z-[20] relative bg-white ${(currentStep === 22 || currentStep === 23) ? '' : 'h-[100vh]'} ${(currentStep === 22 || currentStep === 23) ? 'p-0' : 'p-[15px]'} overflow-x-hidden overflow-y-scroll sm:overflow-y-hidden`}>
-                {shouldRenderComponent && (
-                    <div
-                        className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${(currentStep !== 15 && currentStep !== 7 && currentStep !== 21 && currentStep !== 20 && currentStep !== 19 && currentStep !== 18 && currentStep !== 17 && currentStep !== 16) ? 'justify-between' : 'justify-center'} items-end `}>
-                        {
-                            // @ts-ignore
-                            ![7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].includes(currentStep) ? (
-                                <button onClick={() => setCurrentStep(currentStep - 1)}>
-                                    <Image src={Back} alt={'backButton'} width={15} height={14}/>
-                                </button>
-                            ) : <div/>}
-                        <Image src={Logo} alt={'logo'} width={93} height={40} autoFocus={true}/>
-                        <div>
-                            {
-                                // @ts-ignore
-                                ![7, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24].includes(currentStep) ? (
-                                    <div className="text-[#3C8AF0] text-[16px] font-medium">
-                                        <span className="text-[#3C8AF0]">{currentStep}</span>/<span
-                                        className="text-[#979797]">14</span>
-                                    </div>
-                                ) : <div/>}
-                        </div>
-                    </div>
-                )}
-                {ProgressComponent && (
-                    <div className="mt-[13px] hy w-[100%] z-20 relative">
-                        <div
-                            className="w-[100%] bg-[#E1E1E1] h-[5px] rounded-md overflow-hidden"
-                            style={{ borderRadius: '3px' }}
-                        >
-                            <div
-                                className="bg-[#2C98F0] h-full transition-all"
-                                style={{
-                                    width: `${getProgressBarWidth()}%`,
-                                    borderRadius: '3px',
-                                }}
-                            />
-                        </div>
-                    </div>
-                )}
-                <div className="w-[100%] z-20  relative">
-                    {currentStep === 1 && (<Question1 handleClick={handleNextStep}/>)}
-                    {currentStep === 2 && (<Question2 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 3 && (<Question3 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 4 && (<Question4 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 5 && (<Question5 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 6 && (<Question6 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 7 && (<Question7 handleClick={() => setCurrentStep(8)}/>)}
-                    {currentStep === 8 && (<Question8 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 9 && (<Question9 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 10 && (<Question10 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 11 && (<Question11 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 12 && (<Question12 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 13 && (<Question13 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 14 && (<Question14 handleClick={() => setCurrentStep(15)}/>)}
-                    {currentStep === 15 && (<Question15 handleNextStep={() => setCurrentStep(16)}/>)}
-                    {currentStep === 16 && (<Questions16 handleClick={() => setCurrentStep(17)}/>)}
-                    {currentStep === 17 && (<Question17 handleClick={() => setCurrentStep(18)}/>)}
-                    {currentStep === 18 && (<Question18 handleClick={() => setCurrentStep(19)}/>)}
-                    {currentStep === 19 && (<Question19 handleNextStep={handleNextStep}/>)}
-                    {currentStep === 20 && (<Questions20 handleClick={() => setCurrentStep(21)}/>)}
-                    {currentStep === 21 && (<Create_user handleClick={() => setCurrentStep(22)}/>)}
-                    {currentStep === 22 && (<TrialDiscount/>)}
-                    {currentStep === 25 && (<DownLoad_App />)}
-                </div>
-                {![1, 24].includes(currentStep) && (
-                    <div className="z-1">
-                        <Image
-                            className="absolute top-[-120px] left-[-100px]"
-                            src={Element1}
-                            alt={'element1'}
-                        />
-                    </div>
-                )}
-                {(currentStep !== 1 && currentStep !== 23 && currentStep !== 22) && (
-                    <div className="z-1">
-                        <Image
-                            src={Element2}
-                            alt={'element1'}
-                            className="absolute bottom-[-100px] h-[400px] right-[-130px]"
-                        />
-                    </div>
-                )}
-            </div>
-        </main>
+        <div className="w-[100%] z-20 relative">
+            {currentStep === 1 && (<Question1 handleNextStep={handleNextStep}/>)}
+            {currentStep === 2 && (<Question2 handleNextStep={handleNextStep}/>)}
+            {currentStep === 3 && (<Question3 handleNextStep={handleNextStep}/>)}
+            {currentStep === 4 && (<Question4 handleNextStep={handleNextStep}/>)}
+            {currentStep === 5 && (<Question5 handleNextStep={handleNextStep}/>)}
+            {currentStep === 6 && (<Question6 handleNextStep={handleNextStep}/>)}
+            {currentStep === 7 && (<Loading handleNextStep={() => setCurrentStep(8)}/>)}
+            {currentStep === 8 && (<Question8 handleNextStep={handleNextStep}/>)}
+            {currentStep === 9 && (<Question9 handleNextStep={handleNextStep}/>)}
+            {currentStep === 10 && (<Question10 handleNextStep={handleNextStep}/>)}
+            {currentStep === 11 && (<Question11 handleNextStep={handleNextStep}/>)}
+            {currentStep === 12 && (<Question12 handleNextStep={handleNextStep}/>)}
+            {currentStep === 13 && (<Question13 handleNextStep={handleNextStep}/>)}
+            {currentStep === 14 && (<Question14 handleNextStep={handleNextStep}/>)}
+            {currentStep === 15 && (<Question15 handleNextStep={() => setCurrentStep(16)}/>)}
+            {currentStep === 16 && (<Questions16 handleNextStep={handleNextStep}/>)}
+            {currentStep === 17 && (<Question17 handleNextStep={handleNextStep}/>)}
+            {currentStep === 18 && (<Question18 handleNextStep={handleNextStep}/>)}
+            {currentStep === 19 && (<Competition_Type handleNextStep={handleNextStep}/>)}
+            {currentStep === 20 && (<MembersGoal handleNextStep={handleNextStep}/>)}
+            {currentStep === 21 && (<ChallengeGoal handleNextStep={handleNextStep}/>)}
+            {currentStep === 22 && (<Rewards handleNextStep={handleNextStep}/>)}
+            {currentStep === 23 && (<Question19 handleNextStep={handleNextStep}/>)}
+            {currentStep === 24 && (<Inclusivity handleNextStep={handleNextStep}/>)}
+            {currentStep === 25 && (<Questions20 handleNextStep={() => setCurrentStep(26)}/>)}
+            {currentStep === 26 && (<Create_user handleNextStep={handleNextStep}/>)}
+            {currentStep === 27 && (<TrialDiscount/>)}
+            {currentStep === 28 && (<DownLoad_App />)}
+        </div>
     )
 }
 

@@ -17,11 +17,7 @@ const data = [
     { Image: Pic4, name: "Not Sure" }
 ]
 
-interface QuestionProps {
-    handleClick: () => void;
-}
-
-const Question1: React.FC<QuestionProps> = ({handleClick}) => {
+const Question1 = ({ handleNextStep } : { handleNextStep: () => void }) => {
 
     const { setState } = useContext(AppContext)
 
@@ -29,7 +25,7 @@ const Question1: React.FC<QuestionProps> = ({handleClick}) => {
     const handleCardClick = (index: number) => {
         setSelected(index);
         setState(prevState => ({ ...prevState, goal: data[index].name }))
-        handleClick();
+        handleNextStep();
     };
 
     return (

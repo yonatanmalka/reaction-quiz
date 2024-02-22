@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-interface QuestionProps {
-    handleClick: () => void;
-}
-
-const Questions7: React.FC<QuestionProps> = ({ handleClick }) => {
+const Loading = ({ handleNextStep } : { handleNextStep: () => void }) => {
     const [animatedPercent, setAnimatedPercent] = useState(0);
 
     const targetPercent = 100; // Set the target percentage
@@ -30,12 +26,12 @@ const Questions7: React.FC<QuestionProps> = ({ handleClick }) => {
                 requestAnimationFrame(animate);
             } else if (percentage === targetPercent) {
                 // Call handleClick when the animation reaches 100%
-                handleClick();
+                handleNextStep();
             }
         };
 
         requestAnimationFrame(animate);
-    }, [targetPercent, animationDuration, handleClick]);
+    }, [targetPercent, animationDuration, handleNextStep]);
 
 
     return (
@@ -62,11 +58,11 @@ const Questions7: React.FC<QuestionProps> = ({ handleClick }) => {
                 </svg>
             </div>
             <div className="text-[14px] text-[#343434] font-bold mt-[-10px]">Analysing your team’s profile...</div>
-            <button onClick={handleClick} className="text-[#5553FE] text-[18px] md:text-[20px] font-semibold">
+            <button onClick={handleNextStep} className="text-[#5553FE] text-[18px] md:text-[20px] font-semibold">
                 Adapting next stage assessment
             </button>
         </div>
     );
 };
 
-export default Questions7;
+export default Loading;

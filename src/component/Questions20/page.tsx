@@ -1,10 +1,7 @@
 import React, {useEffect, useState} from "react";
 import SliderComp from "@/component/SliderNew";
 
-interface QuestionProps {
-    handleClick: () => void;
-}
-const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
+const Questions20 = ({ handleNextStep } : { handleNextStep: () => void }) => {
     const [animatedPercent, setAnimatedPercent] = useState(0);
 
     const targetPercent = 100; // Set the target percentage
@@ -30,12 +27,12 @@ const Questions20:React.FC<QuestionProps> = ({handleClick}) => {
                 requestAnimationFrame(animate);
             } else if (percentage === targetPercent) {
                 // Call handleClick when the animation reaches 100%
-                handleClick();
+                handleNextStep();
             }
         };
 
         requestAnimationFrame(animate);
-    }, [targetPercent, animationDuration, handleClick]);
+    }, [targetPercent, animationDuration]);
 
 
     return(

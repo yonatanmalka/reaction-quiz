@@ -8,11 +8,7 @@ import client from "@/utils/apolloClient";
 import { airtableClient } from "@/utils/airtableClient";
 import { AppContext } from "@/utils/ContextProvider";
 
-interface QuestionProps {
-    handleClick: () => void;
-}
-
-const User: React.FC<QuestionProps> = ({ handleClick }) => {
+const User = ({ handleNextStep } : { handleNextStep: () => void }) => {
     const [save_quiz, { data, loading, error }] = useMutation<any>(
         SAVE_QUIZ_MUTATION,
         { client }
@@ -77,26 +73,14 @@ const User: React.FC<QuestionProps> = ({ handleClick }) => {
                 ...prevState,
                 admin_detail: {
                     ...prevState.admin_detail,
-                    first_Name: firstName
-                }
-            }))
-            setState(prevState => ({
-                ...prevState,
-                admin_detail: {
-                    ...prevState.admin_detail,
-                    last_Name: lastName
-                }
-            }))
-            setState(prevState => ({
-                ...prevState,
-                admin_detail: {
-                    ...prevState.admin_detail,
+                    first_Name: firstName,
+                    last_Name: lastName,
                     email: email
                 }
             }))
             // console.log(states, JSON.stringify(states.create_step_challenge.selectedDate),  states.improve_team.join());
             await submit(e);
-            handleClick();
+            handleNextStep();
         }
     };
 
@@ -120,8 +104,6 @@ const User: React.FC<QuestionProps> = ({ handleClick }) => {
                         className="mt-1 p-2 border bg-[#EFF3F6]  border-[#EFF3F6] rounded-md w-full"
                     />
                 </div>
-
-
                 <div className='w-[50%]'>
                     <input
                         type="text"

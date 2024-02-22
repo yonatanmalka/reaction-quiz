@@ -7,13 +7,9 @@ import "react-date-range/dist/theme/default.css";
 import { toast, Toaster } from 'sonner';
 import { AppContext } from "@/utils/ContextProvider";
 
-interface QuestionProps {
-    handleClick: () => void;
-}
+const Question18 = ({ handleNextStep } : { handleNextStep: () => void }) => {
 
-const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
-
-    const { state, setState } = useContext(AppContext)
+    const { setState } = useContext(AppContext)
 
     const [firstName, setFirstName] = useState("");
 
@@ -94,7 +90,7 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
                     }
                 }
             }))
-            handleClick();
+            handleNextStep();
             toast.success('Saving Your Details');
         }
     };
@@ -102,11 +98,11 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
     return (
         <div className="mt-[30px] relative">
             <div className="flex justify-center items-center">
-                <h1 className="md:text-[26px] text-[22px] font-semibold text-center">
+                <h1 className="text-[22px] font-semibold text-center">
                     Let’s create a step challenge!
                 </h1>
             </div>
-            <div className="w-full  px-[20px]  flex gap-[10px] mt-[30px] flex-col">
+            <div className="w-full px-[20px] flex gap-[10px] mt-[30px] flex-col">
                 <div className="w-[100%]">
                     <input
                         type="text"
@@ -137,14 +133,17 @@ const Question18: React.FC<QuestionProps> = ({ handleClick }) => {
             <div>
                 <Toaster richColors position={"top-center"} closeButton={true}/>
             </div>
-            <div className="mt-[224px] px-[20px] ">
-                <button
-                    onClick={handleNextClick}
-                    className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
-                >
-                    Next
-                </button>
-            </div>
+                <div className="flex justify-center mt-[100px]">
+                    <Img src={'/images/step_challenge_screen1.png'} alt="step_challeng" width={250} height={650}/>
+                </div>
+                <div className="px-[20px]">
+                    <button
+                        onClick={handleNextClick}
+                        className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
+                    >
+                        Next
+                    </button>
+                </div>
             {isDatePickerOpen && (
                 <div className="absolute top-[5px] right-[15px]">
                     <DateRangePicker

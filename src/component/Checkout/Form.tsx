@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { ClipLoader } from "react-spinners";
 import { AppContext } from '@/utils/ContextProvider';
@@ -55,6 +55,7 @@ const CheckoutForm = () => {
 
     return (
         <div className="flex flex-col font-primary min-h-[850px]">
+            <h1 className='text-center font-semibold text-[22px] mt-5'>Select payment method</h1>
             <div className="flex justify-between pt-[25px] pb-[20px] text-[14px] border-b border-b-[#979797]">
                 <div className="flex items-center text-[#979797]">
                     <div className="flex-1 p-1 text-[12px]">

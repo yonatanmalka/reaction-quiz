@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import React from "react";
 import Provider from '@/utils/ContextProvider';
+import Layout from '@/component/Layout';
 
 export const metadata: Metadata = {
     title: 'Reaction',
@@ -51,7 +52,9 @@ export default function RootLayout ({ children }: { children: React.ReactNode })
             </head>
             <body className='font-primary'>
                 <Provider>
-                    {children}
+                    <Layout>
+                        {children}
+                    </Layout>
                 </Provider>
             </body>
         </html>
