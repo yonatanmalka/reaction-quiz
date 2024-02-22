@@ -12,7 +12,7 @@ function Rewards ({ handleNextStep } : { handleNextStep: () => void }) {
       </div>
       <div className="mb-10">
           <Img
-            src={'/images/rewards.svg'}
+            src={'/images/rewards.png'}
             alt="step_challeng"
             width={650}
             height={550}
