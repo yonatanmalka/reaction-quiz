@@ -4,9 +4,9 @@ import { AppContext } from "@/utils/ContextProvider";
 import { Img } from "@/utils/Img";
 import { useContext, useState } from "react";
 
-function CompetitionType({ handleNextStep } : { handleNextStep: () => void }) {
+function CompetitionType() {
 
-  const { setState } = useContext(AppContext)
+  const { setState, handleNextStep } = useContext(AppContext)
   const [selectedOption, setSelectedOption] = useState("individuals")
 
   const handleNextClick = () => {

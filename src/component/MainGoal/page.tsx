@@ -9,9 +9,9 @@ import info from "../../data.json"
 
 const data = info.question1
 
-const MainGoal = ({ handleNextStep } : { handleNextStep: () => void }) => {
+const MainGoal = () => {
 
-    const { setState, isVideoShown } = useContext(AppContext)
+    const { setState, isVideoShown, handleNextStep } = useContext(AppContext)
 
     const [selected, setSelected] = useState<number | null>(null);
 

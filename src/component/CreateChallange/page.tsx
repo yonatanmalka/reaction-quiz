@@ -7,9 +7,9 @@ import "react-date-range/dist/theme/default.css";
 import { toast, Toaster } from 'sonner';
 import { AppContext } from "@/utils/ContextProvider";
 
-const CreateChallange = ({ handleNextStep } : { handleNextStep: () => void }) => {
+const CreateChallange = () => {
 
-    const { setState } = useContext(AppContext)
+    const { setState, handleNextStep } = useContext(AppContext)
 
     const [firstName, setFirstName] = useState("");
 

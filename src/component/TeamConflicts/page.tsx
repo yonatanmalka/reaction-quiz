@@ -4,15 +4,12 @@ import {Img} from "@/utils/Img";
 import { AppContext } from "@/utils/ContextProvider";
 import info from "../../data.json"
 
-interface QuestionProps {
-    handleNextStep: () => void;
-}
-const TeamConflicts:React.FC<QuestionProps> = ({handleNextStep}) => {
+const TeamConflicts = () => {
 
     const images = info.question10
 
     const [selectedCard, setSelectedCard] = useState(null);
-    const { setState } = useContext(AppContext)
+    const { setState, handleNextStep } = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore

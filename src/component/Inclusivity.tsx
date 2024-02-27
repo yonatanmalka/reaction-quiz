@@ -1,6 +1,11 @@
+import { AppContext } from "@/utils/ContextProvider";
 import { Img } from "@/utils/Img";
+import { useContext } from "react";
 
-function Inclusivity ({ handleNextStep } : { handleNextStep: () => void }) {
+function Inclusivity () {
+
+  const { handleNextStep } = useContext(AppContext)
+
   return (
     <div>
       <div className="mb-4">

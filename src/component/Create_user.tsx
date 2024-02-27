@@ -8,7 +8,7 @@ import client from "@/utils/apolloClient";
 import { airtableClient } from "@/utils/airtableClient";
 import { AppContext } from "@/utils/ContextProvider";
 
-const User = ({ handleNextStep } : { handleNextStep: () => void }) => {
+const User = () => {
     const [save_quiz, { data, loading, error }] = useMutation<any>(
         SAVE_QUIZ_MUTATION,
         { client }
@@ -17,7 +17,7 @@ const User = ({ handleNextStep } : { handleNextStep: () => void }) => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
 
-    const { state, setState } = useContext(AppContext)
+    const { state, setState, handleNextStep } = useContext(AppContext)
 
     const isValidEmail = (email: string) => {
         // Regular expression for basic email validation

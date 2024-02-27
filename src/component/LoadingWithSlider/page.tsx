@@ -1,16 +1,16 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import 'swiper/css';
 
 import 'swiper/css/pagination';
 import { LogosSlider } from "@/component/logosSlider";
 import info from "../../data.json"
+import { AppContext } from "@/utils/ContextProvider";
 
-interface QuestionProps {
-    handleNextStep: () => void;
-}
+const LoadingWithSlider = () => {
 
-const LoadingWithSlider: React.FC<QuestionProps> = ({ handleNextStep }) => {
+    const { setCurrentStep } = useContext(AppContext)
+
     const logos1 = info.question15.logos1
     const logos2 = info.question15.logos2
     const logos3 = info.question15.logos3
@@ -23,13 +23,13 @@ const LoadingWithSlider: React.FC<QuestionProps> = ({ handleNextStep }) => {
                 const nextPercent = prevPercent + 1;
                 if (nextPercent === 100) {
                     clearInterval(interval); // Stop the interval when percent reaches 100
-                    setTimeout(handleNextStep, 3300); // Call handleNextStep after 2 seconds
+                    setTimeout(() => setCurrentStep(16), 3300); // Call handleNextStep after 2 seconds
                 }
                 return nextPercent;
             });
         }, 150); // Adjust the interval duration for smoother animation
         return () => clearInterval(interval); // Cleanup the interval on component unmount
-    }, [handleNextStep]);
+    }, [setCurrentStep]);
 
     return (
         <div className="flex mt-[60px] flex-col gap-[20px] justify-center items-center">

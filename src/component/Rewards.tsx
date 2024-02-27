@@ -1,6 +1,11 @@
+import { AppContext } from "@/utils/ContextProvider";
 import { Img } from "@/utils/Img";
+import { useContext } from "react";
 
-function Rewards ({ handleNextStep } : { handleNextStep: () => void }) {
+function Rewards () {
+
+  const { handleNextStep } = useContext(AppContext)
+
   return (
     <div>
       <div className="mb-16">

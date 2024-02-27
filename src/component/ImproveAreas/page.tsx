@@ -6,11 +6,11 @@ import { toast, Toaster } from "sonner";
 import { AppContext } from "@/utils/ContextProvider";
 import info from "../../data.json"
 
-const ImproveAreas = ({ handleNextStep } : { handleNextStep: () => void }) => {
+const ImproveAreas = () => {
     const areasToImprove = info.question14;
     const [selected, setSelected] = useState<number[]>([]);
 
-    const { setState } = useContext(AppContext)
+    const { setState, handleNextStep } = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         const newSelected = [...selected];

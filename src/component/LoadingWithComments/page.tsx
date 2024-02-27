@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import SliderComp from "@/component/SliderNew";
+import { AppContext } from "@/utils/ContextProvider";
 
-const LoadingWithComments = ({ handleNextStep } : { handleNextStep: () => void }) => {
+const LoadingWithComments = () => {
     const [animatedPercent, setAnimatedPercent] = useState(0);
+    const { setCurrentStep } = useContext(AppContext)
 
     const targetPercent = 100; // Set the target percentage
     const animationDuration = 6000; // Set the duration of the animation in milliseconds
@@ -27,7 +29,7 @@ const LoadingWithComments = ({ handleNextStep } : { handleNextStep: () => void }
                 requestAnimationFrame(animate);
             } else if (percentage === targetPercent) {
                 // Call handleClick when the animation reaches 100%
-                handleNextStep();
+                setCurrentStep(26);
             }
         };
 

@@ -7,14 +7,10 @@ import info from "../../data.json"
 
 const list = info.question5
 
-interface QuestionProps {
-    handleNextStep: () => void
-}
-
-const OraganizationNationality:React.FC<QuestionProps> = ({handleNextStep}) => {
+const OraganizationNationality = () => {
 
     const [selected, setSelected] = useState(null);
-    const { setState } = useContext(AppContext)
+    const { setState, handleNextStep } = useContext(AppContext)
 
 
     const handleCardClick = (index: number) => {

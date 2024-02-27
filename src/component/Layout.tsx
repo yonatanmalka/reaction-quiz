@@ -7,6 +7,7 @@ import Logo from "../../images/logo.png";
 import Back from "../../images/back.svg";
 import Element1 from "../../images/element1.svg";
 import Element2 from "../../images/element2.svg";
+import { usePathname } from "next/navigation";
 
 function Layout({ children }: { children: React.ReactNode }) {
   const {
@@ -22,6 +23,8 @@ function Layout({ children }: { children: React.ReactNode }) {
   } = useContext(AppContext);
 
   const divRef = useRef<HTMLDivElement | null>(null)
+  const payment = usePathname()?.includes('payment')
+  const checkout = usePathname()?.includes('checkout')
 
   const handleScroll = () => {
     if(currentStep === 1) {
@@ -35,7 +38,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <main className="flex justify-center items-center">
       <div
-        className={`md:w-[400px] w-[425px] z-[20] relative bg-white h-[100vh] ${(currentStep !== 27 && currentStep !== 1) ? 'p-[15px]' : 'p-0'} overflow-x-hidden overflow-y-scroll ${currentStep !== 1 ? 'sm:overflow-y-hidden' : ''}`}
+        className={`md:w-[400px] w-[425px] z-[20] relative bg-white h-[100vh] ${(currentStep !== 27 && currentStep !== 1) ? 'p-[15px]' : 'p-0'} overflow-x-hidden overflow-y-scroll ${currentStep !== 1 || !payment ? 'sm:overflow-y-hidden' : ''}`}
         onScroll={handleScroll}
         ref={divRef}
       >
@@ -98,7 +101,7 @@ function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         )}
-        {currentStep === 1 && (
+        {currentStep === 1 && !payment && !checkout && (
           <button
             className="sticky top-4 left-5 z-50 text-white text-3xl"
             onClick={() => setIsVideoShown(!isVideoShown)}

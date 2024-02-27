@@ -5,9 +5,9 @@ import { AppContext } from "@/utils/ContextProvider";
 import { Img } from "@/utils/Img";
 import { Toaster, toast } from "sonner";
 
-function MembersGoal({ handleNextStep } : { handleNextStep: () => void }) {
+function MembersGoal() {
 
-  const { setState } = useContext(AppContext)
+  const { setState, handleNextStep } = useContext(AppContext)
   const [selectedOption, setSelectedOption] = useState("automated")
   const [customGoal, setCustomGoal] = useState('')
 

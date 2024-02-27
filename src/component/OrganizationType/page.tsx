@@ -8,13 +8,9 @@ import info from "../../data.json"
 
 const list = info.question2
 
-interface QuestionProps {
-    handleNextStep: () => void;
-}
+const OrganizationType = () => {
 
-const OrganizationType:React.FC<QuestionProps> = ({ handleNextStep }) => {
-
-    const { setState } = useContext(AppContext)
+    const { setState, handleNextStep } = useContext(AppContext)
 
     const [selected, setSelected] = useState(null);
 

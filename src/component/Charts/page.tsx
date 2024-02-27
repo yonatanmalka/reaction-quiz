@@ -8,9 +8,9 @@ import info from "../../data.json"
 const freq1 = info.question16.freq1
 const freq2 = info.question16.freq2
 
-const Charts = ({ handleNextStep } : { handleNextStep: () => void }) => {
+const Charts = () => {
 
-    const { state } = useContext(AppContext)
+    const { state, handleNextStep } = useContext(AppContext)
 
     const months = state.improve_team;
 

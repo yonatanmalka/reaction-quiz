@@ -7,13 +7,10 @@ import info from "../../data.json"
 
 const list = info.qeustion4
 
-interface QuestionProps {
-    handleNextStep: () => void;
-}
-const WorkSchedule:React.FC<QuestionProps> = ({handleNextStep}) => {
+const WorkSchedule = () => {
 
     const [selected, setSelected] = useState(null);
-    const { setState } = useContext(AppContext)
+    const { setState, handleNextStep } = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore

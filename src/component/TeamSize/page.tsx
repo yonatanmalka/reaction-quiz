@@ -8,13 +8,10 @@ import info from "../../data.json"
 
 const list = info.question6
 
-interface QuestionProps {
-    handleNextStep: () => void;
-}
-const TeamSize:React.FC<QuestionProps> = ({ handleNextStep  }) => {
+const TeamSize = () => {
 
     const [selected, setSelected] = useState(null);
-    const { setState } = useContext(AppContext)
+    const { setState, handleNextStep } = useContext(AppContext)
 
     const handleCardClick = (index: number) => {
         // @ts-ignore

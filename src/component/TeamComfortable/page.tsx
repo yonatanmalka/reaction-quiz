@@ -5,15 +5,11 @@ import { Img } from "@/utils/Img";
 import { AppContext } from "@/utils/ContextProvider";
 import info from "../../data.json"
 
-interface QuestionProps {
-    handleNextStep: () => void;
-}
-
 const list = info.question13
 
-const TeamComfortable:React.FC<QuestionProps> = ({handleNextStep}) => {
+const TeamComfortable = () => {
     const [selectedCard, setSelectedCard] = useState(null);
-    const { setState } = useContext(AppContext)
+    const { setState, handleNextStep } = useContext(AppContext)
 
     const handleCardClick = (index:number) => {
         // @ts-ignore

@@ -32,7 +32,7 @@ import { AppContext } from "@/utils/ContextProvider";
 
 const Questionary = () => {
 
-    const { currentStep, setCurrentStep, handleNextStep } = useContext(AppContext)
+    const { currentStep, handleNextStep } = useContext(AppContext)
 
     useEffect(() => {
         function sendHeightToParent () {
@@ -49,32 +49,32 @@ const Questionary = () => {
 
     return (
         <div className="w-[100%] z-20 relative">
-            {currentStep === 1 && (<MainGoal handleNextStep={handleNextStep}/>)}
-            {currentStep === 2 && (<OrganizationType handleNextStep={handleNextStep}/>)}
-            {currentStep === 3 && (<TeamWorkStyle handleNextStep={handleNextStep}/>)}
-            {currentStep === 4 && (<WorkSchedule handleNextStep={handleNextStep}/>)}
-            {currentStep === 5 && (<OraganizationNationality handleNextStep={handleNextStep}/>)}
-            {currentStep === 6 && (<TeamSize handleNextStep={handleNextStep}/>)}
-            {currentStep === 7 && (<Loading handleNextStep={() => setCurrentStep(8)}/>)}
-            {currentStep === 8 && (<TeamMoral handleNextStep={handleNextStep}/>)}
-            {currentStep === 9 && (<TeamActivity handleNextStep={handleNextStep}/>)}
-            {currentStep === 10 && (<TeamConflicts handleNextStep={handleNextStep}/>)}
-            {currentStep === 11 && (<TeamStress handleNextStep={handleNextStep}/>)}
-            {currentStep === 12 && (<TeamRelationship handleNextStep={handleNextStep}/>)}
-            {currentStep === 13 && (<TeamComfortable handleNextStep={handleNextStep}/>)}
-            {currentStep === 14 && (<ImproveAreas handleNextStep={handleNextStep}/>)}
-            {currentStep === 15 && (<LoadingWithSlider handleNextStep={() => setCurrentStep(16)}/>)}
-            {currentStep === 16 && (<Charts handleNextStep={handleNextStep}/>)}
-            {currentStep === 17 && (<RecommendedPlan handleNextStep={handleNextStep}/>)}
-            {currentStep === 18 && (<CreateChallange handleNextStep={handleNextStep}/>)}
-            {currentStep === 19 && (<Competition_Type handleNextStep={handleNextStep}/>)}
-            {currentStep === 20 && (<MembersGoal handleNextStep={handleNextStep}/>)}
-            {currentStep === 21 && (<ChallengeGoal handleNextStep={handleNextStep}/>)}
-            {currentStep === 22 && (<Rewards handleNextStep={handleNextStep}/>)}
-            {currentStep === 23 && (<Question19 handleNextStep={handleNextStep}/>)}
-            {currentStep === 24 && (<Inclusivity handleNextStep={handleNextStep}/>)}
-            {currentStep === 25 && (<LoadingWithComments handleNextStep={() => setCurrentStep(26)}/>)}
-            {currentStep === 26 && (<Create_user handleNextStep={handleNextStep}/>)}
+            {currentStep === 1 && (<MainGoal />)}
+            {currentStep === 2 && (<OrganizationType />)}
+            {currentStep === 3 && (<TeamWorkStyle />)}
+            {currentStep === 4 && (<WorkSchedule />)}
+            {currentStep === 5 && (<OraganizationNationality />)}
+            {currentStep === 6 && (<TeamSize />)}
+            {currentStep === 7 && (<Loading />)}
+            {currentStep === 8 && (<TeamMoral />)}
+            {currentStep === 9 && (<TeamActivity />)}
+            {currentStep === 10 && (<TeamConflicts />)}
+            {currentStep === 11 && (<TeamStress />)}
+            {currentStep === 12 && (<TeamRelationship />)}
+            {currentStep === 13 && (<TeamComfortable />)}
+            {currentStep === 14 && (<ImproveAreas />)}
+            {currentStep === 15 && (<LoadingWithSlider />)}
+            {currentStep === 16 && (<Charts />)}
+            {currentStep === 17 && (<RecommendedPlan />)}
+            {currentStep === 18 && (<CreateChallange />)}
+            {currentStep === 19 && (<Competition_Type />)}
+            {currentStep === 20 && (<MembersGoal />)}
+            {currentStep === 21 && (<ChallengeGoal />)}
+            {currentStep === 22 && (<Rewards />)}
+            {currentStep === 23 && (<Question19 />)}
+            {currentStep === 24 && (<Inclusivity />)}
+            {currentStep === 25 && (<LoadingWithComments />)}
+            {currentStep === 26 && (<Create_user />)}
             {currentStep === 27 && (<TrialDiscount/>)}
         </div>
     )

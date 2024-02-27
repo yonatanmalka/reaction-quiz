@@ -5,9 +5,9 @@ import { Img } from "@/utils/Img";
 import { useContext, useState } from "react";
 import { Toaster, toast } from "sonner";
 
-function ChallengeGoal({ handleNextStep } : { handleNextStep: () => void }) {
+function ChallengeGoal() {
 
-  const { setState } = useContext(AppContext)
+  const { setState, handleNextStep } = useContext(AppContext)
   const [selectedOption, setSelectedOption] = useState("automated")
   const [customGoal, setCustomGoal] = useState('')
 

@@ -1,8 +1,11 @@
 "use client"
 
-import React from "react";
+import { AppContext } from "@/utils/ContextProvider";
+import React, { useContext } from "react";
 
-const RecommendedPlan = ({ handleNextStep } : { handleNextStep: () => void }) => {
+const RecommendedPlan = () => {
+
+    const { handleNextStep } = useContext(AppContext)
 
     return (
         <div className="md:px-[10px] mt-[30px] relative  px-0">

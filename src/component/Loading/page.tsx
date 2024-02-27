@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { AppContext } from "@/utils/ContextProvider";
+import React, { useState, useEffect, useContext } from "react";
 
-const Loading = ({ handleNextStep } : { handleNextStep: () => void }) => {
+const Loading = () => {
+
+    const { setCurrentStep } = useContext(AppContext)
+
     const [animatedPercent, setAnimatedPercent] = useState(0);
 
     const targetPercent = 100; // Set the target percentage
@@ -26,12 +30,12 @@ const Loading = ({ handleNextStep } : { handleNextStep: () => void }) => {
                 requestAnimationFrame(animate);
             } else if (percentage === targetPercent) {
                 // Call handleClick when the animation reaches 100%
-                handleNextStep();
+                setCurrentStep(8);
             }
         };
 
         requestAnimationFrame(animate);
-    }, [targetPercent, animationDuration, handleNextStep]);
+    }, [targetPercent, animationDuration, setCurrentStep]);
 
 
     return (
@@ -58,7 +62,7 @@ const Loading = ({ handleNextStep } : { handleNextStep: () => void }) => {
                 </svg>
             </div>
             <div className="text-[14px] text-[#343434] font-bold mt-[-10px]">Analysing your team’s profile...</div>
-            <button onClick={handleNextStep} className="text-[#5553FE] text-[18px] md:text-[20px] font-semibold">
+            <button onClick={() => setCurrentStep(8)} className="text-[#5553FE] text-[18px] md:text-[20px] font-semibold">
                 Adapting next stage assessment
             </button>
         </div>
