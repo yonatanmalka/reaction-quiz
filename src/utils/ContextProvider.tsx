@@ -81,9 +81,9 @@ function Provider({ children } : { children: React.ReactNode }) {
   };
 
   const handleNextStep = () => {
-    setTimeout(() => {
-        setCurrentStep((prevStep: any) => prevStep + 1);
-    }, 1000);
+    // setTimeout(() => {
+        setCurrentStep((prevStep: number) => prevStep + 1);
+    // }, 1000);
   };
 
   const shouldRenderComponent = currentStep !== 1 && currentStep !== 27;
