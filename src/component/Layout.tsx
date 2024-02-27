@@ -2,7 +2,7 @@
 
 import { AppContext } from "@/utils/ContextProvider";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import Logo from "../../images/logo.png";
 import Back from "../../images/back.svg";
 import Element1 from "../../images/element1.svg";
@@ -15,12 +15,29 @@ function Layout({ children }: { children: React.ReactNode }) {
     currentStep,
     setCurrentStep,
     getProgressBarWidth,
+    scroll,
+    setScroll,
+    isVideoShown,
+    setIsVideoShown
   } = useContext(AppContext);
+
+  const divRef = useRef<HTMLDivElement | null>(null)
+
+  const handleScroll = () => {
+    if(currentStep === 1) {
+      setScroll(divRef.current?.scrollTop)
+      if(scroll) {
+        scroll >= 200 && setIsVideoShown(false)
+      }
+    }
+  }
 
   return (
     <main className="flex justify-center items-center">
       <div
-        className={`md:w-[400px] w-[425px] z-[20] relative bg-white h-[100vh] ${currentStep !== 27 ? 'p-[15px]' : 'p-0'} overflow-x-hidden overflow-y-scroll sm:overflow-y-hidden`}
+        className={`md:w-[400px] w-[425px] z-[20] relative bg-white h-[100vh] ${(currentStep !== 27 && currentStep !== 1) ? 'p-[15px]' : 'p-0'} overflow-x-hidden overflow-y-scroll ${currentStep !== 1 ? 'sm:overflow-y-hidden' : ''}`}
+        onScroll={handleScroll}
+        ref={divRef}
       >
         {shouldRenderComponent && (
           <div
@@ -80,6 +97,27 @@ function Layout({ children }: { children: React.ReactNode }) {
               />
             </div>
           </div>
+        )}
+        {currentStep === 1 && (
+          <button
+            className="sticky top-4 left-5 z-50 text-white text-3xl"
+            onClick={() => setIsVideoShown(!isVideoShown)}
+          >
+            {!isVideoShown ?
+              <Image
+                src={'/icons/less_than.svg'}
+                alt="open"
+                width={30}
+                height={30}
+              /> :
+              <Image
+                src={'/icons/cross.svg'}
+                alt="close"
+                width={30}
+                height={30}
+              />
+            }
+          </button>
         )}
         {children}
         {![1, 27].includes(currentStep) && (

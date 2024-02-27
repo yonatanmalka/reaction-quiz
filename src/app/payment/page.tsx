@@ -19,7 +19,7 @@ function Payment () {
   const [attributes, setAttributes] = useState<IAttributes>()
   const [clientSecret, setClientSecret] = useState<string>('');
   const [selectedOption, setSelectedOption] = useState<string>("yearly");
-  const {setState } = useContext(AppContext)
+  const { setState } = useContext(AppContext)
   const params = useSearchParams()
   const email = params?.get("email")
   const router = useRouter()

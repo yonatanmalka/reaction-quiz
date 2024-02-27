@@ -3,15 +3,15 @@
 import React, {useContext, useState} from "react";
 import {Img} from "@/utils/Img";
 import { AppContext } from "@/utils/ContextProvider";
+import info from "../data.json"
+
 interface QuestionProps {
     handleNextStep: () => void;
 }
 
-const list = [
-    { image:'/images/thumb-down.png', name:'No' },
-    { image:'/images/thumb-up.png', name:'Yes' }
-]
-const Question19:React.FC<QuestionProps> = ({handleNextStep}) => {
+const list = info.question19
+
+const Question19:React.FC<QuestionProps> = ({ handleNextStep }) => {
     const [selectedCard, setSelectedCard] = useState(null);
     const { setState } = useContext(AppContext)
 

@@ -1,0 +1,146 @@
+{
+  "question1": [
+    { "Image": "/images/question1/partners.png", "name": "Bond my team" },
+    { "Image": "/images/question1/lotus.png", "name": "Promote WellBeing" },
+    { "Image": "/images/question1/running.png", "name": "improve Fitness" },
+    { "Image": "/images/question1/confusion.png", "name": "Not Sure" }
+  ],
+
+  "question2": [
+    { "image": "/images/question2/enterprise.png", "name" : "Company" },
+    { "image": "/images/question2/donation.png", "name" : "Non-Profit" },
+    { "image": "/images/question2/breifcase.png", "name": "Other" }
+  ],
+
+  "question3": [
+    { "image": "/images/question3/work-from-home.png", "name" : "Remote" },
+    { "image": "/images/question3/house.png", "name" : "On-Site" },
+    { "image": "/images/question3/flat.png", "name": "Hybrid" },
+    { "image": "/images/question3/bus.png", "name": "Other" }
+  ],
+
+  "qeustion4": [
+    { "image": "/images/question4/clock.png", "name" : "9 to 5" },
+    { "image": "/images/question4/owl.png", "name" : "Night shifts" },
+    { "image": "/images/question4/flexible.png", "name": "Flexible working hours" },
+    { "image": "/images/question4/pencil.png", "name": "Other" }
+  ],
+
+  "question5": [
+    { "image": "/images/question5/placeholder.png", "name" : "Everyone in my team is in the same time zone" },
+    { "image": "/images/question5/planet-earth.png", "name" : "My team members are spread globally" }
+  ],
+
+  "question6" : [
+    { "name" : "1-15" },
+    { "name" : "16-99" },
+    { "name": "100-249" },
+    { "name": "250+" }
+  ],
+
+  "question7": [],
+
+  "question8": [
+    { "image": "/images/question8/sad.png", "name": "1 Star" },
+    { "image": "/images/question8/sad (1).png", "name": "2 Star" },
+    { "image": "/images/question8/confused.png", "name": "3 Star" },
+    { "image": "/images/question8/smile.png", "name": "4 Star" },
+    { "image": "/images/question8/happy.png", "name": "5 Star" }
+  ],
+
+  "question9": [
+    { "images": "/images/thumb-down.png", "name": "No" },
+    { "images": "/images/thumb-up.png", "name": "Yes" }
+  ],
+
+  "question10": [
+    { "image": "/images/question10/angry.png", "name": "1 Star" },
+    { "image": "/images/question10/angry1.png", "name": "2 Star" },
+    { "image": "/images/question10/ok-hand.svg", "name": "3 Star" },
+    { "image": "/images/question10/hang-10.svg", "name": "4 Star" },
+    { "image": "/images/question10/tap-dance.png", "name": "5 Star" }
+  ],
+
+  "question11": [
+    { "images": "/images/thumb-down.png", "name": "No" },
+    { "images": "/images/thumb-up.png", "name": "Yes" }
+  ],
+
+  "question12": [
+    { "image": "/images/question12/111star.png", "name": "1 Star" },
+    { "image": "/images/question12/222star.png", "name": "2 Star" },
+    { "image": "/images/question12/333star.png", "name": "3 Star" },
+    { "image": "/images/question12/444star.png", "name": "4 Star" },
+    { "image": "/images/question12/555star.png", "name": "5 Star" }
+  ],
+
+  "question13": [
+    { "images": "/images/thumb-down.png", "name": "Disagree" },
+    { "images": "/images/thumb-up.png", "name": "Agree" }
+  ],
+
+  "question14": [
+    { "title": "Communication" },
+    { "title": "Team morale" },
+    { "title": "Healthy habits" },
+    { "title": "Work-life balance" },
+    { "title": "Employees energy " },
+    { "title": "Overall wellbeing" },
+    { "title": "Conflict resolution " }
+  ],
+
+  "question15": {
+    "logos1": [
+      { "img": "/logos/microsoft.png", "label": "Microsoft" },
+      { "img": "/logos/ikea.png", "label": "Ikea" },
+      { "img": "/logos/remax.png", "label": "Remax" },
+      { "img": "/logos/amazon.png", "label": "Amazon" },
+      { "img": "/logos/american_express.png", "label": "American Express" },
+      { "img": "/logos/department_of_justice.png", "label": "Department Of Justice" },
+      { "img": "/logos/hyundai.png", "label": "Hyundai" }
+    ],
+
+    "logos2": [
+      { "img": "/logos/amdocs.png", "label": "Amdocs" },
+      { "img": "/logos/phzer.png", "label": "Phzer" },
+      { "img": "/logos/arla.png", "label": "Arla" },
+      { "img": "/logos/google.png", "label": "Google" },
+      { "img": "/logos/jp_morgan.png", "label": "J.P. Morgan" },
+      { "img": "/logos/american_cancer_society.png", "label": "American Cancer Society" },
+      { "img": "/logos/barclays.png", "label": "Barclays" }
+    ],
+
+    "logos3": [
+      { "img": "/logos/lululemon_athletica.png", "label": "Lululemon Athletica" },
+      { "img": "/logos/meta.png", "label": "Meta" },
+      { "img": "/logos/citi.png", "label": "Citi" },
+      { "img": "/logos/lidl.png", "label": "Lidl" },
+      { "img": "/logos/pwc.png", "label": "PWC" },
+      { "img": "/logos/unilever.png", "label": "Unilever" },
+      { "img": "/logos/bnp_paribas.png", "label": "BNP Paribas" }
+    ]
+  },
+
+  "question16": {
+    "freq1": {
+      "label": "Before",
+      "data": ["73","70","20"],
+      "backgroundColor": "#555"
+    },
+
+    "freq2": {
+      "label": "After",
+      "data": ["141","141","100"],
+      "backgroundColor": "#5ADB00"
+    }
+  },
+
+  "question17": [],
+
+  "question18": [],
+
+  "question19": [
+    { "image": "/images/thumb-down.png", "name": "Disagree" },
+    { "image": "/images/thumb-up.png", "name": "Agree" }
+  ]
+}

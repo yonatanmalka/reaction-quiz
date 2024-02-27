@@ -8,7 +8,7 @@ import { AppContext } from "@/utils/ContextProvider";
 import Link from "next/link";
 
 const list = [
-  { name:"Unlock all challenge features" },
+  { name: "Unlock all challenge features" },
   { name: "Start with your personal card, then easily switch to company billing in the admin dashboard" },
   { name: "We'll send you an invoice for seamless expense reporting" }
 ]
