@@ -23,7 +23,7 @@ const MainGoal = () => {
 
     return (
         <div className="main_goal">
-            {isVideoShown && <video playsInline loop controls controlsList="nodownload" poster="/poster.png" className="md:w-[400px] w-[425px] p-3 fixed top-0 -z-[100]">
+            {isVideoShown && <video playsInline loop controls controlsList="nodownload" className="md:w-[400px] w-[425px] p-3 fixed top-0 -z-[100]">
                 <source src="./reaction.mp4" type="video/mp4"/>
             </video>}
             <div className={`bg-white pt-5 ${isVideoShown ? 'mt-[30vh]' : ''} md:mb-[280px] mb-[300px]`}>
