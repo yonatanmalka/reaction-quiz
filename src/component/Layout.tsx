@@ -2,7 +2,7 @@
 
 import { AppContext } from "@/utils/ContextProvider";
 import Image from "next/image";
-import { useContext, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import Logo from "../../images/logo.png";
 import Back from "../../images/back.svg";
 import Element1 from "../../images/element1.svg";
@@ -115,6 +115,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                 alt="close"
                 width={30}
                 height={30}
+                className="invisible md:visible"
               />
             }
           </button>
