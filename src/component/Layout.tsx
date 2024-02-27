@@ -38,7 +38,12 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <main className="flex justify-center items-center">
       <div
-        className={`md:w-[400px] w-[425px] z-[20] relative bg-white h-[100vh] ${(currentStep !== 27 && currentStep !== 1) ? 'p-[15px]' : 'p-0'} overflow-x-hidden overflow-y-scroll ${currentStep !== 1 && !payment ? 'sm:overflow-y-hidden' : ''}`}
+        className={`
+          md:w-[400px] w-[425px] z-[20] relative bg-white h-[100vh] overflow-x-hidden
+          ${(currentStep !== 27 && currentStep !== 1) ? 'p-[15px]' : 'p-0'}
+          ${currentStep === 1 && !isVideoShown ? 'overflow-y-hidden' : 'overflow-y-scroll'}
+          ${currentStep !== 1 && !payment ? 'sm:overflow-y-hidden' : ''}
+        `}
         onScroll={handleScroll}
         ref={divRef}
       >
