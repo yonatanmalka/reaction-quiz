@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Logo from "../../../images/logo.svg";
 import Ok from "../../../images/Ok.svg"
@@ -23,8 +23,18 @@ const MainGoal = () => {
 
     return (
         <div className="main_goal">
-            {isVideoShown && <video playsInline loop controls controlsList="nodownload" poster="/poster.png" className="md:w-[400px] w-[425px] p-3 fixed top-0 -z-[100]">
-                <source src="./reaction.mp4" type="video/mp4"/>
+            {isVideoShown &&
+            <video
+                className="md:w-[400px] w-[425px] p-3 fixed top-0 -z-[100]"
+                playsInline
+                loop
+                muted
+                controls
+                autoPlay
+                controlsList="nodownload"
+                poster="/poster.png"
+            >
+                <source src="./reaction_quiz.mp4" type="video/mp4"/>
             </video>}
             <div className={`bg-white pt-5 ${isVideoShown ? 'mt-[30vh]' : ''} md:mb-[280px] mb-[300px]`}>
                 <div className="flex justify-center">
