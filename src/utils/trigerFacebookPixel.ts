@@ -17,11 +17,11 @@ const createSendingData = async (eventId: string, state: IStates, event: string)
       "em": [ sha256(state.admin_detail.email) ],
       "client_user_agent": navigator.userAgent,
       "client_ip_address": "0.0.0.0",
-      "custom_data": {
-        "currency": "USD",
-        "value": state.pricing || "no data"
-      }
     },
+    "custom_data": {
+      "currency": "USD",
+      "value": state.pricing || "no data"
+    }
   }
 }
 
