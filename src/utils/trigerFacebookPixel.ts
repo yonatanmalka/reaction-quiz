@@ -20,7 +20,7 @@ const createSendingData = async (eventId: string, state: IStates, event: string)
     },
     "custom_data": {
       "currency": "USD",
-      "value": state.pricing || "no data"
+      "value": state.pricing ? (state.pricing === 'yearly' ? 29 : 13) : 0
     }
   }
 }
