@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import Image from "next/image";
 import Logo from "../../../images/logo.png";
 import DownLoad_App from "@/component/DownLoad_App";
@@ -7,6 +7,8 @@ import Element2 from "../../../images/element2.svg";
 import { useStripe } from "@stripe/react-stripe-js";
 import { ClipLoader } from "react-spinners";
 import { handlePaying } from '@/utils/customer.io';
+import { triggerFacebookPixel } from '@/utils/trigerFacebookPixel';
+import { AppContext } from '@/utils/ContextProvider';
 
 declare let fbq: Function;
 
@@ -16,15 +18,10 @@ interface SuccessPageInterface {
     customerId: any;
 }
 
-export const SuccessPage: FC<SuccessPageInterface> = (
-    {
-        setup_intent_client_secret,
-        setup_intent,
-        customerId,
-    }
-) => {
+export const SuccessPage: FC<SuccessPageInterface> = ({ setup_intent_client_secret, setup_intent, customerId }) => {
     const stripe = useStripe();
     const [loading, setLoading] = useState(false);
+    const { state } = useContext(AppContext)
     useEffect(() => {
         const checkSetupIntentStatus = async () => {
             const hasVisited = localStorage.getItem('hasVisited');
@@ -35,6 +32,7 @@ export const SuccessPage: FC<SuccessPageInterface> = (
             if (result.setupIntent && result.setupIntent.status === 'succeeded') {
                 const priceId = localStorage.getItem('price_id');
                 const priceType = localStorage.getItem('type');
+                triggerFacebookPixel(state, "Purchased")
                 if (typeof fbq === 'function') {
                     fbq('track', 'Purchase', { currency: "USD", value: priceType === 'monthly' ? 9.95 : 4.95 });
                 }

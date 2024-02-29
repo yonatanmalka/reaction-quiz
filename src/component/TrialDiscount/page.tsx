@@ -1,11 +1,13 @@
 "use client"
 
-import Switch from "react-switch";
 import React, {useContext, useEffect, useState} from "react";
+import Link from "next/link";
+
+import Switch from "react-switch";
 import { Img } from "@/utils/Img";
 import { createCustomer } from "@/utils/customer.io";
 import { AppContext } from "@/utils/ContextProvider";
-import Link from "next/link";
+import { triggerFacebookPixel } from "@/utils/trigerFacebookPixel";
 
 const list = [
   { name: "Unlock all challenge features" },
@@ -20,6 +22,7 @@ const TrialDiscount = () => {
 
   useEffect(() =>  {
     createCustomer(state)
+    triggerFacebookPixel(state, "CreateUser")
   }, [])
 
   const handleChange = async (checked: boolean) => {
