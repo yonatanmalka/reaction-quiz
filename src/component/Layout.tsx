@@ -41,21 +41,15 @@ function Layout({ children }: { children: React.ReactNode }) {
         className={`
           md:w-[400px] w-[425px] z-[20] relative bg-white h-[100vh] overflow-x-hidden overflow-y-scroll
           ${(currentStep !== 27 && currentStep !== 1) ? 'p-[15px]' : 'p-0'}
-          ${currentStep !== 1 && !payment ? 'sm:overflow-y-hidden' : ''}
+          ${![1, 18, 19, 20, 21, 24].includes(currentStep) && !payment?
+            'sm:overflow-y-hidden' : ''}
         `}
         onScroll={handleScroll}
         ref={divRef}
       >
         {shouldRenderComponent && (
           <div
-            className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${
-              currentStep !== 15 &&
-              currentStep !== 7 &&
-              currentStep !== 17 &&
-              currentStep !== 16
-                ? "justify-between"
-                : "justify-center"
-            } items-end `}
+            className={`flex w-[100%] mt-[10px] z-20 relative flex-row ${![1, 15, 16, 17].includes(currentStep) ? "justify-between" : "justify-center"} items-end `}
           >
             {
               // @ts-ignore
